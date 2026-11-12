@@ -101,8 +101,7 @@
   .scene:not(:first-of-type) .sidePack { top: 265px; }
   .particle:nth-child(n+15) { display: none; }
   .particle { opacity: .22 !important; }
-  .sceneNumber { top: 26px; right: 7%; left: auto; bottom: auto; font-size: 9px; }
-  .scene:first-of-type .sceneNumber { top: 90px; }
+  .sceneNumber { display: none; }
   .bottomBar { padding: 18px 7%; }
   .scrollHint, .allProducts { display: none; }
   .productNav { width: 100%; justify-content: space-between; gap: 10px; }
@@ -127,6 +126,6 @@
   .hero[data-enhanced] .description { max-width: 100%; font-size: 11px; line-height: 1.5; }
   .hero[data-enhanced] .quote { margin-top: 12px; min-height: 44px; padding: 11px 16px; }
   .hero[data-enhanced] .productInfo { display: none; }
-  .hero[data-enhanced] .sceneNumber { display: block; top: 90px; }
+  .hero[data-enhanced] .sceneNumber { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .hero *, .hero *::after { transition: none !important; animation: none !important; } }

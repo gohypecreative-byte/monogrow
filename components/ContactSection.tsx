@@ -150,32 +150,12 @@ export default function ContactSection({ onOpenQuoteModal }: ContactSectionProps
             id="contact-heading"
             className="font-serif font-bold text-[clamp(36px,5vw,62px)] leading-[1.08] tracking-tight text-[#1C1A16] mb-4"
           >
-            Get In Touch{" "}
-            <span className="relative inline-block">
-              <span className="text-[#740707]">With Us</span>
-              {/* Underline flourish */}
-              <svg
-                className="absolute -bottom-1.5 left-0 w-full"
-                height="6"
-                viewBox="0 0 200 6"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M0 4 Q50 0 100 4 Q150 8 200 4"
-                  stroke="#C8716B"
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeLinecap="round"
-                  opacity="0.5"
-                />
-              </svg>
-            </span>
+            Get In Touch <span className="text-[#740707]">With Us</span>
           </h1>
 
           <p className="text-[15px] sm:text-[16px] text-[#6B6059] leading-[1.7] font-sans">
             Fill in your details below. Our team will respond with certified lot metrics
-            and pricing within <strong className="text-[#1C1A16] font-semibold">24 business hours</strong>.
+            and pricing.
           </p>
         </div>
 

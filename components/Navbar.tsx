@@ -208,7 +208,7 @@ export default function Navbar({
               ))}
             </nav>
 
-            {/* Mobile Hamburger Button (Custom 3-Vertical-Bar Icon) */}
+            {/* Mobile Hamburger Button (Custom 3-Rice-Grain Icon) */}
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -227,9 +227,12 @@ export default function Navbar({
                 className="w-5 h-6 drop-shadow-xs"
                 aria-hidden="true"
               >
-                <rect x="1" y="4" width="3.2" height="14" rx="1.6" />
-                <rect x="7.4" y="1" width="3.2" height="20" rx="1.6" />
-                <rect x="13.8" y="4" width="3.2" height="14" rx="1.6" />
+                {/* Left rice grain (height 14: y=4 to 18) */}
+                <path d="M 2.6 4.3 C 2.8 4.0 3.1 4.0 3.3 4.4 C 4.5 7.8 4.5 14.2 3.3 17.6 C 3.1 18.0 2.8 18.0 2.6 17.7 C 1.4 14.2 1.4 7.8 2.6 4.3 Z" />
+                {/* Middle rice grain (height 20: y=1 to 21) */}
+                <path d="M 9.0 1.3 C 9.2 1.0 9.5 1.0 9.7 1.4 C 11.0 6.5 11.0 15.5 9.7 20.6 C 9.5 21.0 9.2 21.0 9.0 20.7 C 7.7 15.5 7.7 6.5 9.0 1.3 Z" />
+                {/* Right rice grain (height 14: y=4 to 18) */}
+                <path d="M 15.4 4.3 C 15.6 4.0 15.9 4.0 16.1 4.4 C 17.3 7.8 17.3 14.2 16.1 17.6 C 15.9 18.0 15.6 18.0 15.4 17.7 C 14.2 14.2 14.2 7.8 15.4 4.3 Z" />
               </svg>
             </button>
           </div>
