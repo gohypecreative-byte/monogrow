@@ -53,7 +53,17 @@ export default function CategorySection({ onSelectCategory, onOpenQuoteModal }: 
         };
         const tween = gsap.to(driver, {
           progress: 1, ease: "none", onUpdate: paint,
-          scrollTrigger: { trigger: section, pin: viewport, start: "top top", end: () => `+=${Math.max(distance() * 1.3, window.innerHeight * 2)}`, scrub: 1, invalidateOnRefresh: true, onRefresh: paint },
+          scrollTrigger: {
+            trigger: section,
+            pin: viewport,
+            pinSpacing: true,
+            anticipatePin: 1,
+            start: "top top",
+            end: () => `+=${Math.max(distance() * 1.3, window.innerHeight * 2)}`,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            onRefresh: paint,
+          },
         });
         const onFocus = (event: FocusEvent) => {
           if (!(event.target instanceof HTMLElement) || !event.target.matches(":focus-visible")) return;
@@ -95,7 +105,7 @@ export default function CategorySection({ onSelectCategory, onOpenQuoteModal }: 
               <article key={product.id} data-product-card className={styles.card}>
                 <span className={styles.number}>0{index + 1}</span>
                 <div className={styles.visual}>
-                  <div data-card-bowl className={styles.bowl}><Image src={`/assets/hero-center-${product.image}.png`} alt={`A bowl of ${product.name.toLowerCase()}`} fill sizes="(max-width: 767px) 80vw, 28vw" className={styles.image} /></div>
+                  <div data-card-bowl className={styles.bowl}><Image src={`/assets/hero-center-${product.image}.png?v=wood`} alt={`A bowl of ${product.name.toLowerCase()}`} fill unoptimized sizes="(max-width: 767px) 80vw, 28vw" className={styles.image} /></div>
                   <div className={styles.pack}><Image src={`/assets/${product.pack}`} alt={`Monagrow ${product.name} ${product.size} pack`} fill sizes="(max-width: 767px) 30vw, 10vw" className={styles.image} /></div>
                 </div>
                 <div className={styles.cardBody}>

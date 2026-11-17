@@ -46,9 +46,18 @@
 .packages button { display: flex; flex-direction: column; align-items: center; gap: 7px; border: 1px solid #e3ddd5; border-radius: 6px; padding: 14px 5px; }
 .packages strong { font-size: 14px; font-weight: 500; }
 .packages small { font-size: 9px; color: #75675d; text-align: center; }
-.assumptions { padding: 18px; background: #f7f4ef; border-radius: 6px; }
-.assumptions h4 { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; min-height: 28px; }
-.assumptions h4 span { margin-left: auto; color: #85786d; font-size: 11px; }
+.assumptions { padding: 18px; background: #f7f4ef; border-radius: 8px; border: 1px solid #ede5d8; }
+.assumptionsHead { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; min-height: 32px; padding-bottom: 4px; }
+.assumptionsTitle { display: flex; align-items: center; gap: 9px; }
+.assumptionsTitle h4 { margin: 0; font-size: 14px; font-weight: 600; color: #30241e; display: flex; align-items: center; gap: 8px; }
+.assumptionsTitle svg { color: #740707; flex-shrink: 0; }
+.currencySelector { display: flex; align-items: center; gap: 8px; }
+.currencyLabel { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #85786d; }
+.currencyPills { display: inline-flex; background: #eae3d7; border: 1px solid #ddd3c5; border-radius: 8px; padding: 3px; gap: 3px; }
+.currencyBtn { border: none; background: transparent; color: #5d5147; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 5px; cursor: pointer; transition: all 0.15s ease; font-variant-numeric: tabular-nums; }
+.currencyBtn:hover { color: #740707; background: rgba(255, 255, 255, 0.7); }
+.currencyBtnActive { background: #740707 !important; color: #ffffff !important; box-shadow: 0 2px 6px rgba(116, 7, 7, 0.25); }
+.currencyInfoTag { display: inline-block; font-size: 11px; color: #740707; font-weight: 600; background: #fbeeed; border: 1px solid #f1d4d4; padding: 2px 8px; border-radius: 4px; margin-left: 6px; }
 .assumptions p { color: #75675d; font-size: 11px; line-height: 1.7; margin: 12px 0 18px; }
 .assumptions p:last-child { margin-bottom: 0; }
 .result { position: sticky; top: 110px; padding: clamp(22px, 2.5vw, 36px); border: 1px solid #e1d8cd; border-top: 3px solid #740707; background: #faf7f2; border-radius: 2px 2px 10px 10px; }
@@ -64,8 +73,13 @@
 .route { display: flex; gap: 12px; align-items: center; margin: 20px 0; font-size: 12px; }
 .route svg { color: #740707; flex-shrink: 0; }
 .route small { display: block; font-size: 10px; line-height: 1.6; color: #85786d; margin-top: 5px; }
-.breakdown h4 { display: flex; justify-content: space-between; font-weight: 600; font-size: 12px; padding: 14px 0; border-block: 1px solid #e1d8cd; }
-.breakdown h4 span { color: #85786d; font-weight: 400; }
+.breakdownHead { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 0; border-block: 1px solid #e1d8cd; }
+.breakdownHead h4 { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; margin: 0; border: none; padding: 0; }
+.breakdownHead h4 span { color: #740707; font-weight: 600; font-size: 11px; background: #f7e8e8; padding: 2px 7px; border-radius: 4px; }
+.currencyPillsSmall { display: inline-flex; background: #ece5da; border: 1px solid #dfd6c8; border-radius: 6px; padding: 2px; gap: 2px; }
+.currencyBtnSmall { border: none; background: transparent; color: #62564c; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 4px; cursor: pointer; transition: all 0.15s ease; }
+.currencyBtnSmall:hover { color: #740707; background: rgba(255, 255, 255, 0.7); }
+.currencyBtnSmallActive { background: #740707 !important; color: #ffffff !important; }
 .breakdown dl > div { display: flex; justify-content: space-between; gap: 16px; padding-top: 12px; font-size: 12px; }
 .breakdown dt { color: #75675d; }
 .breakdown dd { font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -107,6 +121,11 @@
   .fields input, .fields select { font-size: 16px; }
   .packages { gap: 6px; }
   .assumptions { padding: 14px; }
+  .assumptionsHead { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .currencySelector { width: 100%; justify-content: space-between; }
+  .currencyPills { width: 100%; display: flex; justify-content: space-between; }
+  .currencyBtn { flex: 1; text-align: center; padding: 6px 2px; font-size: 10px; }
+  .breakdownHead { flex-direction: column; align-items: flex-start; gap: 8px; }
   .result { position: static; margin-inline: 0; border-radius: 8px; padding: 20px 12px; }
   .result h3 { font-size: 30px; }
   .total > strong { font-size: 38px; }

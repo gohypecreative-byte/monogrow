@@ -34,13 +34,13 @@ export default function Home() {
           onOpenQuoteModal={handleOpenQuoteModal}
         />
 
-        {/* 3. About Monagrow - Direct Origin & Wholesale Partnerships */}
-        <AboutMonagrow onOpenQuoteModal={handleOpenQuoteModal} />
-
         {/* 3. Wholesale Commodity Categories (Rice, Coffee, Sugar, Dryfruits) */}
         <CategorySection
           onOpenQuoteModal={handleOpenQuoteModal}
         />
+
+        {/* 4. About Monagrow - Direct Origin & Wholesale Sourcing */}
+        <AboutMonagrow onOpenQuoteModal={handleOpenQuoteModal} />
 
         {/* 4. Company Philosophy & Details (Direct Origin Story & Purity Manifesto) */}
         <CompanyPhilosophy onOpenQuoteModal={handleOpenQuoteModal} />

@@ -287,37 +287,28 @@ export default function Footer({ onOpenQuoteModal }: FooterProps) {
                   </Link>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    onClick={() => onOpenQuoteModal?.("Proforma Invoice")}
-                    className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5 text-left cursor-pointer"
+                  <Link
+                    href="/shipping-returns"
+                    className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5 text-left"
                   >
                     Shipping &amp; Returns
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    onClick={() => onOpenQuoteModal?.("Customer Support")}
-                    className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5 text-left cursor-pointer"
-                  >
-                    Customer Support
-                  </button>
-                </li>
-                <li>
-                  <Link href="/#philosophy" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
-                    Food Safety Compliance
                   </Link>
                 </li>
                 <li>
-                  <a href="#privacy" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
-                    Privacy Policy
-                  </a>
+                  <Link
+                    href="/customer-support"
+                    className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5 text-left"
+                  >
+                    Customer Support
+                  </Link>
                 </li>
                 <li>
-                  <a href="#terms" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
-                    Incoterms 2020 Rules
-                  </a>
+                  <Link
+                    href="/privacy-policy"
+                    className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5 text-left"
+                  >
+                    Privacy Policy
+                  </Link>
                 </li>
               </ul>
             </div>

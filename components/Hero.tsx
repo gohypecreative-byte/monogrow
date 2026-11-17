@@ -23,6 +23,21 @@ const PARTICLES = Array.from({ length: 40 }, (_, i) => ({
   rotation: (i * 67) % 360, size: i % 9 === 0 ? 74 : 12 + (i % 5) * 7,
   depth: i % 3,
 }));
+const DRYFRUIT_PARTICLES = [
+  "/assets/dryfruit-cashew-1.png",
+  "/assets/dryfruit-almond-1.png",
+  "/assets/dryfruit-walnut-1.png",
+  "/assets/dryfruit-pistachio-1.png",
+  "/assets/dryfruit-cashew-2.png",
+  "/assets/dryfruit-almond-2.png",
+  "/assets/dryfruit-walnut-2.png",
+  "/assets/dryfruit-pistachio-2.png",
+];
+const COFFEE_PARTICLES = [
+  "/assets/coffee-particle-1.png",
+  "/assets/coffee-particle-2.png",
+  "/assets/coffee-particle-3.png",
+];
 const QUOTE_NAMES = ["Basmati Rice (1121 Supreme)", "Specialty Estate Coffee", "Royal Mixed Dry Fruits", "Refined Sugar (ICUMSA 45)"];
 const BACKGROUNDS = ["#142e61", "#754832", "#3e164f", "#516b3b"];
 function blendColour(from: string, to: string, progress: number) {
@@ -87,7 +102,7 @@ export default function Hero({ onOpenQuoteModal, filterProduct }: HeroProps) {
         const layers = scenes.map(scene => ({
           pack: scene.querySelector<HTMLElement>("[data-pack]")!,
           orbit: scene.querySelector<HTMLElement>("[data-orbit]")!,
-          particles: Array.from(scene.querySelectorAll<SVGElement>("[data-particle]")),
+          particles: Array.from(scene.querySelectorAll<HTMLElement | SVGElement>("[data-particle]")),
           sides: Array.from(scene.querySelectorAll<HTMLElement>("[data-side]")),
         }));
         section.dataset.enhanced = "true";
@@ -154,6 +169,7 @@ export default function Hero({ onOpenQuoteModal, filterProduct }: HeroProps) {
             start: "top top",
             end: () => isSingleProduct ? "bottom top" : `+=${viewport.clientHeight * 3.3}`,
             scrub: .8,
+            anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
@@ -176,7 +192,7 @@ export default function Hero({ onOpenQuoteModal, filterProduct }: HeroProps) {
             scene.style.removeProperty("opacity"); scene.style.removeProperty("visibility");
             scene.removeAttribute("aria-hidden"); scene.inert = false;
             scene.querySelectorAll<HTMLElement>("[data-pack], [data-orbit], [data-side]").forEach(el => el.removeAttribute("style"));
-            scene.querySelectorAll<SVGElement>("[data-particle]").forEach((el, j) => { el.style.transform = `rotate(${PARTICLES[j].rotation}deg)`; });
+            scene.querySelectorAll<HTMLElement | SVGElement>("[data-particle]").forEach((el, j) => { el.style.transform = `rotate(${PARTICLES[j].rotation}deg)`; });
           });
         };
       });
@@ -190,10 +206,31 @@ export default function Hero({ onOpenQuoteModal, filterProduct }: HeroProps) {
       <svg className={styles.definitions} aria-hidden="true"><defs>
         <radialGradient id="mg-bean" cx="32%" cy="25%"><stop stopColor="#b6814d"/><stop offset=".45" stopColor="#6b351c"/><stop offset="1" stopColor="#261107"/></radialGradient>
         <linearGradient id="mg-grain" x2="1" y2="1"><stop stopColor="#fff7d9"/><stop offset="1" stopColor="#c9ad79"/></linearGradient>
+        <linearGradient id="mg-rice-grain" x2="1" y2="1"><stop stopColor="#f8f1e4"/><stop offset="1" stopColor="#dac9ab"/></linearGradient>
+        <radialGradient id="mg-cashew-body" cx="42%" cy="38%" r="58%">
+          <stop offset="0%" stopColor="#fff8eb"/>
+          <stop offset="42%" stopColor="#f4deb3"/>
+          <stop offset="78%" stopColor="#dda85a"/>
+          <stop offset="100%" stopColor="#b47828"/>
+        </radialGradient>
+        <linearGradient id="mg-cashew-shine" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85"/>
+          <stop offset="100%" stopColor="#f4deb3" stopOpacity="0"/>
+        </linearGradient>
         <symbol id="mg-coffee" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="20" ry="27" fill="url(#mg-bean)" transform="rotate(30 30 30)"/><path d="M42 8C17 24 43 34 17 52" stroke="#241005" strokeWidth="4" fill="none"/><path d="M38 9C20 22 38 36 17 49" stroke="#ca9256" strokeWidth="1.2" fill="none"/><path d="M20 14Q9 25 12 35" fill="none" stroke="#e0b083" strokeWidth="2" opacity=".4"/></symbol>
-        <symbol id="mg-rice" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="7" ry="27" fill="url(#mg-grain)" transform="rotate(25 30 30)"/><path d="M39 8L21 51" stroke="#fff9e9" opacity=".5"/></symbol>
-        <symbol id="mg-cashew" viewBox="0 0 60 60"><path d="M39 6C8 0 0 38 24 51C43 63 62 42 51 35C44 30 43 43 32 39C18 34 24 19 34 22C47 26 51 10 39 6Z" fill="url(#mg-grain)"/><path d="M35 12C15 9 8 34 26 44" fill="none" stroke="#b9904d" strokeWidth="2" opacity=".6"/></symbol>
-        <symbol id="mg-dryfruit" viewBox="0 0 60 60"><path d="M39 6C8 0 0 38 24 51C43 63 62 42 51 35C44 30 43 43 32 39C18 34 24 19 34 22C47 26 51 10 39 6Z" fill="url(#mg-grain)"/><path d="M35 12C15 9 8 34 26 44" fill="none" stroke="#b9904d" strokeWidth="2" opacity=".6"/></symbol>
+        <symbol id="mg-rice" viewBox="0 0 60 60"><ellipse cx="30" cy="30" rx="7" ry="27" fill="url(#mg-rice-grain)" transform="rotate(25 30 30)"/><path d="M39 8L21 51" stroke="#f5ede0" opacity=".6"/></symbol>
+        <symbol id="mg-cashew" viewBox="0 0 60 60">
+          <path d="M37 7 C51 12, 57 28, 48 44 C41 55, 20 56, 11 47 C4 39, 6 28, 16 25 C23 23, 26 16, 37 7 Z" fill="url(#mg-cashew-body)" stroke="#caa056" strokeWidth="0.8"/>
+          <path d="M35 10 C46 15, 52 28, 45 41" fill="none" stroke="url(#mg-cashew-shine)" strokeWidth="2.5" strokeLinecap="round"/>
+          <path d="M13 36 C16 29, 21 27, 26 23" fill="none" stroke="#9c6e26" strokeWidth="1.2" strokeLinecap="round" opacity=".55"/>
+          <image href="/assets/cashew-particle.png" xlinkHref="/assets/cashew-particle.png" x="2" y="2" width="56" height="56" preserveAspectRatio="xMidYMid meet"/>
+        </symbol>
+        <symbol id="mg-dryfruit" viewBox="0 0 60 60">
+          <path d="M37 7 C51 12, 57 28, 48 44 C41 55, 20 56, 11 47 C4 39, 6 28, 16 25 C23 23, 26 16, 37 7 Z" fill="url(#mg-cashew-body)" stroke="#caa056" strokeWidth="0.8"/>
+          <path d="M35 10 C46 15, 52 28, 45 41" fill="none" stroke="url(#mg-cashew-shine)" strokeWidth="2.5" strokeLinecap="round"/>
+          <path d="M13 36 C16 29, 21 27, 26 23" fill="none" stroke="#9c6e26" strokeWidth="1.2" strokeLinecap="round" opacity=".55"/>
+          <image href="/assets/cashew-particle.png" xlinkHref="/assets/cashew-particle.png" x="2" y="2" width="56" height="56" preserveAspectRatio="xMidYMid meet"/>
+        </symbol>
         <symbol id="mg-sugar" viewBox="0 0 60 60"><path d="M13 14L39 7L51 24L44 49L17 52L7 33Z" fill="#eee8d6" fillOpacity=".75" stroke="#fff8e1"/><path d="M13 14L26 29L51 24M26 29L17 52M26 29L39 7" stroke="#fff" opacity=".6" fill="none"/></symbol>
       </defs></svg>
       <div ref={stage} className={styles.stage}>
@@ -203,7 +240,72 @@ export default function Hero({ onOpenQuoteModal, filterProduct }: HeroProps) {
           <article id={`hero-product-${index}`} key={product.name} data-scene className={styles.scene} style={{ "--scene-accent": product.colour, "--scene-glow": product.glow, "--scene-backdrop": activeBackgrounds[index] } as CSSProperties} aria-label={product.name}>
             <div className={styles.atmosphere} aria-hidden="true" />
             <div className={styles.wordmark} aria-hidden="true" style={{ "--name-size": `${Math.min(18, 146 / product.name.length)}vw` } as CSSProperties}>{product.name}</div>
-            <div className={styles.particles} aria-hidden="true">{PARTICLES.map((particle, i) => <svg key={i} data-particle className={styles.particle} style={{ left: `${particle.x}%`, top: `${particle.y}%`, width: particle.size, height: particle.size, opacity: particle.depth === 0 ? .25 : .7, filter: `blur(${particle.depth === 0 ? 3 : particle.size > 60 ? 2 : 0}px)`, transform: `rotate(${particle.rotation}deg)` }}><use href={`#mg-${product.ingredient}`} /></svg>)}</div>
+            <div className={styles.particles} aria-hidden="true">
+              {PARTICLES.map((particle, i) => {
+                if (product.ingredient === "dryfruit") {
+                  return (
+                    <img
+                      key={i}
+                      data-particle
+                      src={DRYFRUIT_PARTICLES[i % DRYFRUIT_PARTICLES.length]}
+                      alt=""
+                      className={styles.particle}
+                      style={{
+                        left: `${particle.x}%`,
+                        top: `${particle.y}%`,
+                        width: `${particle.size}px`,
+                        height: `${particle.size}px`,
+                        opacity: particle.depth === 0 ? 0.35 : 0.88,
+                        filter: `blur(${particle.depth === 0 ? 2 : particle.size > 60 ? 1 : 0}px) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.28))`,
+                        transform: `rotate(${particle.rotation}deg)`,
+                        objectFit: "contain",
+                        pointerEvents: "none",
+                      }}
+                    />
+                  );
+                }
+                if (product.ingredient === "coffee") {
+                  return (
+                    <img
+                      key={i}
+                      data-particle
+                      src={COFFEE_PARTICLES[i % COFFEE_PARTICLES.length]}
+                      alt=""
+                      className={styles.particle}
+                      style={{
+                        left: `${particle.x}%`,
+                        top: `${particle.y}%`,
+                        width: `${particle.size}px`,
+                        height: `${particle.size}px`,
+                        opacity: particle.depth === 0 ? 0.35 : 0.88,
+                        filter: `blur(${particle.depth === 0 ? 2 : particle.size > 60 ? 1 : 0}px) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.32))`,
+                        transform: `rotate(${particle.rotation}deg)`,
+                        objectFit: "contain",
+                        pointerEvents: "none",
+                      }}
+                    />
+                  );
+                }
+                return (
+                  <svg
+                    key={i}
+                    data-particle
+                    className={styles.particle}
+                    style={{
+                      left: `${particle.x}%`,
+                      top: `${particle.y}%`,
+                      width: particle.size,
+                      height: particle.size,
+                      opacity: particle.depth === 0 ? 0.25 : 0.7,
+                      filter: `blur(${particle.depth === 0 ? 3 : particle.size > 60 ? 2 : 0}px)`,
+                      transform: `rotate(${particle.rotation}deg)`,
+                    }}
+                  >
+                    <use href={`#mg-${product.ingredient}`} />
+                  </svg>
+                );
+              })}
+            </div>
             <div className={styles.copy}>
               <p className={styles.eyebrow}><span /> THE TASTE OF PURITY</p>
               <h2>{product.title[0]}<br/><em>{product.title[1]}</em></h2>
@@ -217,12 +319,12 @@ export default function Hero({ onOpenQuoteModal, filterProduct }: HeroProps) {
             <div className={styles.productStage}>
               <div className={styles.halo} aria-hidden="true" />
               <svg data-orbit className={styles.orbit} viewBox="0 0 500 500" aria-hidden="true"><defs><path id={`mg-orbit-${index}`} d="M250,250 m-220,0 a220,220 0 1,1 440,0 a220,220 0 1,1 -440,0"/></defs><text><textPath href={`#mg-orbit-${index}`} textLength="1382">PACKED AT ORIGIN · MADE FOR THE WORLD · THE TASTE OF PURITY · MONAGROW · </textPath></text></svg>
-              <div className={styles.mouseLayer}><div data-pack className={styles.mainPack}><div className={styles.ingredientEntrance}><Image src={`/assets/hero-center-${product.ingredient}.png`} alt={`A wooden bowl of ${product.name.toLowerCase()}`} fill sizes="(max-width: 767px) 90vw, 43vw" preload={index === 0} className={styles.packImage}/></div></div></div>
+              <div className={styles.mouseLayer}><div data-pack className={styles.mainPack}><div className={styles.ingredientEntrance}><Image src={`/assets/hero-center-${product.ingredient}.png?v=wood`} alt={`A wooden bowl of ${product.name.toLowerCase()}`} fill sizes="(max-width: 767px) 90vw, 43vw" priority={index === 0} unoptimized className={styles.packImage}/></div></div></div>
               <div className={styles.productShadow} aria-hidden="true"/>
             </div>
             <div className={`${styles.ingredientCluster} ${styles.clusterLeft}`} style={{ backgroundPosition: product.atlas }} aria-hidden="true"/>
             <div className={`${styles.ingredientCluster} ${styles.clusterRight}`} style={{ backgroundPosition: product.atlas }} aria-hidden="true"/>
-            <button id={filterProduct ? `${filterProduct}-hero-pack` : undefined} data-side className={styles.sidePack} onClick={() => onOpenQuoteModal(activeQuoteNames[index])} aria-label={`Get a quote for Monagrow ${product.name}`}><span className={styles.packEntrance}><Image src={product.image} alt={`Monagrow ${product.name}, ${product.size} pack`} fill sizes="(max-width: 767px) 30vw, 21vw" preload={index === 0} className={styles.packImage}/></span></button>
+            <button id={filterProduct ? `${filterProduct}-hero-pack` : undefined} data-side className={styles.sidePack} onClick={() => onOpenQuoteModal(activeQuoteNames[index])} aria-label={`Get a quote for Monagrow ${product.name}`}><span className={styles.packEntrance}><Image src={product.image} alt={`Monagrow ${product.name}, ${product.size} pack`} fill sizes="(max-width: 767px) 30vw, 21vw" priority={index === 0} className={styles.packImage}/></span></button>
             <div className={styles.productInfo}>
               <h3>{product.name}</h3>
               <p>{product.detail}</p>

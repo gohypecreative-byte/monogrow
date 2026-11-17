@@ -1,0 +1,18 @@
+svg_content = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 28" width="104" height="56" fill="none" stroke="#740707" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Horizontal stem extending to the right -->
+  <line x1="13" y1="14" x2="52" y2="14" />
+  <!-- Tip horizontal leaf -->
+  <path d="M 2,14 C 2,10.5 8,9.5 13,14 C 8,18.5 2,17.5 2,14 Z" />
+  <!-- Upper row of 3 angled leaves -->
+  <path d="M 13,14 C 11.5,8 16.5,3.5 21,3.5 C 22.5,7.5 19,12.5 13,14 Z" />
+  <path d="M 24,14 C 22.5,8 27.5,3.5 32,3.5 C 33.5,7.5 30,12.5 24,14 Z" />
+  <path d="M 35,14 C 33.5,8 38.5,3.5 43,3.5 C 44.5,7.5 41,12.5 35,14 Z" />
+  <!-- Lower row of 3 angled leaves -->
+  <path d="M 13,14 C 11.5,20 16.5,24.5 21,24.5 C 22.5,20.5 19,15.5 13,14 Z" />
+  <path d="M 24,14 C 22.5,20 27.5,24.5 32,24.5 C 33.5,20.5 30,15.5 24,14 Z" />
+  <path d="M 35,14 C 33.5,20 38.5,24.5 43,24.5 C 44.5,20.5 41,15.5 35,14 Z" />
+</svg>'''
+
+with open('scratch/wheat_sprig.svg', 'w') as f:
+    f.write(svg_content)
+print("Saved scratch/wheat_sprig.svg")

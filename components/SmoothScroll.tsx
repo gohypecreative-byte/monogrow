@@ -18,6 +18,7 @@ export default function SmoothScroll() {
       loadHeroMotion().then(({ Lenis, gsap, ScrollTrigger }) => {
         if (cancelled || preference.matches || dispose) return;
         gsap.registerPlugin(ScrollTrigger);
+        gsap.ticker.lagSmoothing(0);
         const lenis = new Lenis({
           lerp: .09,
           smoothWheel: true,
