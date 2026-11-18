@@ -221,46 +221,6 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        {/* ========================================================
-            LET'S GROW TOGETHER - CONTACT & PARTNERSHIP
-            Replaces Accreditations Section (Matching Second Screenshot)
-            ======================================================== */}
-        <section data-about-reveal className="py-16 sm:py-24 bg-white border-t border-neutral-200/70">
-          <div className="max-w-[1240px] mx-auto px-6 sm:px-10 lg:px-16">
-            <header className="mb-6 sm:mb-8">
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-[34px] text-[#740707] tracking-tight">
-                Let&apos;s Grow Together
-              </h2>
-              <div className="w-full h-[2px] bg-[#740707] mt-2.5 mb-6 sm:mb-8" />
-            </header>
-
-            <p className="text-[16px] sm:text-[18px] text-neutral-800 leading-[1.8] font-sans mb-8 max-w-4xl">
-              Whether you&apos;re stocking shelves, supplying kitchens or building your own brand, Monagrow is ready to serve you.
-            </p>
-
-            <div className="space-y-3.5 font-sans text-[15px] sm:text-[17px] text-neutral-800">
-              <p>
-                <strong className="font-bold text-[#740707]">Email:</strong>{" "}
-                <a href="mailto:hello@monagrow.com" className="hover:underline text-neutral-900 font-medium">
-                  hello@monagrow.com
-                </a>
-              </p>
-              <p>
-                <strong className="font-bold text-[#740707]">WhatsApp:</strong>{" "}
-                <a href="https://wa.me/97153462527" target="_blank" rel="noopener noreferrer" className="hover:underline text-neutral-900 font-medium">
-                  +971 53 462 527
-                </a>
-              </p>
-              <p>
-                <strong className="font-bold text-[#740707]">Website:</strong>{" "}
-                <a href="https://monagrow.com" target="_blank" rel="noopener noreferrer" className="hover:underline text-neutral-900 font-medium">
-                  monagrow.com
-                </a>
-              </p>
-            </div>
-          </div>
-        </section>
-
       </main>
 
       {/* Footer */}

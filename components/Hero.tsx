@@ -319,7 +319,7 @@ export default function Hero({ onOpenQuoteModal, filterProduct }: HeroProps) {
             <div className={styles.productStage}>
               <div className={styles.halo} aria-hidden="true" />
               <svg data-orbit className={styles.orbit} viewBox="0 0 500 500" aria-hidden="true"><defs><path id={`mg-orbit-${index}`} d="M250,250 m-220,0 a220,220 0 1,1 440,0 a220,220 0 1,1 -440,0"/></defs><text><textPath href={`#mg-orbit-${index}`} textLength="1382">PACKED AT ORIGIN · MADE FOR THE WORLD · THE TASTE OF PURITY · MONAGROW · </textPath></text></svg>
-              <div className={styles.mouseLayer}><div data-pack className={styles.mainPack}><div className={styles.ingredientEntrance}><Image src={`/assets/hero-center-${product.ingredient}.png?v=wood`} alt={`A wooden bowl of ${product.name.toLowerCase()}`} fill sizes="(max-width: 767px) 90vw, 43vw" priority={index === 0} unoptimized className={styles.packImage}/></div></div></div>
+              <div className={styles.mouseLayer}><div data-pack className={styles.mainPack}><div className={styles.ingredientEntrance}><Image src={`/assets/hero-center-${product.ingredient}.png`} alt={`A wooden bowl of ${product.name.toLowerCase()}`} fill sizes="(max-width: 767px) 90vw, 43vw" priority={index === 0} unoptimized className={styles.packImage}/></div></div></div>
               <div className={styles.productShadow} aria-hidden="true"/>
             </div>
             <div className={`${styles.ingredientCluster} ${styles.clusterLeft}`} style={{ backgroundPosition: product.atlas }} aria-hidden="true"/>

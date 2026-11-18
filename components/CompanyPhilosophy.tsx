@@ -19,13 +19,13 @@ const stages = [
     name: "Selection", title: "Carefully selected. Never left to chance.",
     copy: "Long-grain Basmati, estate Arabica, refined sugar and handpicked cashews. Each commodity is selected to its own specification, with attention to the details that matter to your business.",
     tags: ["Basmati & Arabica", "Sugar & cashews", "Lot specifications"],
-    image: "/assets/why-grain-inspector.jpg", alt: "A quality specialist examining grain samples beside trays and jars of commodities",
+    image: "/assets/company-selection-coffee.jpg", alt: "Hands cupping and selecting premium estate Arabica coffee beans",
   },
   {
     name: "Verification", title: "Purity you can put to the test.",
     copy: "Know what you are buying before you commit. Laboratory specifications, moisture metrics and harvest information bring clarity to the conversation, from your first sample to your shipment.",
     tags: ["Lab specifications", "Moisture checks", "Sample evaluation"],
-    image: "/assets/monagrow-product-testing-lab.jpg", alt: "A laboratory specialist using a microscope to examine food commodity samples",
+    image: "/assets/company-verification-lab.jpg", alt: "A laboratory specialist using a high-precision microscope to examine food commodity samples and verify purity",
   },
   {
     name: "Dispatch", title: "From our origins to your next chapter.",
@@ -97,7 +97,7 @@ export default function CompanyPhilosophy({ onOpenQuoteModal }: CompanyPhilosoph
 
       // Scroll-driven smooth sliding animation for headline lines
       if (heading.current && lineLeftRef.current && lineRightRef.current) {
-        if (reduced.matches) {
+        if (reduced.matches || mobile) {
           lineLeftRef.current.style.transform = "none";
           lineRightRef.current.style.transform = "none";
           lineLeftRef.current.style.opacity = "1";
@@ -174,6 +174,7 @@ export default function CompanyPhilosophy({ onOpenQuoteModal }: CompanyPhilosoph
                       src={stage.image}
                       alt={stage.alt}
                       fill
+                      unoptimized
                       sizes="(max-width: 767px) 92vw, 48vw"
                       priority={index === 0}
                     />
@@ -224,7 +225,7 @@ export default function CompanyPhilosophy({ onOpenQuoteModal }: CompanyPhilosoph
                   >
                     <div className={styles.stepMobileContent}>
                       <div className={styles.mobilePhoto}>
-                        <Image src={stage.image} alt={stage.alt} fill sizes="89vw" />
+                        <Image src={stage.image} alt={stage.alt} fill unoptimized sizes="89vw" />
                       </div>
                       <h3>{stage.title}</h3>
                       <p className={styles.stepCopy}>{stage.copy}</p>

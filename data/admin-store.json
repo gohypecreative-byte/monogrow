@@ -1,0 +1,1954 @@
+{
+  "version": "1.0",
+  "updatedAt": "2026-11-18T10:00:00.000Z",
+  "neon": {
+    "status": "ready",
+    "lastSyncedAt": null,
+    "tablesInitialized": false
+  },
+  "siteContent": {
+    "hero": {
+      "kicker": "ORIGIN DIRECT COMMODITY TRADING",
+      "headingLine1": "Wholesale supply with",
+      "headingItalic": "provenance",
+      "headingLine2": "and precision",
+      "subheading": "Direct connection to origin mills and farming estates across Basmati rice, specialty estate coffee, refined sugar, and royal dry fruits."
+    },
+    "about": {
+      "heading": "Good ingredients, Lasting partnerships.",
+      "cards": [
+        {
+          "id": "origin",
+          "wordmark": "ORIGIN",
+          "stepTag": "01 / PROVENANCE AT SOURCE",
+          "headline": "Direct connection to origin mills and growers",
+          "copy": "Our sourcing conversations begin directly with registered origin mills and farming estates. By eliminating intermediaries and verifying crop provenance at source, we ensure authentic lot identity, consistent commercial grade specifications, and dependable availability.",
+          "specs": [
+            "Verified harvest provenance and single-estate lot identity",
+            "Basmati Rice (1121 Supreme) & Estate Single-Origin Coffee",
+            "Agronomist field audits and pre-harvest crop sampling"
+          ],
+          "location": "Origin farm estates \u00b7 Harvest procurement",
+          "subCaption": "Direct grower partnerships & verified agricultural harvest provenance",
+          "image": "/assets/about-harvest-origin.jpg?v=golden2"
+        },
+        {
+          "id": "purity",
+          "wordmark": "PURITY",
+          "stepTag": "02 / LABORATORY ANALYSIS",
+          "headline": "Scientific testing and laser Sortex grading",
+          "copy": "Every consignment undergoes rigorous multi-stage quality verification\u2014from grain moisture testing and laser Sortex optical cleaning to ISO-certified laboratory checks and origin phytosanitary documentation before dispatch.",
+          "specs": [
+            "Laser Sortex optical purity cleaning (99.8%+ purity)",
+            "Moisture controlled under 11.5% for grains, under 4.5% for dry fruits",
+            "Independent SGS & ISO accredited laboratory analysis certificates"
+          ],
+          "location": "Food science laboratory \u00b7 Quality testing",
+          "subCaption": "Moisture testing, Sortex purity analysis & certified lab specs",
+          "image": "/assets/monagrow-product-testing-lab.jpg"
+        },
+        {
+          "id": "logistics",
+          "wordmark": "LOGISTICS",
+          "stepTag": "03 / MARITIME EXECUTION",
+          "headline": "Coordinated container dispatch to world ports",
+          "copy": "Whether procuring trial batches (25 MT container) or ongoing multi-container annual supply contracts, our trade desk coordinates custom packaging, deepwater port scheduling, and ocean freight on FOB, CIF, or CFR terms.",
+          "specs": [
+            "20ft (approx. 25 MT) & 40ft containerized cargo allocations",
+            "FOB, CIF, CFR & EXW quotation terms across all major routes",
+            "Heavy-duty barrier packaging from 5 kg retail to 50 kg bulk PP bags"
+          ],
+          "location": "Deepwater port terminal \u00b7 International freight",
+          "subCaption": "Multi-port container shipping to Middle East, Europe, UK & Americas",
+          "image": "/assets/about-shipping-vessel.jpg"
+        },
+        {
+          "id": "partnership",
+          "wordmark": "PARTNERSHIP",
+          "stepTag": "04 / WHOLESALE TRADE DESK",
+          "headline": "Clarity and accountability beyond the contract",
+          "copy": "A dependable wholesale partnership extends far beyond initial pricing. We provide real-time vessel tracking, standardized lot traceability, proactive regulatory compliance, and a dedicated trade specialist for your commercial orders.",
+          "specs": [
+            "Dedicated trade account specialist & fast quotation turnaround",
+            "Pre-shipment inspection reports & digital bill of lading tracking",
+            "Commercial contract flexibility for spot loads and annual supplies"
+          ],
+          "location": "Wholesale trade desk \u00b7 Strategic partnership",
+          "subCaption": "Long-term commercial contracts & dedicated account director support",
+          "image": "/assets/about-partnership-handshake.jpg?v=shake1"
+        }
+      ]
+    },
+    "philosophy": {
+      "title": "Built on standards, sustained by relationships",
+      "pillars": [
+        {
+          "name": "Selection",
+          "title": "Direct from verified origin estates",
+          "copy": "Long-grain Basmati, estate Arabica, refined sugar and handpicked cashews. Each commodity is selected to its own specification, with attention to the details that matter to your business."
+        },
+        {
+          "name": "Verification",
+          "title": "Purity you can put to the test",
+          "copy": "Know what you are buying before you commit. Laboratory specifications, moisture metrics and harvest information bring clarity to the conversation, from your first sample to your shipment."
+        },
+        {
+          "name": "Dispatch",
+          "title": "From our origins to your next chapter",
+          "copy": "Care continues beyond the harvest. Documented lots, coordinated container loading and export support connect the quality at origin with the needs of buyers around the world."
+        }
+      ]
+    },
+    "announcement": {
+      "text": "Global wholesale container contracts available for Q3 & Q4 harvest lots. FOB & CIF terms.",
+      "link": "/contact",
+      "enabled": true
+    }
+  },
+  "products": [
+    {
+      "id": "basmati-rice",
+      "categoryKey": "rice",
+      "category": "Grains & Rice",
+      "name": "1121 Supreme Basmati Rice",
+      "kicker": "Extra Long Grain \u00b7 Aged Two Full Seasons",
+      "quoteName": "Basmati Rice (1121 Supreme Long Grain)",
+      "tagline": "Unmatched Slender Length & Delicate Himalayan Aroma",
+      "description": "Cultivated in fertile meltwater-fed valleys, Monagrow 1121 Supreme Basmati represents the gold standard of aromatic long grain. Matured for two full seasons to ensure maximum fluffiness, zero starch sticking, and an extraordinary cooked elongation of over 2.2x.",
+      "originBadge": "Himalayan Meltwater Fed \u00b7 100% Sortex Clean",
+      "packImg": "/assets/monagrow-rice-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-rice.png",
+      "bowlAlt": "Full ceramic bowl of long grain Basmati rice",
+      "packAlt": "Monagrow Basmati Rice 5kg Standup Box Bag",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Himalayan Meltwater Fed \u00b7 100% Sortex Clean"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-basmati-rice-1",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 4.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-1KG",
+          "packageType": "Aroma-Lock Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-basmati-rice-2",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 18.75,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-5KG",
+          "packageType": "Standup Box Bag with Handle",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-basmati-rice-3",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 34.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-10KG",
+          "packageType": "Heavy BOPP Moisture Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-basmati-rice-4",
+          "weight": "25 kg",
+          "unit": "kg",
+          "price": 78.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-25KG",
+          "packageType": "Woven Polypropylene Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-basmati-rice-5",
+          "weight": "50 kg",
+          "unit": "kg",
+          "price": 145.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-50KG",
+          "packageType": "Lined Ocean Export Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": true,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "katarni-rice",
+      "categoryKey": "rice",
+      "category": "Grains & Rice",
+      "name": "Katarni Premium Fragrant Rice",
+      "kicker": "Heritage Heirloom \u00b7 Naturally Aromatic",
+      "quoteName": "Katarni Premium Fragrant Rice",
+      "tagline": "Traditional Fragrance & Tender Melting Texture",
+      "description": "A prized heritage staple renowned for its natural aroma, tender grain structure, and buttery finish. Non-hybrid and naturally curated, Monagrow Katarni is gently polished to retain its essential nutrients while delivering an unforgettable dining aroma.",
+      "originBadge": "Heritage Alluvial Belt \u00b7 Non-Hybrid Cultivar",
+      "packImg": "/assets/monagrow-katarni-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-rice.png",
+      "bowlAlt": "Full ceramic bowl of Katarni aromatic rice",
+      "packAlt": "Monagrow Katarni Rice 5kg Standup Box Bag",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Heritage Alluvial Belt \u00b7 Non-Hybrid Cultivar"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-katarni-rice-1",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 4.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-KATARN-1KG",
+          "packageType": "Aroma-Lock Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-katarni-rice-2",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 18.75,
+          "currency": "USD",
+          "sku": "MNG-RIC-KATARN-5KG",
+          "packageType": "Standup Box Bag with Handle",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-katarni-rice-3",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 34.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-KATARN-10KG",
+          "packageType": "Heavy BOPP Moisture Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-katarni-rice-4",
+          "weight": "25 kg",
+          "unit": "kg",
+          "price": 78.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-KATARN-25KG",
+          "packageType": "Woven Polypropylene Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-katarni-rice-5",
+          "weight": "50 kg",
+          "unit": "kg",
+          "price": 145.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-KATARN-50KG",
+          "packageType": "Lined Ocean Export Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": true,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "sella-basmati-rice",
+      "categoryKey": "rice",
+      "category": "Grains & Rice",
+      "name": "1121 Golden Sella Basmati Rice",
+      "kicker": "Parboiled Extra Long Grain \u00b7 Superior Elongation",
+      "quoteName": "1121 Golden Sella Basmati Rice",
+      "tagline": "Parboiled Extra Long Grains \u00b7 High Elongation & Perfect for Biryani",
+      "description": "Parboiled with advanced steam infusion to lock in grain nutrients and minerals. Engineered for maximum cooked elongation without grain breakage, making it the premier choice for banquets, catering, and authentic dum biryani.",
+      "originBadge": "Parboiled \u00b7 100% Optical Clean",
+      "packImg": "/assets/monagrow-golden-sella-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-rice.png",
+      "bowlAlt": "Full ceramic bowl of cooked Golden Sella Basmati rice",
+      "packAlt": "Monagrow 1121 Golden Sella Basmati Rice Pack",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Parboiled \u00b7 100% Optical Clean"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-sella-basmati-rice-1",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 4.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-SELLA--1KG",
+          "packageType": "Aroma-Lock Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-sella-basmati-rice-2",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 18.75,
+          "currency": "USD",
+          "sku": "MNG-RIC-SELLA--5KG",
+          "packageType": "Standup Box Bag with Handle",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-sella-basmati-rice-3",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 34.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-SELLA--10KG",
+          "packageType": "Heavy BOPP Moisture Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-sella-basmati-rice-4",
+          "weight": "25 kg",
+          "unit": "kg",
+          "price": 78.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-SELLA--25KG",
+          "packageType": "Woven Polypropylene Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-sella-basmati-rice-5",
+          "weight": "50 kg",
+          "unit": "kg",
+          "price": 145.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-SELLA--50KG",
+          "packageType": "Lined Ocean Export Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": true,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "jeera-masino-rice",
+      "categoryKey": "rice",
+      "category": "Grains & Rice",
+      "name": "Jeera Masino Premium Rice",
+      "kicker": "Himalayan Fine Grain \u00b7 100% Naturally Aged",
+      "quoteName": "Jeera Masino Rice",
+      "tagline": "Fine Slender Grain with Traditional Mountain Fragrance",
+      "description": "Cultivated across pristine Himalayan meltwater valleys, Monagrow Jeera Masino Rice is renowned for its delicate slender grain, gentle natural aroma, and rich tender finish. Naturally cured and aged to ensure non-sticky, separate fluffy grains upon cooking\u2014ideal for traditional everyday dining and specialty festive feasts.",
+      "originBadge": "Himalayan Foothills \u00b7 100% Natural Aged",
+      "packImg": "/assets/monagrow-jeera-masino-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-rice.png",
+      "bowlAlt": "Full ceramic bowl of cooked Jeera Masino fine grain rice",
+      "packAlt": "Monagrow Jeera Masino Rice 20kg Bag",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Himalayan Foothills \u00b7 100% Natural Aged"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-jeera-masino-rice-1",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 4.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-JEERA--1KG",
+          "packageType": "Aroma-Lock Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-jeera-masino-rice-2",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 18.75,
+          "currency": "USD",
+          "sku": "MNG-RIC-JEERA--5KG",
+          "packageType": "Standup Box Bag with Handle",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-jeera-masino-rice-3",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 34.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-JEERA--10KG",
+          "packageType": "Heavy BOPP Moisture Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-jeera-masino-rice-4",
+          "weight": "25 kg",
+          "unit": "kg",
+          "price": 78.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-JEERA--25KG",
+          "packageType": "Woven Polypropylene Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-jeera-masino-rice-5",
+          "weight": "50 kg",
+          "unit": "kg",
+          "price": 145.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-JEERA--50KG",
+          "packageType": "Lined Ocean Export Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": true,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "estate-coffee",
+      "categoryKey": "coffee",
+      "category": "Specialty Estate",
+      "name": "Specialty Estate Dark Arabica",
+      "kicker": "Dark Roast Arabica \u00b7 High-Elevation Single Estate",
+      "quoteName": "Specialty Estate Coffee (Arabica Dark Roast)",
+      "tagline": "Dark roast with cocoa and caramel notes.",
+      "description": "Cultivated at 1,450 to 1,850 meters above sea level under natural shade canopies. Hand-picked at peak ripeness, wet-processed, and slow roasted in artisan batch drums to bring forth rich body, low acidity, and aromatic complexity.",
+      "originBadge": "1,450m+ MSL Altitude \u00b7 84+ Specialty Grade",
+      "packImg": "/assets/monagrow-coffee-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-coffee.png",
+      "bowlAlt": "Full ceramic bowl of roasted dark Arabica coffee beans",
+      "packAlt": "Monagrow Specialty Estate Dark Arabica 2.5kg Pack",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "1,450m+ MSL Altitude \u00b7 84+ Specialty Grade"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-estate-coffee-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 6.8,
+          "currency": "USD",
+          "sku": "MNG-COF-ESTATE-250G",
+          "packageType": "One-Way Degassing Valve Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-estate-coffee-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 12.5,
+          "currency": "USD",
+          "sku": "MNG-COF-ESTATE-500G",
+          "packageType": "Barrier Zipper Foil Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-estate-coffee-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 22.0,
+          "currency": "USD",
+          "sku": "MNG-COF-ESTATE-1KG",
+          "packageType": "Commercial Barista Bulk Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-estate-coffee-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 95.0,
+          "currency": "USD",
+          "sku": "MNG-COF-ESTATE-5KG",
+          "packageType": "Roastery Supply Kraft Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-estate-coffee-5",
+          "weight": "60 kg",
+          "unit": "kg",
+          "price": 650.0,
+          "currency": "USD",
+          "sku": "MNG-COF-ESTATE-60KG",
+          "packageType": "Traditional Origin Jute Bag with GrainPro",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "medium-roast-arabica",
+      "categoryKey": "coffee",
+      "category": "Specialty Estate",
+      "name": "Monagrow Premium Roasted Coffee Beans",
+      "kicker": "100% Arabica Beans \u00b7 Medium Roast \u00b7 Sustainably Sourced",
+      "quoteName": "Monagrow Premium Roasted Coffee Beans (Medium Roast)",
+      "tagline": "Rich aroma, smooth taste & balanced flavor.",
+      "description": "Expertly crafted from 100% sustainably sourced high-elevation Arabica beans, Monagrow Premium Roasted Coffee Beans are slow drum-roasted to a velvety medium roast. Delivers a rich captivating aroma, delicate sweetness, and a remarkably smooth, balanced finish perfect for everyday pour-over, espresso, and french press brewing.",
+      "originBadge": "100% Arabica \u00b7 Medium Roast Balanced",
+      "packImg": "/assets/monagrow-roasted-coffee-beans-cutout.png",
+      "bowlImg": "/assets/hero-center-coffee.png",
+      "bowlAlt": "Ceramic bowl of golden roasted medium Arabica beans",
+      "packAlt": "Monagrow Premium Roasted Coffee Beans 12oz Pouch",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "100% Arabica \u00b7 Medium Roast Balanced"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-medium-roast-arabica-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 6.8,
+          "currency": "USD",
+          "sku": "MNG-COF-MEDIUM-250G",
+          "packageType": "One-Way Degassing Valve Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-medium-roast-arabica-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 12.5,
+          "currency": "USD",
+          "sku": "MNG-COF-MEDIUM-500G",
+          "packageType": "Barrier Zipper Foil Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-medium-roast-arabica-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 22.0,
+          "currency": "USD",
+          "sku": "MNG-COF-MEDIUM-1KG",
+          "packageType": "Commercial Barista Bulk Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-medium-roast-arabica-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 95.0,
+          "currency": "USD",
+          "sku": "MNG-COF-MEDIUM-5KG",
+          "packageType": "Roastery Supply Kraft Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-medium-roast-arabica-5",
+          "weight": "60 kg",
+          "unit": "kg",
+          "price": 650.0,
+          "currency": "USD",
+          "sku": "MNG-COF-MEDIUM-60KG",
+          "packageType": "Traditional Origin Jute Bag with GrainPro",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "monsooned-malabar",
+      "categoryKey": "coffee",
+      "category": "Specialty Estate",
+      "name": "Highland Monsooned Malabar AA",
+      "kicker": "Monsoon Cured \u00b7 Ultra-Low Acidity & Dense Crema",
+      "quoteName": "Highland Monsooned Malabar AA Coffee",
+      "tagline": "Rich golden cured beans with spicy dark chocolate body.",
+      "description": "Exposed to ocean monsoon winds along coastal curing yards for 12 to 16 weeks, swelling the beans into a pale golden hue and stripping sharp acidity. Produces a velvety, thick crema with notes of cardamom, toasted walnut, and dark bakers chocolate.",
+      "originBadge": "Monsoon Cured \u00b7 Grade AA Super Bold",
+      "packImg": "/assets/monagrow-monsooned-malabar-bag-cutout-v3.png",
+      "bowlImg": "/assets/hero-center-coffee.png",
+      "bowlAlt": "Ceramic bowl of golden roasted Monsooned Malabar AA beans",
+      "packAlt": "Monagrow Monsooned Malabar AA Coffee 12oz Pouch",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Monsoon Cured \u00b7 Grade AA Super Bold"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-monsooned-malabar-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 6.8,
+          "currency": "USD",
+          "sku": "MNG-COF-MONSOO-250G",
+          "packageType": "One-Way Degassing Valve Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-monsooned-malabar-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 12.5,
+          "currency": "USD",
+          "sku": "MNG-COF-MONSOO-500G",
+          "packageType": "Barrier Zipper Foil Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-monsooned-malabar-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 22.0,
+          "currency": "USD",
+          "sku": "MNG-COF-MONSOO-1KG",
+          "packageType": "Commercial Barista Bulk Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-monsooned-malabar-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 95.0,
+          "currency": "USD",
+          "sku": "MNG-COF-MONSOO-5KG",
+          "packageType": "Roastery Supply Kraft Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-monsooned-malabar-5",
+          "weight": "60 kg",
+          "unit": "kg",
+          "price": 650.0,
+          "currency": "USD",
+          "sku": "MNG-COF-MONSOO-60KG",
+          "packageType": "Traditional Origin Jute Bag with GrainPro",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "himalayan-peaberry",
+      "categoryKey": "coffee",
+      "category": "Specialty Estate",
+      "name": "Himalayan Peaberry Reserve Arabica",
+      "kicker": "Rare Single Oval Bean \u00b7 Concentrated Floral Aroma",
+      "quoteName": "Himalayan Peaberry Reserve Arabica",
+      "tagline": "Rare oval beans with intense floral and dark honey notes.",
+      "description": "Formed when only a single round seed matures inside the coffee cherry instead of two flat beans, naturally concentrating sugars and volatile aromatic oils. Hand-sieved from less than 5% of our highest elevation Himalayan harvest.",
+      "originBadge": "Rare Peaberry Reserve \u00b7 1,600m MSL",
+      "packImg": "/assets/monagrow-peaberry-coffee-bag-cutout-v3.png",
+      "bowlImg": "/assets/hero-center-coffee.png",
+      "bowlAlt": "Ceramic bowl of roasted round peaberry coffee beans",
+      "packAlt": "Monagrow Himalayan Peaberry Reserve Arabica 12oz Pouch",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Rare Peaberry Reserve \u00b7 1,600m MSL"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-himalayan-peaberry-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 6.8,
+          "currency": "USD",
+          "sku": "MNG-COF-HIMALA-250G",
+          "packageType": "One-Way Degassing Valve Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-himalayan-peaberry-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 12.5,
+          "currency": "USD",
+          "sku": "MNG-COF-HIMALA-500G",
+          "packageType": "Barrier Zipper Foil Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-himalayan-peaberry-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 22.0,
+          "currency": "USD",
+          "sku": "MNG-COF-HIMALA-1KG",
+          "packageType": "Commercial Barista Bulk Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-himalayan-peaberry-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 95.0,
+          "currency": "USD",
+          "sku": "MNG-COF-HIMALA-5KG",
+          "packageType": "Roastery Supply Kraft Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-himalayan-peaberry-5",
+          "weight": "60 kg",
+          "unit": "kg",
+          "price": 650.0,
+          "currency": "USD",
+          "sku": "MNG-COF-HIMALA-60KG",
+          "packageType": "Traditional Origin Jute Bag with GrainPro",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "royal-mixed-dryfruits",
+      "categoryKey": "dry-fruits",
+      "category": "Select Dry Fruits",
+      "name": "Royal Mixed Dry Fruits (4-in-1)",
+      "kicker": "Curated 4-in-1 Selection \u00b7 Cashews, Almonds, Walnuts, Pistachios",
+      "quoteName": "Royal Mixed Dry Fruits",
+      "tagline": "Cashews, almonds, walnuts and pistachios.",
+      "description": "A royal harvest of selected Whole W240 Cashews, California almonds, rich Kashmiri walnuts, and crunchy green pistachios. Sorted to perfection, nitrogen flushed to seal in freshness, and packaged for premium wholesale markets worldwide.",
+      "originBadge": "Royal 4-in-1 Selection \u00b7 First Quality Grade",
+      "packImg": "/assets/monagrow-dryfruits-packaging.png",
+      "bowlImg": "/assets/hero-center-dryfruit.png",
+      "bowlAlt": "Full wooden bowl of royal mixed dry fruits",
+      "packAlt": "Monagrow Royal Mixed Dry Fruits packaging",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Royal 4-in-1 Selection \u00b7 First Quality Grade"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-royal-mixed-dryfruits-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 8.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--250G",
+          "packageType": "Nitrogen Flushed Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-royal-mixed-dryfruits-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 15.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--500G",
+          "packageType": "Resealable Premium Zip Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-royal-mixed-dryfruits-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 28.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--1KG",
+          "packageType": "Vacuum Sealed Catering Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-royal-mixed-dryfruits-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 125.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--5KG",
+          "packageType": "Commercial Bakery Master Tin/Box",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-royal-mixed-dryfruits-5",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 235.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--10KG",
+          "packageType": "Corrugated Bulk Master Carton",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "royal-cashews",
+      "categoryKey": "dry-fruits",
+      "category": "Select Dry Fruits",
+      "name": "Royal King Cashews W240",
+      "kicker": "King Size Whole W240 \u00b7 Butter Crunch Purity",
+      "quoteName": "Royal King Cashews (W240 Whole)",
+      "tagline": "Jumbo whole white cashews with sweet buttery crunch.",
+      "description": "Meticulously steam-cracked and hand-graded to the internationally celebrated W240 specification (220-240 whole kernels per pound). Pristine ivory-white kernels with zero scorch marks, high natural oil sweetness, and vacuum nitrogen protection.",
+      "originBadge": "W240 King Size Whole \u00b7 100% Unblemished",
+      "packImg": "/assets/monagrow-cashews-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-cashew.png",
+      "bowlAlt": "Wooden bowl of golden whole curved royal cashews",
+      "packAlt": "Monagrow Royal King Cashews W240 Standup Bag",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "W240 King Size Whole \u00b7 100% Unblemished"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-royal-cashews-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 8.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--250G",
+          "packageType": "Nitrogen Flushed Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-royal-cashews-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 15.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--500G",
+          "packageType": "Resealable Premium Zip Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-royal-cashews-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 28.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--1KG",
+          "packageType": "Vacuum Sealed Catering Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-royal-cashews-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 125.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--5KG",
+          "packageType": "Commercial Bakery Master Tin/Box",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-royal-cashews-5",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 235.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROYAL--10KG",
+          "packageType": "Corrugated Bulk Master Carton",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "california-almonds",
+      "categoryKey": "dry-fruits",
+      "category": "Select Dry Fruits",
+      "name": "California Select Royal Almonds",
+      "kicker": "Whole Nonpareil Kernel \u00b7 High Vitamin E & Sweet Crunch",
+      "quoteName": "California Select Royal Almonds",
+      "tagline": "Plump golden whole kernels with natural sweet snap.",
+      "description": "Harvested from premier orchards, Monagrow California Select Royal Almonds are graded to supreme nonpareil whole kernel standards. Uniform in size with smooth golden skin, rich natural crunch, and high dietary fiber and Vitamin E content.",
+      "originBadge": "Supreme Nonpareil \u00b7 Zero Blemish Grade",
+      "packImg": "/assets/monagrow-almonds-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-dryfruit.png",
+      "bowlAlt": "Wooden bowl of whole plump golden almonds",
+      "packAlt": "Monagrow California Select Royal Almonds 500g Bag",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Supreme Nonpareil \u00b7 Zero Blemish Grade"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-california-almonds-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 8.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-CALIFO-250G",
+          "packageType": "Nitrogen Flushed Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-california-almonds-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 15.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-CALIFO-500G",
+          "packageType": "Resealable Premium Zip Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-california-almonds-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 28.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-CALIFO-1KG",
+          "packageType": "Vacuum Sealed Catering Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-california-almonds-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 125.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-CALIFO-5KG",
+          "packageType": "Commercial Bakery Master Tin/Box",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-california-almonds-5",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 235.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-CALIFO-10KG",
+          "packageType": "Corrugated Bulk Master Carton",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "kashmiri-walnuts",
+      "categoryKey": "dry-fruits",
+      "category": "Select Dry Fruits",
+      "name": "Kashmiri Snow White Walnuts",
+      "kicker": "Extra Light Halves \u00b7 Rich in Omega-3 DHA & Buttery Finish",
+      "quoteName": "Kashmiri Snow White Walnuts",
+      "tagline": "Snow white walnut halves with buttery non-bitter finish.",
+      "description": "Cultivated in high-altitude Himalayan valleys, Monagrow Kashmiri Snow White Walnuts are revered for their pristine light-amber to snow-white color and sweet, buttery finish without the astringent bitterness typical of commercial crops.",
+      "originBadge": "Himalayan Snow White \u00b7 Extra Light Halves",
+      "packImg": "/assets/monagrow-walnuts-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-dryfruit.png",
+      "bowlAlt": "Wooden bowl of fresh snow white walnut halves",
+      "packAlt": "Monagrow Kashmiri Snow White Walnuts 500g Pouch",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Himalayan Snow White \u00b7 Extra Light Halves"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-kashmiri-walnuts-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 8.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-KASHMI-250G",
+          "packageType": "Nitrogen Flushed Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-kashmiri-walnuts-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 15.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-KASHMI-500G",
+          "packageType": "Resealable Premium Zip Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-kashmiri-walnuts-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 28.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-KASHMI-1KG",
+          "packageType": "Vacuum Sealed Catering Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-kashmiri-walnuts-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 125.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-KASHMI-5KG",
+          "packageType": "Commercial Bakery Master Tin/Box",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-kashmiri-walnuts-5",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 235.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-KASHMI-10KG",
+          "packageType": "Corrugated Bulk Master Carton",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "roasted-pistachios",
+      "categoryKey": "dry-fruits",
+      "category": "Select Dry Fruits",
+      "name": "Roasted Salted Jumbo Pistachios",
+      "kicker": "Naturally Opened Jumbo \u00b7 Light Himalayan Rock Salt",
+      "quoteName": "Roasted Salted Jumbo Pistachios",
+      "tagline": "Jumbo open-shell pistachios with light sea-salt crunch.",
+      "description": "Naturally sun-ripened on the tree until the shells split naturally. Roasted in gentle hot-air artisan drums with a delicate touch of Himalayan pink rock salt, delivering vibrant emerald-green kernels, unmatched crunch, and effortless opening.",
+      "originBadge": "Naturally Tree-Opened \u00b7 Jumbo 18/20 Count",
+      "packImg": "/assets/monagrow-pistachios-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-dryfruit.png",
+      "bowlAlt": "Wooden bowl of open-shell roasted salted green pistachios",
+      "packAlt": "Monagrow Roasted Salted Jumbo Pistachios 500g Pouch",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Naturally Tree-Opened \u00b7 Jumbo 18/20 Count"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-roasted-pistachios-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 8.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROASTE-250G",
+          "packageType": "Nitrogen Flushed Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-roasted-pistachios-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 15.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROASTE-500G",
+          "packageType": "Resealable Premium Zip Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-roasted-pistachios-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 28.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROASTE-1KG",
+          "packageType": "Vacuum Sealed Catering Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-roasted-pistachios-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 125.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROASTE-5KG",
+          "packageType": "Commercial Bakery Master Tin/Box",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-roasted-pistachios-5",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 235.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-ROASTE-10KG",
+          "packageType": "Corrugated Bulk Master Carton",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "golden-raisins",
+      "categoryKey": "dry-fruits",
+      "category": "Select Dry Fruits",
+      "name": "Golden Long Seedless Raisins",
+      "kicker": "Sun-Cured Afghan Amber \u00b7 Natural Honey Glaze & High Iron",
+      "quoteName": "Golden Long Seedless Raisins",
+      "tagline": "Slender golden raisins with natural honey sweetness.",
+      "description": "Derived from premium seedless green grapes and naturally cured under arid sun conditions. Slender elongated berries with a glowing amber-golden hue, soft chewy bite, and deep natural grape honey sweetness without added sugar or syrups.",
+      "originBadge": "Long Slender Kernel \u00b7 Sun-Cured Amber",
+      "packImg": "/assets/monagrow-raisins-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-dryfruit.png",
+      "bowlAlt": "Wooden bowl of glowing long amber seedless raisins",
+      "packAlt": "Monagrow Golden Long Seedless Raisins 500g Pouch",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Long Slender Kernel \u00b7 Sun-Cured Amber"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-golden-raisins-1",
+          "weight": "250 g",
+          "unit": "g",
+          "price": 8.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-GOLDEN-250G",
+          "packageType": "Nitrogen Flushed Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-golden-raisins-2",
+          "weight": "500 g",
+          "unit": "g",
+          "price": 15.5,
+          "currency": "USD",
+          "sku": "MNG-DRY-GOLDEN-500G",
+          "packageType": "Resealable Premium Zip Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-golden-raisins-3",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 28.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-GOLDEN-1KG",
+          "packageType": "Vacuum Sealed Catering Pack",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-golden-raisins-4",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 125.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-GOLDEN-5KG",
+          "packageType": "Commercial Bakery Master Tin/Box",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-golden-raisins-5",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 235.0,
+          "currency": "USD",
+          "sku": "MNG-DRY-GOLDEN-10KG",
+          "packageType": "Corrugated Bulk Master Carton",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "cane-sugar",
+      "categoryKey": "sugar",
+      "category": "Refined Sugar",
+      "name": "Sugar",
+      "kicker": "Refined Sugar \u00b7 99.85% Minimum Polarization",
+      "quoteName": "Pure Refined Sugar (ICUMSA 45)",
+      "tagline": "Fine white crystals for everyday use.",
+      "description": "Refined from fresh-harvest sugarcane, Monagrow ICUMSA 45 represents the highest purity grade in international commodity trade. Free-flowing, sparkling white crystals with 99.85% minimum polarization, engineered for premium food manufacturing, confectionery, and retail distribution.",
+      "originBadge": "ICUMSA 45 RBU Max \u00b7 99.85% Minimum Pol",
+      "packImg": "/assets/monagrow-sugar-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-sugar.png",
+      "bowlAlt": "Full ceramic bowl of sparkling sugar crystals",
+      "packAlt": "Monagrow Pure Sugar pouch",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "ICUMSA 45 RBU Max \u00b7 99.85% Minimum Pol"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-cane-sugar-1",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 2.2,
+          "currency": "USD",
+          "sku": "MNG-SUG-CANE-S-1KG",
+          "packageType": "Moisture-Proof Retail Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-cane-sugar-2",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 9.5,
+          "currency": "USD",
+          "sku": "MNG-SUG-CANE-S-5KG",
+          "packageType": "Family Handle Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-cane-sugar-3",
+          "weight": "25 kg",
+          "unit": "kg",
+          "price": 42.0,
+          "currency": "USD",
+          "sku": "MNG-SUG-CANE-S-25KG",
+          "packageType": "Multiwall Paper Sack with PE Liner",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-cane-sugar-4",
+          "weight": "50 kg",
+          "unit": "kg",
+          "price": 78.0,
+          "currency": "USD",
+          "sku": "MNG-SUG-CANE-S-50KG",
+          "packageType": "Woven PP Bulk Ocean Export Sack",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 3
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "natural-brown-sugar",
+      "categoryKey": "sugar",
+      "category": "Refined Sugar",
+      "name": "Natural Brown Cane Sugar",
+      "kicker": "100% Natural \u00b7 Unrefined Minerals \u00b7 Pure & Wholesome",
+      "quoteName": "Natural Brown Sugar",
+      "tagline": "Naturally Retained Molasses & Rich Golden Aroma",
+      "description": "Naturally derived from premium freshly harvested sugarcane, Monagrow Natural Brown Sugar retains its wholesome golden molasses goodness, deep aromatic sweetness, and vital trace minerals. Free from artificial bleaching, chemical additives, or preservatives\u2014crafted for coffee, tea, artisan baking, and premium hospitality tables.",
+      "originBadge": "100% Natural Cane \u00b7 Retained Molasses Minerals",
+      "packImg": "/assets/monagrow-brown-sugar-box-cutout.png",
+      "bowlImg": "/assets/hero-center-brown-sugar.png",
+      "bowlAlt": "Wooden bowl of golden amber natural brown sugar crystals",
+      "packAlt": "Monagrow Natural Brown Sugar 350g Retail Dispenser Box",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "100% Natural Cane \u00b7 Retained Molasses Minerals"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-natural-brown-sugar-1",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 2.2,
+          "currency": "USD",
+          "sku": "MNG-SUG-NATURA-1KG",
+          "packageType": "Moisture-Proof Retail Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-natural-brown-sugar-2",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 9.5,
+          "currency": "USD",
+          "sku": "MNG-SUG-NATURA-5KG",
+          "packageType": "Family Handle Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-natural-brown-sugar-3",
+          "weight": "25 kg",
+          "unit": "kg",
+          "price": 42.0,
+          "currency": "USD",
+          "sku": "MNG-SUG-NATURA-25KG",
+          "packageType": "Multiwall Paper Sack with PE Liner",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-natural-brown-sugar-4",
+          "weight": "50 kg",
+          "unit": "kg",
+          "price": 78.0,
+          "currency": "USD",
+          "sku": "MNG-SUG-NATURA-50KG",
+          "packageType": "Woven PP Bulk Ocean Export Sack",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 3
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "basmati-brown-rice",
+      "categoryKey": "rice",
+      "category": "Grains & Rice",
+      "name": "Premium Basmati Brown Rice",
+      "kicker": "100% Whole Grain \u00b7 Naturally Aged \u00b7 Nutrient Dense",
+      "quoteName": "Premium Basmati Brown Rice",
+      "tagline": "Wholesome Unpolished Whole Grain with Nutty Aroma",
+      "description": "Monagrow Premium Basmati Brown Rice retains 100% of its nutritious outer bran layer and germ, delivering an authentic nutty fragrance, delightful al dente texture, and wholesome nutrition. Naturally aged and rich in essential dietary fiber, manganese, and minerals while offering the celebrated long-slender elegance of genuine Basmati.",
+      "originBadge": "100% Whole Grain \u00b7 Naturally Aged",
+      "packImg": "/assets/monagrow-brown-rice-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-rice.png",
+      "bowlAlt": "Full ceramic bowl of wholesome Basmati brown rice",
+      "packAlt": "Monagrow Premium Basmati Brown Rice 5kg Standup Box Bag",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "100% Whole Grain \u00b7 Naturally Aged"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-basmati-brown-rice-1",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 4.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-1KG",
+          "packageType": "Aroma-Lock Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-basmati-brown-rice-2",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 18.75,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-5KG",
+          "packageType": "Standup Box Bag with Handle",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-basmati-brown-rice-3",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 34.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-10KG",
+          "packageType": "Heavy BOPP Moisture Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-basmati-brown-rice-4",
+          "weight": "25 kg",
+          "unit": "kg",
+          "price": 78.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-25KG",
+          "packageType": "Woven Polypropylene Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-basmati-brown-rice-5",
+          "weight": "50 kg",
+          "unit": "kg",
+          "price": 145.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-BASMAT-50KG",
+          "packageType": "Lined Ocean Export Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    },
+    {
+      "id": "traditional-basmati-rice",
+      "categoryKey": "rice",
+      "category": "Grains & Rice",
+      "name": "Royal Reserve Traditional Basmati",
+      "kicker": "Heritage Himalayan Harvest \u00b7 Aged 2 Full Years",
+      "quoteName": "Royal Reserve Traditional Basmati Rice",
+      "tagline": "Heritage Himalayan Harvest \u00b7 Aged 2 Years for Silky Texture & Exquisite Aroma",
+      "description": "Harvested from the foothills of the Himalayas and aged naturally for up to two full harvest cycles. Celebrated for its slender needle-like kernel, exquisite floral aroma, and delicate sweet flavour profile.",
+      "originBadge": "Himalayan Reserve \u00b7 2 Years Aged",
+      "packImg": "/assets/monagrow-traditional-basmati-bag-cutout.png",
+      "bowlImg": "/assets/hero-center-rice.png",
+      "bowlAlt": "Full ceramic bowl of Royal Reserve Traditional Basmati rice",
+      "packAlt": "Monagrow Royal Reserve Traditional Basmati Rice Pack",
+      "specs": [
+        {
+          "label": "Origin",
+          "value": "Himalayan Reserve \u00b7 2 Years Aged"
+        },
+        {
+          "label": "Grade",
+          "value": "Export Grade 100% Sortex"
+        },
+        {
+          "label": "Harvest",
+          "value": "Current Season Reserve"
+        }
+      ],
+      "keyHighlights": [
+        "Verified harvest provenance with single-estate lot tracking",
+        "100% laser optical sortex cleaned for maximum commercial purity",
+        "Container-ready packaging for global retail or bulk distribution"
+      ],
+      "variations": [
+        {
+          "id": "var-traditional-basmati-rice-1",
+          "weight": "1 kg",
+          "unit": "kg",
+          "price": 4.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-TRADIT-1KG",
+          "packageType": "Aroma-Lock Standup Pouch",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 0
+        },
+        {
+          "id": "var-traditional-basmati-rice-2",
+          "weight": "5 kg",
+          "unit": "kg",
+          "price": 18.75,
+          "currency": "USD",
+          "sku": "MNG-RIC-TRADIT-5KG",
+          "packageType": "Standup Box Bag with Handle",
+          "inStock": true,
+          "minOrderQty": 1,
+          "sortOrder": 1
+        },
+        {
+          "id": "var-traditional-basmati-rice-3",
+          "weight": "10 kg",
+          "unit": "kg",
+          "price": 34.5,
+          "currency": "USD",
+          "sku": "MNG-RIC-TRADIT-10KG",
+          "packageType": "Heavy BOPP Moisture Bag",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 2
+        },
+        {
+          "id": "var-traditional-basmati-rice-4",
+          "weight": "25 kg",
+          "unit": "kg",
+          "price": 78.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-TRADIT-25KG",
+          "packageType": "Woven Polypropylene Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 3
+        },
+        {
+          "id": "var-traditional-basmati-rice-5",
+          "weight": "50 kg",
+          "unit": "kg",
+          "price": 145.0,
+          "currency": "USD",
+          "sku": "MNG-RIC-TRADIT-50KG",
+          "packageType": "Lined Ocean Export Sacks",
+          "inStock": true,
+          "minOrderQty": 5,
+          "sortOrder": 4
+        }
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "updatedAt": "2026-11-18T10:00:00.000Z"
+    }
+  ],
+  "media": [
+    {
+      "id": "img-hero-rice",
+      "fileName": "hero-center-rice.png",
+      "path": "/assets/hero-center-rice.png",
+      "category": "Hero Bowls",
+      "altText": "Wooden bowl filled with premium extra long Basmati rice"
+    },
+    {
+      "id": "img-hero-coffee",
+      "fileName": "hero-center-coffee.png",
+      "path": "/assets/hero-center-coffee.png",
+      "category": "Hero Bowls",
+      "altText": "Wooden bowl filled with roasted estate Arabica coffee beans"
+    },
+    {
+      "id": "img-hero-dryfruit",
+      "fileName": "hero-center-dryfruit.png",
+      "path": "/assets/hero-center-dryfruit.png",
+      "category": "Hero Bowls",
+      "altText": "Wooden bowl with whole cashews, almonds, and pistachios"
+    },
+    {
+      "id": "img-hero-sugar",
+      "fileName": "hero-center-sugar.png",
+      "path": "/assets/hero-center-sugar.png",
+      "category": "Hero Bowls",
+      "altText": "Wooden bowl filled with pure sparkling white refined cane sugar"
+    },
+    {
+      "id": "img-about-origin",
+      "fileName": "about-harvest-origin.jpg",
+      "path": "/assets/about-harvest-origin.jpg?v=golden2",
+      "category": "About Section",
+      "altText": "Golden agricultural grain harvest field at sunrise with morning sunbeams across rolling crops"
+    },
+    {
+      "id": "img-about-purity",
+      "fileName": "monagrow-product-testing-lab.jpg",
+      "path": "/assets/monagrow-product-testing-lab.jpg",
+      "category": "About Section",
+      "altText": "Food science laboratory quality testing and grain purity inspection"
+    },
+    {
+      "id": "img-about-logistics",
+      "fileName": "about-shipping-vessel.jpg",
+      "path": "/assets/about-shipping-vessel.jpg",
+      "category": "About Section",
+      "altText": "International ocean freight container ship at deepwater port terminal"
+    },
+    {
+      "id": "img-about-partnership",
+      "fileName": "about-partnership-handshake.jpg",
+      "path": "/assets/about-partnership-handshake.jpg?v=shake1",
+      "category": "About Section",
+      "altText": "Close-up of two hands shaking in commercial business agreement and wholesale partnership"
+    },
+    {
+      "id": "img-pack-basmati",
+      "fileName": "monagrow-rice-bag-cutout.png",
+      "path": "/assets/monagrow-rice-bag-cutout.png",
+      "category": "Product Packaging",
+      "altText": "Monagrow 1121 Supreme Basmati Rice Pack"
+    },
+    {
+      "id": "img-pack-coffee",
+      "fileName": "monagrow-coffee-bag-cutout.png",
+      "path": "/assets/monagrow-coffee-bag-cutout.png",
+      "category": "Product Packaging",
+      "altText": "Monagrow Specialty Estate Dark Arabica Bag"
+    },
+    {
+      "id": "img-pack-cashews",
+      "fileName": "monagrow-cashews-bag-cutout.png",
+      "path": "/assets/monagrow-cashews-bag-cutout.png",
+      "category": "Product Packaging",
+      "altText": "Monagrow Royal King Cashews W240 Bag"
+    },
+    {
+      "id": "img-pack-sugar",
+      "fileName": "monagrow-sugar-bag-cutout.png",
+      "path": "/assets/monagrow-sugar-bag-cutout.png",
+      "category": "Product Packaging",
+      "altText": "Monagrow Refined Sugar Pack"
+    }
+  ]
+}

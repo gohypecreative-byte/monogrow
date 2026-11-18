@@ -1,10 +1,10 @@
 .section { position: relative; background: #961834; color: #f7efe1; isolation: isolate; z-index: 10; }
-.stage { position: relative; overflow: clip; padding: 100px 6% 100px; background: radial-gradient(ellipse at 80% 10%, #e06f7e80, transparent 60%), linear-gradient(140deg, #bc3454, #8e1531); }
+.stage { position: relative; overflow: clip; padding: 64px 6% 70px; background: radial-gradient(ellipse at 80% 10%, #e06f7e80, transparent 60%), linear-gradient(140deg, #bc3454, #8e1531); }
 .stage::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .035; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath filter='url(%23g)' opacity='.6' d='M0 0h150v150H0z' fill='white'/%3E%3C/svg%3E"); }
 .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 10px; letter-spacing: .22em; font-weight: 700; color: #e9cfaa; margin-bottom: 14px; }
 .eyebrow > span { width: 28px; height: 1px; background: currentColor; }
-.heading h2 { font-family: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: clamp(34px, 4.2vw, 72px); font-weight: 400; line-height: .94; letter-spacing: -.04em; margin: 0; }
-.intro { max-width: 460px; margin: 30px 0 100px; }
+.heading h2 { font-family: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: clamp(28px, 3.5vw, 58px); font-weight: 400; line-height: .90; letter-spacing: -.03em; margin: 0; }
+.intro { max-width: 460px; margin: 20px 0 60px; }
 .intro > p { font-size: clamp(19px, 1.55vw, 24px); line-height: 1.6; color: #fdf6ee; font-weight: 400; }
 .origin { display: flex; gap: 10px; align-items: center; margin-top: 25px; font-size: 11px; letter-spacing: .12em; color: #f0d5b0; }
 .origin > span { width: 6px; height: 6px; border-radius: 50%; background: #d9c58b; }
@@ -31,7 +31,7 @@
 .action button:hover, .action a:hover { background: #e9cfaa; transform: translateY(-2px); }
 .action button:focus-visible, .action a:focus-visible { outline: 2px solid #f7efe1; outline-offset: 5px; }
 .progress { display: none; }
-.section[data-animated] .stage { height: calc(100svh + 80px); min-height: 730px; padding: 110px 6% 30px; }
+.section[data-animated] .stage { height: calc(100svh + 80px); min-height: 730px; padding: 72px 6% 30px; }
 .section[data-animated] .heading { position: relative; z-index: 2; pointer-events: none; }
 .section[data-animated] .intro { position: absolute; left: 6%; top: 57%; width: min(440px, 28vw); margin: 0; opacity: clamp(0, calc(1 - var(--collection-progress, 0) * 5), 1); }
 .section[data-animated] .railWindow { position: absolute; inset: 0; pointer-events: none; }
@@ -41,8 +41,8 @@
 .section[data-animated] .scrollCue { display: flex; align-items: center; gap: 30px; color: #e9cfaa; margin-top: 34px; font-size: 11px; }
 .section[data-animated] .progress { position: absolute; display: block; width: 20%; height: 2px; top: 33%; right: 6%; background: #f7efe12b; }
 .progress span { display: block; height: 100%; background: #e9cfaa; transform-origin: left; transform: scaleX(var(--collection-progress, 0)); }
-@media (min-width: 768px) and (max-height: 820px) { .section[data-animated] .stage { padding-top: 95px; } .heading h2 { font-size: clamp(32px, 3.8vw, 56px); } .section[data-animated] .track { top: 42svh; } .section[data-animated] .visual { height: 145px; margin-top: -55px; } .cardBody { padding: 16px 22px 20px; } .cardBody h3 { font-size: 26px; } .description { font-size: 13px; margin: 8px 0 10px; } .specs > div { padding: 6px 0; } .specs dt, .specs dd { font-size: 12.5px; } .label { font-size: 11px; } .action small { font-size: 9px; } .action button, .action a { font-size: 12px; padding: 10px 16px; } .action { margin-top: 14px; } .intro > p { font-size: 17px; } }
-@media (max-width: 767px) { .stage { padding: 70px 5% 70px; } .heading h2 { font-size: clamp(28px, 6.8vw, 44px); } .eyebrow { font-size: 9px; } .intro { margin: 25px 0 90px; } .intro > p { font-size: 17.5px; line-height: 1.65; } .track { grid-template-columns: 1fr; gap: 110px; } .card { max-width: 480px; width: 100%; margin: 0 auto; } .visual { height: 230px; } .cardBody { padding: 22px 22px 24px; } .label { font-size: 11.5px; } .cardBody h3 { font-size: 28px; } .description { font-size: 14px; } .specs { font-size: 13px; } .specs dt, .specs dd { font-size: 13px; } .action > span { font-size: 24px; } .action small { font-size: 9.5px; } .action button, .action a { padding: 12px 18px; font-size: 13px; } }
+@media (min-width: 768px) and (max-height: 820px) { .section[data-animated] .stage { padding-top: 65px; } .heading h2 { font-size: clamp(26px, 3.2vw, 48px); } .section[data-animated] .track { top: 42svh; } .section[data-animated] .visual { height: 145px; margin-top: -55px; } .cardBody { padding: 16px 22px 20px; } .cardBody h3 { font-size: 26px; } .description { font-size: 13px; margin: 8px 0 10px; } .specs > div { padding: 6px 0; } .specs dt, .specs dd { font-size: 12.5px; } .label { font-size: 11px; } .action small { font-size: 9px; } .action button, .action a { font-size: 12px; padding: 10px 16px; } .action { margin-top: 14px; } .intro > p { font-size: 17px; } }
+@media (max-width: 767px) { .stage { padding: 48px 5% 55px; } .heading h2 { font-size: clamp(24px, 5.6vw, 36px); } .eyebrow { font-size: 9px; } .intro { margin: 18px 0 60px; } .intro > p { font-size: 17.5px; line-height: 1.65; } .track { grid-template-columns: 1fr; gap: 110px; } .card { max-width: 480px; width: 100%; margin: 0 auto; } .visual { height: 230px; } .cardBody { padding: 22px 22px 24px; } .label { font-size: 11.5px; } .cardBody h3 { font-size: 28px; } .description { font-size: 14px; } .specs { font-size: 13px; } .specs dt, .specs dd { font-size: 13px; } .action > span { font-size: 24px; } .action small { font-size: 9.5px; } .action button, .action a { padding: 12px 18px; font-size: 13px; } }
 @media (max-width: 420px) { .cardBody { padding: 16px 14px 20px; } .action button, .action a { padding: 10px 14px; font-size: 10px; gap: 8px; } }
 @media (prefers-reduced-motion: reduce) { .action button, .action a { transition: none; } }
 

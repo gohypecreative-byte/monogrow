@@ -44,7 +44,7 @@ const CARDS: StackingCard[] = [
     quoteBtnText: "Request Basmati & Coffee quote",
     storyLinkText: "Read origin report",
     storyLinkHref: "/about-us#sourcing-philosophy",
-    image: "/assets/about-harvest-origin.jpg?v=golden2",
+    image: "/assets/about-harvest-origin.jpg",
     imageAlt: "Golden agricultural grain harvest field at sunrise with morning sunbeams across rolling crops",
     location: "Origin farm estates · Harvest procurement",
     subCaption: "Direct grower partnerships & verified agricultural harvest provenance",
@@ -104,10 +104,10 @@ const CARDS: StackingCard[] = [
     quoteBtnText: "Connect with a trade director",
     storyLinkText: "Explore company story",
     storyLinkHref: "/about-us#mission",
-    image: "/assets/why-grain-inspector.jpg",
-    imageAlt: "Quality inspection specialist verifying wholesale agricultural grain consignment",
-    location: "Inspection facility · Quality assurance",
-    subCaption: "Consignment verification and container pre-loading inspection",
+    image: "/assets/about-partnership-handshake.jpg",
+    imageAlt: "Close-up of two hands shaking in commercial business agreement and wholesale partnership",
+    location: "Wholesale trade desk · Strategic partnership",
+    subCaption: "Long-term commercial contracts & dedicated account director support",
   },
 ];
 
@@ -278,12 +278,10 @@ export default function AboutMonagrow({ onOpenQuoteModal }: AboutMonagrowProps =
           </h2>
           <div className={styles.introduction}>
             <p>
-              From the first sourcing conversation to the next shipment, we make the details of wholesale trade easier to navigate. Monagrow is an agricultural commodity wholesaler and exporter connecting origin mills and growers with businesses around the world.
+              From the first sourcing conversation to the next shipment, we make the details of wholesale trade easier to navigate.
+              <br className="hidden md:inline" />{" "}
+              Monagrow is an agricultural commodity wholesaler and exporter connecting origin mills and growers with businesses around the world.
             </p>
-            <Link href="/about-us" className={styles.introLink}>
-              <span>Explore our full origin story</span>
-              <ArrowUpRight size={15} aria-hidden="true" />
-            </Link>
           </div>
         </header>
 
