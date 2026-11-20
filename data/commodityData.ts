@@ -1,3 +1,5 @@
+import adminStore from "@/data/admin-store.json";
+
 export interface CommodityProduct {
   id: string;
   categoryKey: "rice" | "coffee" | "sugar" | "dry-fruits";
@@ -164,7 +166,7 @@ export const COMMODITY_CATEGORIES: Record<string, CategoryMeta> = {
   },
 };
 
-export const PRODUCTS: CommodityProduct[] = [
+const STATIC_PRODUCTS: CommodityProduct[] = [
   {
     id: "basmati-rice",
     categoryKey: "rice",
@@ -713,20 +715,76 @@ export const RICE_ADDITIONAL_PRODUCTS: CommodityProduct[] = [
 
 ];
 
-export const RICE_PAGE_PRODUCTS: CommodityProduct[] = [
-  ...PRODUCTS.filter((p) => p.categoryKey === "rice"),
-  ...RICE_ADDITIONAL_PRODUCTS,
-];
+function toCommodityProduct(p: any): CommodityProduct {
+  const variations = p.variations || [];
+  const retailSizes = variations
+    .filter((v: any) => {
+      const match = v.weight?.match(/(\d+)\s*(kg|g)/i);
+      if (!match) return true;
+      const num = parseInt(match[1]);
+      const unit = match[2]?.toLowerCase();
+      if (unit === "g") return true;
+      return num <= 5;
+    })
+    .map((v: any) => v.weight);
+
+  const bulkSizes = variations
+    .filter((v: any) => {
+      const match = v.weight?.match(/(\d+)\s*kg/i);
+      if (!match) return false;
+      return parseInt(match[1]) > 5;
+    })
+    .map((v: any) => v.weight);
+
+  return {
+    id: p.id,
+    categoryKey: p.categoryKey,
+    category:
+      p.category ||
+      (p.categoryKey === "rice"
+        ? "Grains & Rice"
+        : p.categoryKey === "coffee"
+        ? "Specialty Estate"
+        : p.categoryKey === "sugar"
+        ? "Refined Sugar"
+        : "Select Dry Fruits"),
+    name: p.name,
+    kicker: p.kicker || "",
+    quoteName: p.quoteName || p.name,
+    tagline: p.tagline || "",
+    description: p.description || "",
+    originBadge: p.originBadge || "",
+    packImg: p.packImg || "/assets/monagrow-rice-bag-cutout.png",
+    bowlImg: p.bowlImg || "/assets/hero-center-rice.png",
+    bowlAlt: p.bowlAlt || p.name,
+    packAlt: p.packAlt || p.name,
+    retailSizes: retailSizes.length > 0 ? retailSizes : ["1 kg", "5 kg"],
+    bulkSizes: bulkSizes.length > 0 ? bulkSizes : ["10 kg", "25 kg", "50 kg"],
+    specs: p.specs || [],
+    keyHighlights: p.keyHighlights || [],
+  };
+}
+
+// Live active products from admin database store (falls back to static defaults if empty)
+const storeProducts: CommodityProduct[] = ((adminStore as any)?.products || [])
+  .filter((p: any) => p.isActive !== false)
+  .map(toCommodityProduct);
+
+export const PRODUCTS: CommodityProduct[] =
+  storeProducts.length > 0 ? storeProducts : STATIC_PRODUCTS;
+
+export const RICE_PAGE_PRODUCTS: CommodityProduct[] = PRODUCTS.filter(
+  (p) => p.categoryKey === "rice"
+);
 
 export function getRicePageProducts(): CommodityProduct[] {
   return RICE_PAGE_PRODUCTS;
 }
 
 export const SUGAR_ADDITIONAL_PRODUCTS: CommodityProduct[] = [];
-export const SUGAR_PAGE_PRODUCTS: CommodityProduct[] = [
-  ...PRODUCTS.filter((p) => p.categoryKey === "sugar"),
-  ...SUGAR_ADDITIONAL_PRODUCTS,
-];
+export const SUGAR_PAGE_PRODUCTS: CommodityProduct[] = PRODUCTS.filter(
+  (p) => p.categoryKey === "sugar"
+);
 
 export function getSugarPageProducts(): CommodityProduct[] {
   return SUGAR_PAGE_PRODUCTS;
@@ -738,9 +796,8 @@ export function getProductsByCategory(categoryKey: string): CommodityProduct[] {
 
 export function getProductById(id: string): CommodityProduct | undefined {
   return (
-    SUGAR_PAGE_PRODUCTS.find((p) => p.id === id) ||
-    RICE_PAGE_PRODUCTS.find((p) => p.id === id) ||
-    PRODUCTS.find((p) => p.id === id)
+    PRODUCTS.find((p) => p.id === id) ||
+    STATIC_PRODUCTS.find((p) => p.id === id)
   );
 }
 
