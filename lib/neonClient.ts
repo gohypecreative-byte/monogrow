@@ -19,12 +19,17 @@ export function parseNeonConnectionString(connStr?: string): NeonConfig | null {
     const database = parsed.pathname.replace(/^\//, "");
     if (!host) return null;
 
+    // Neon's serverless HTTP proxy endpoint is https://[endpoint].neon.tech/sql
+    // When a pooler hostname like ep-xyz-pooler.region.neon.tech is provided,
+    // strip '-pooler' so the HTTP SQL proxy resolves directly to the serverless proxy.
+    const httpHost = host.replace("-pooler", "");
+
     return {
       connectionString: str,
       host,
       user,
       database,
-      endpoint: `https://${host}/sql`,
+      endpoint: `https://${httpHost}/sql`,
     };
   } catch {
     return null;
