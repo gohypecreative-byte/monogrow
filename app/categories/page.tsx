@@ -69,7 +69,7 @@ function CategoriesContent() {
       {/* 1. Global Navigation */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} immersiveHero={false} />
 
-      <main className="flex-1">
+      <main className="site-sections flex-1">
         {/* ========================================================
             PANORAMIC PRODUCTS SHOWCASE BANNER (REPLACES HERO)
             "From Everyday Meals to Special Moments" with 8 Products

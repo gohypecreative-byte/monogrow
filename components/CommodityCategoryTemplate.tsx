@@ -55,7 +55,7 @@ export default function CommodityCategoryTemplate({
       {/* 1. Global Navigation */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} immersiveHero={false} />
 
-      <main className="flex-1">
+      <main className="site-sections flex-1">
         {/* ========================================================
             HERO: COMMODITY SPECIFIC HERO
             Theme: Signature Maroon (#740707) and Crisp White

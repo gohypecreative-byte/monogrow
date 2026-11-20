@@ -21,7 +21,7 @@ export default function ContactPage() {
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} immersiveHero={false} />
 
       {/* 2. Main Contact Experience */}
-      <main className="flex-1">
+      <main className="site-sections flex-1">
         <ContactSection onOpenQuoteModal={handleOpenQuoteModal} />
       </main>
 

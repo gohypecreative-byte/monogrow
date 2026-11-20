@@ -41,7 +41,7 @@ export default function PremiumCommodityPage({
     <div className="min-h-screen flex flex-col bg-[#fcfbf7] selection:bg-[#740707] selection:text-white">
       <Navbar immersiveHero onOpenQuoteModal={openQuote} />
 
-      <main className="flex-1">
+      <main className="site-sections flex-1">
         {products[0] && (
           <RiceHeroTransition
             key={`${category}-transition`}

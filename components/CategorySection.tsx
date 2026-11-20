@@ -30,7 +30,7 @@ export default function CategorySection({ onSelectCategory, onOpenQuoteModal }: 
       if (cancelled || !root.current) return;
       gsap.registerPlugin(ScrollTrigger);
       const media = gsap.matchMedia();
-      media.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+      media.add("(min-width: 768px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)", () => {
         const section = root.current!;
         const viewport = stage.current!;
         const rail = track.current!;

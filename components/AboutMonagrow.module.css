@@ -1,587 +1,84 @@
-/* =========================================================================
-   ABOUT MONAGROW - STACKING CARDS ON SCROLL (HOME PAGE ONLY)
-   Handcrafted sticky deck stacking with progressive blur and scale
-   ========================================================================= */
-
 .section {
-  background: #f8f5f0;
+  background: #fbf8f3;
   color: #30241e;
-  padding: 88px 0 24px;
+  padding: clamp(72px, 7vw, 112px) 6%;
+  font-family: var(--font-sans), "Plus Jakarta Sans", sans-serif;
   scroll-margin-top: 90px;
-  position: relative;
-  z-index: 5;
-  isolation: isolate;
 }
 
 .container {
-  width: min(1440px, 88%);
-  margin-inline: auto;
-}
-
-/* -------------------------------------------------------------------------
-   1. SECTION HEADER (Harmonized with site architecture)
-   ------------------------------------------------------------------------- */
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-bottom: 48px;
-  border-bottom: 1px solid #e3ddd5;
-  margin-bottom: 48px;
-}
-
-.kickerBadge {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 24px;
-  position: relative;
-  max-width: 100%;
-}
-
-.kickerRow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(12px, 1.6vw, 24px);
-}
-
-.wheatIcon {
-  width: clamp(36px, 4.2vw, 56px);
-  height: auto;
-  color: #740707;
-  flex-shrink: 0;
-}
-
-.wheatIconRight {
-  transform: scaleX(-1);
-}
-
-.kicker {
-  color: #740707;
-  font-family: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(28px, 3.4vw, 44px);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin: 0;
-  text-align: center;
-  line-height: 1.15;
-}
-
-.mainTitle {
-  width: fit-content;
-  max-width: 100%;
-  margin: 0 auto 20px;
-  font-family: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(23px, 2.5vw, 35px);
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.035em;
-  color: #000000;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.mainTitle em {
-  color: #740707;
-  font-style: italic;
-  font-weight: 500;
-}
-
-.header h2 {
-  margin: 0;
-}
-
-.introduction {
-  max-width: min(990px, 100%);
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.introduction p {
-  color: #000000;
-  line-height: 1.8;
-  font-size: 15.5px;
-  margin: 0;
-  text-align: center;
-}
-
-.introLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: #740707;
-  font-size: 13.5px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s ease, gap 0.2s ease;
-}
-
-.introLink:hover {
-  color: #5e0606;
-  gap: 14px;
-}
-
-.introLink svg {
-  transition: transform 0.2s ease;
-}
-
-.introLink:hover svg {
-  transform: translate(2px, -2px);
-}
-
-/* -------------------------------------------------------------------------
-   2. STACKING CARDS TRACK
-   ------------------------------------------------------------------------- */
-.stackTrack {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 0;
-}
-
-.cardWrapper {
-  position: sticky;
-  top: 90px;
-  margin-bottom: clamp(240px, 42vh, 380px);
-  will-change: transform, filter, opacity;
-  transform-origin: center top;
-}
-
-.cardWrapper:last-child {
-  margin-bottom: clamp(120px, 18vh, 180px);
-}
-
-/* The Horizontal Split Card */
-.card {
-  background: #faf5ee;
-  border: 1px solid #e4ddd2;
-  border-radius: 24px;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04), 0 24px 60px -15px rgba(48, 36, 30, 0.15);
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(36px, 3.5vw, 60px);
-  padding: clamp(36px, 3.4vw, 52px);
-  min-height: clamp(520px, 58vh, 640px);
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1fr);
   align-items: center;
+  gap: clamp(32px, 4.5vw, 64px);
+}
+
+.visual {
+  position: relative;
+  isolation: isolate;
   overflow: hidden;
-  transition: box-shadow 0.3s ease;
-  will-change: transform, filter, opacity;
+  aspect-ratio: 1;
+  border: 1px solid #e8ddcc;
+  border-radius: 22px;
+  background: #f3ebdf;
 }
 
-.card:hover {
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05), 0 28px 70px -18px rgba(48, 36, 30, 0.2);
-}
+.video { display: block; width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: center; }
 
-/* Left Content Column */
-.cardContent {
-  display: flex;
-  flex-direction: column;
-}
+.content { min-width: 0; }
 
-.cardHeaderArea {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 8px;
-}
-
-/* Brand Bold Uppercase Wordmark (Matches site Plus Jakarta Sans typography) */
-.wordmark {
-  font-family: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(28px, 3.2vw, 42px);
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+.title {
+  margin: 0 0 20px;
+  font-size: clamp(34px, 3.4vw, 50px);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1.15;
   color: #740707;
-  margin: 0 0 10px;
-}
-
-.stepTag {
-  font-size: 11.5px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: #85786d;
-  margin: 0;
-}
-
-.headline {
-  font-family: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(22px, 2.3vw, 29px);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
-  color: #000000;
-  margin: 0 0 14px;
 }
 
 .copy {
-  font-size: 14.5px;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.75;
-  color: #000000;
-  margin: 0 0 24px;
+  color: #75675d;
 }
 
-/* Specs Checklist */
-.specs {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-}
+.copy p { margin: 0 0 16px; }
+.copy p:first-child { color: #30241e; font-size: 20px; font-weight: 500; line-height: 1.5; }
 
-.specItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13.5px;
-  color: #000000;
-  line-height: 1.4;
-}
-
-.specCheck {
-  color: #740707;
-  flex-shrink: 0;
-}
-
-/* Actions Row */
-.actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-
-.quoteBtn {
+.cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 48px;
-  padding: 12px 24px;
-  border-radius: 6px;
+  min-height: 44px;
+  padding: 12px 26px;
+  margin-top: 6px;
+  border-radius: 100px;
   background: #740707;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.quoteBtn:hover {
-  background: #5e0606;
-  transform: translateY(-1px);
-}
-
-.quoteBtn svg {
-  transition: transform 0.2s ease;
-}
-
-.quoteBtn:hover svg {
-  transform: translate(2px, -2px);
-}
-
-.storyLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #740707;
-  font-size: 12.5px;
+  color: #fbf8f3;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s ease, gap 0.2s ease;
+  transition: background .2s ease, transform .2s ease;
 }
 
-.storyLink:hover {
-  color: #5e0606;
-  gap: 12px;
-}
-
-.storyLink svg {
-  transition: transform 0.2s ease;
-}
-
-.storyLink:hover svg {
-  transform: translate(2px, -2px);
-}
-
-/* Right Visual Column */
-.cardVisual {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.imageWrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3.3;
-  min-height: clamp(380px, 45vh, 480px);
-  border-radius: 16px;
-  overflow: hidden;
-  background: #201712;
-  border: 1px solid #ddd5cb;
-  box-shadow: 0 12px 36px -12px rgba(48, 36, 30, 0.16);
-}
-
-.panelImage {
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.imageWrapper:hover .panelImage {
-  transform: scale(1.025);
-}
-
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-      rgba(20, 14, 10, 0.12) 0%,
-      transparent 45%,
-      rgba(20, 14, 10, 0.75) 100%);
-  pointer-events: none;
-}
-
-.imageCaption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 20px;
-  color: #ffffff;
-}
-
-.captionTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-  margin-bottom: 3px;
-}
-
-.captionIcon {
-  color: #e5b98a;
-  flex-shrink: 0;
-}
-
-.captionSub {
-  font-size: 11px;
-  color: #e6dfd7;
-  line-height: 1.45;
-  margin: 0;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-
-/* -------------------------------------------------------------------------
-   4. RESPONSIVE MEDIA QUERIES
-   ------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
-  .card {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 32px;
-    min-height: auto;
-  }
-
-  .imageWrapper {
-    aspect-ratio: 16 / 10;
-    min-height: 320px;
-  }
-
-  .cardWrapper {
-    top: 82px;
-    margin-bottom: clamp(200px, 35vh, 320px);
-  }
-
-  .cardWrapper:last-child {
-    margin-bottom: clamp(100px, 15vh, 150px);
-  }
-}
+.cta:hover { background: #5b0606; transform: translateY(-2px); }
+.cta:focus-visible { outline: 2px solid #740707; outline-offset: 5px; }
 
 @media (max-width: 767px) {
-  .section {
-    padding: 40px 0 16px;
-    overflow-x: clip;
-  }
+  .section { padding: 52px 6% 60px; }
+  .container { grid-template-columns: minmax(0, 1fr); gap: 28px; max-width: 480px; }
+  .visual { width: 100%; max-width: 380px; margin: 0 auto; border-radius: 18px; }
 
-  .container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding-inline: 16px;
-    box-sizing: border-box;
-  }
 
-  .header {
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-  }
-
-  .kicker {
-    font-size: clamp(17px, 4.8vw, 22px);
-    letter-spacing: 0.06em;
-  }
-
-  .wheatIcon {
-    width: clamp(22px, 5vw, 28px);
-  }
-
-  .kickerRow {
-    gap: 8px;
-  }
-
-  .mainTitle {
-    font-size: clamp(18px, 4.8vw, 24px);
-    margin: 0 auto 14px;
-    line-height: 1.25;
-    white-space: normal;
-    text-align: center;
-    word-break: break-word;
-  }
-
-  .header h2 {
-    margin: 0;
-  }
-
-  .introduction p {
-    font-size: 13.5px;
-    line-height: 1.65;
-    margin: 0;
-    padding: 0 4px;
-  }
-
-  .introLink {
-    font-size: 13px;
-  }
-
-  .cardWrapper {
-    top: 64px;
-    margin-bottom: clamp(110px, 18vh, 160px);
-  }
-
-  .cardWrapper:last-child {
-    margin-bottom: clamp(60px, 10vh, 90px);
-  }
-
-  .card {
-    padding: 20px 16px 22px;
-    border-radius: 18px;
-    gap: 16px;
-    min-height: auto;
-  }
-
-  .wordmark {
-    font-size: clamp(22px, 5.2vw, 28px);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-  }
-
-  .headline {
-    font-size: clamp(16px, 4.2vw, 19px);
-    line-height: 1.25;
-    margin-bottom: 10px;
-  }
-
-  .copy {
-    font-size: 13px;
-    line-height: 1.55;
-    margin-bottom: 14px;
-  }
-
-  .specs {
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-
-  .specItem {
-    font-size: 12px;
-    line-height: 1.35;
-  }
-
-  .actions {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .storyLink {
-    justify-content: flex-start;
-    margin-left: 0;
-    font-size: 12.5px;
-  }
-
-  .cardVisual {
-    width: 100%;
-    height: auto;
-  }
-
-  .imageWrapper {
-    aspect-ratio: 16 / 9;
-    min-height: 0;
-    height: clamp(165px, 24vh, 210px);
-    border-radius: 14px;
-  }
+  .title { font-size: 32px; margin-bottom: 16px; }
+  .copy { font-size: 14px; }
+  .copy p:first-child { font-size: 17px; }
 }
 
-@media (max-width: 480px) {
-  .section {
-    padding: 32px 0 12px;
-  }
-
-  .container {
-    padding-inline: 12px;
-  }
-
-  .card {
-    padding: 16px 14px 18px;
-    border-radius: 16px;
-    gap: 12px;
-  }
-
-  .imageWrapper {
-    height: clamp(145px, 22vh, 180px);
-    border-radius: 12px;
-  }
-
-  .kicker {
-    font-size: clamp(15px, 4.5vw, 18px);
-  }
-
-  .wheatIcon {
-    width: 20px;
-  }
-
-  .mainTitle {
-    font-size: clamp(16px, 4.8vw, 20px);
-  }
-
-  .wordmark {
-    font-size: clamp(19px, 5vw, 23px);
-  }
-
-  .headline {
-    font-size: 16px;
-  }
-
-  .copy {
-    font-size: 12.5px;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .cta { transition: none; }
+  .cta:hover { transform: none; }
 }

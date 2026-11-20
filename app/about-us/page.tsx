@@ -151,7 +151,7 @@ export default function AboutUsPage() {
       {/* 1. Navbar */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} glassEffect />
 
-      <main className="flex-1">
+      <main className="site-sections flex-1">
         {/* ========================================================
             BRAND FOUNDATION STORY: ABOUT MONAGROW & LIVING EMBLEM
             Top of Page: Food Beyond Borders, Dual Hubs & The Monal
