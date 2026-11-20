@@ -46,13 +46,13 @@ export default function Home() {
         {/* 4. Company Philosophy & Details (Direct Origin Story & Purity Manifesto) */}
         <CompanyPhilosophy />
 
-        <HomeFAQ />
+        {/* 8. Verified Buyer Reviews & Testimonials */}
+        <Testimonials />
 
         {/* 5. Interactive Bulk Container & Volume Estimator */}
         <WholesaleCalculator onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* 8. Verified Buyer Reviews & Testimonials */}
-        <Testimonials />
+        <HomeFAQ />
       </main>
 
       {/* 10. Premium Footer */}
