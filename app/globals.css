@@ -197,3 +197,24 @@ html.lenis, html.lenis body { height: auto; }
   width: 0;
   height: 0;
 }
+
+/* Shared breathing room between public-page sections, outside pinned content. */
+.site-sections {
+  --section-gap: clamp(24px, 4vw, 64px);
+  background-color: var(--bg-cream);
+}
+.site-sections > :where(section, .pin-spacer) ~ :where(section, .pin-spacer) {
+  margin-block-start: var(--section-gap);
+}
+/* Policy and support pages group their content sections inside a container. */
+.site-sections > div > section + section {
+  margin-block-start: var(--section-gap);
+}
+.site-sections + footer {
+  margin-block-start: 0;
+}
+
+/* Keep the homepage hero and its product collection visually connected. */
+.site-sections > #categories {
+  margin-block-start: 0;
+}

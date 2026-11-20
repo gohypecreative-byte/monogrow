@@ -22,7 +22,7 @@ export default function ShippingReturnsPage() {
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} immersiveHero={false} />
 
       {/* 2. Main Content */}
-      <main className="flex-1 py-14 sm:py-20">
+      <main className="site-sections flex-1 py-14 sm:py-20">
         <div className="max-w-4xl mx-auto px-6">
           {/* Breadcrumb / Back Link */}
           <Link

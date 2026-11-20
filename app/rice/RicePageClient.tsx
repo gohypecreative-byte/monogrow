@@ -107,7 +107,7 @@ export default function RicePageClient() {
       {/* 1. Top Navbar with immersiveHero (matches main page hero styling) */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} immersiveHero />
 
-      <main className="flex-1 relative">
+      <main className="site-sections flex-1 relative">
         {/* Floating smooth pop-out transition from Hero to Basmati Product Card */}
         <RiceHeroTransition />
 

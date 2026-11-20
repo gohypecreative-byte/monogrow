@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowUpRight, Check, Package, Ship, SlidersHorizontal, Download, MessageCircle } from "lucide-react";
 import { calculateTradeEstimate } from "./tradeEstimate";
 import styles from "./WholesaleCalculator.module.css";
+import EstimateShowcase from "./EstimateShowcase";
 
 const PRODUCTS = [
   { label: "Basmati rice", image: "rice", rate: 1050, varieties: ["1121 Basmati", "Traditional Basmati"], processes: ["Sella / parboiled", "Steam", "Raw / white"], grades: ["Premium long grain", "Standard long grain"] },
@@ -17,6 +18,8 @@ export const CURRENCIES = [
   { code: "NPR", label: "NPR · Nepalese Rupee", country: "Nepal", name: "Nepalese Rupee", rate: 135 },
   { code: "INR", label: "INR · Indian Rupee", country: "India", name: "Indian Rupee", rate: 84 },
   { code: "USD", label: "USD · US Dollar", country: "United States / Global", name: "US Dollar", rate: 1 },
+  { code: "AED", label: "AED · UAE Dirham", country: "United Arab Emirates", name: "UAE Dirham", rate: 3.6725 },
+  { code: "SAR", label: "SAR · Saudi Riyal", country: "Saudi Arabia", name: "Saudi Riyal", rate: 3.75 },
   { code: "EUR", label: "EUR · Euro", country: "European Union", name: "Euro", rate: 0.92 },
   { code: "GBP", label: "GBP · British Pound", country: "United Kingdom", name: "British Pound", rate: 0.79 },
 ] as const;
@@ -27,6 +30,8 @@ const CURRENCY_RATES: Record<CurrencyCode, number> = {
   NPR: 135,
   INR: 84,
   USD: 1,
+  AED: 3.6725,
+  SAR: 3.75,
   EUR: 0.92,
   GBP: 0.79,
 };
@@ -35,8 +40,8 @@ const DESTINATIONS = [
   { country: "Nepal", port: "Birgunj Dry Port", currency: "NPR" as CurrencyCode },
   { country: "India", port: "Mundra", currency: "INR" as CurrencyCode },
   { country: "United States", port: "New York / Newark", currency: "USD" as CurrencyCode },
-  { country: "United Arab Emirates", port: "Jebel Ali", currency: "USD" as CurrencyCode },
-  { country: "Saudi Arabia", port: "Jeddah", currency: "USD" as CurrencyCode },
+  { country: "United Arab Emirates", port: "Jebel Ali", currency: "AED" as CurrencyCode },
+  { country: "Saudi Arabia", port: "Jeddah", currency: "SAR" as CurrencyCode },
   { country: "Netherlands", port: "Rotterdam", currency: "EUR" as CurrencyCode },
   { country: "United Kingdom", port: "Felixstowe", currency: "GBP" as CurrencyCode },
 ];
@@ -75,6 +80,7 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
   const stepTitles = ["Start with your product", "How much do you need?", "Where is your order going?", "Review your planning rates", "Your estimate is ready"];
   const stepIndex = steps.indexOf(step);
   const [productIndex, setProductIndex] = useState(0);
+  const [productChosen, setProductChosen] = useState(false);
   const product = PRODUCTS[productIndex];
   const [variety, setVariety] = useState(PRODUCTS[0].varieties[0]);
   const [processing, setProcessing] = useState(PRODUCTS[0].processes[0]);
@@ -210,6 +216,7 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
   }
 
   function changeProduct(index: number) {
+    setProductChosen(true);
     const next = PRODUCTS[index];
     setProductIndex(index);
     setVariety(next.varieties[0]);
@@ -265,19 +272,8 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
   return (
     <section id="calculator" className={styles.section} aria-labelledby="estimate-heading">
       <div className={styles.container}>
-        <header className={styles.header}>
-          <div>
-            <h2 id="estimate-heading">
-              Plan your order<br />
-              <span className={styles.highlight}>See the whole picture</span>
-            </h2>
-          </div>
-          <div className={styles.introduction}>
-            <p>
-              A clearer view of your next shipment. Explore quantities, packaging and delivery costs before starting a conversation with our trade desk.
-            </p>
-          </div>
-        </header>
+<div className={styles.splitLayout}>
+          <EstimateShowcase selectedProduct={productChosen ? product.image : null} />
         <div className={styles.layout}>
           <nav className={styles.stepper} aria-label="Estimator progress">
             <ol>
@@ -697,6 +693,7 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
             )}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

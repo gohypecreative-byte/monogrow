@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import AboutMonagrow from "@/components/AboutMonagrow";
 import CategorySection from "@/components/CategorySection";
 import CompanyPhilosophy from "@/components/CompanyPhilosophy";
+import HomeFAQ from "@/components/HomeFAQ";
 import WholesaleCalculator from "@/components/WholesaleCalculator";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
@@ -28,7 +29,7 @@ export default function Home() {
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} immersiveHero />
 
       {/* 2. Scroll-driven commodity showcase */}
-      <main className="flex-1">
+      <main className="site-sections flex-1">
         <Hero
           onOpenVideoModal={() => setIsVideoModalOpen(true)}
           onOpenQuoteModal={handleOpenQuoteModal}
@@ -40,16 +41,18 @@ export default function Home() {
         />
 
         {/* 4. About Monagrow - Direct Origin & Wholesale Sourcing */}
-        <AboutMonagrow onOpenQuoteModal={handleOpenQuoteModal} />
+        <AboutMonagrow />
 
         {/* 4. Company Philosophy & Details (Direct Origin Story & Purity Manifesto) */}
-        <CompanyPhilosophy onOpenQuoteModal={handleOpenQuoteModal} />
+        <CompanyPhilosophy />
+
+        {/* 8. Verified Buyer Reviews & Testimonials */}
+        <Testimonials />
 
         {/* 5. Interactive Bulk Container & Volume Estimator */}
         <WholesaleCalculator onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* 8. Verified Buyer Reviews & Testimonials */}
-        <Testimonials />
+        <HomeFAQ />
       </main>
 
       {/* 10. Premium Footer */}

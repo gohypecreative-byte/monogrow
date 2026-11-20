@@ -1,247 +1,75 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
-import Image from "next/image";
+import { useEffect, useRef } from "react";
+import OriginJourney from "./OriginJourney";
 import styles from "./CompanyPhilosophy.module.css";
 
-interface CompanyPhilosophyProps {
-  onOpenQuoteModal?: (productName?: string) => void;
-}
-
-const stages = [
-  {
-    name: "Origin", title: "Good things begin with good ground.",
-    copy: "From Basmati-growing regions to coffee estates, we work directly with registered origin mills and growers. A shorter route to the source means a clearer story behind every lot.",
-    tags: ["Direct sourcing", "Registered mills", "Origin traceability"],
-    image: "/assets/about-farm-estate.jpg", alt: "Sunlight falling across green terraced farmland in a mountain valley",
-  },
-  {
-    name: "Selection", title: "Carefully selected. Never left to chance.",
-    copy: "Long-grain Basmati, estate Arabica, refined sugar and handpicked cashews. Each commodity is selected to its own specification, with attention to the details that matter to your business.",
-    tags: ["Basmati & Arabica", "Sugar & cashews", "Lot specifications"],
-    image: "/assets/company-selection-commodities.jpg", alt: "Carefully selected Basmati rice, estate Arabica coffee, refined sugar, and royal cashews in ceramic sampling bowls",
-  },
-  {
-    name: "Verification", title: "Purity you can put to the test.",
-    copy: "Know what you are buying before you commit. Laboratory specifications, moisture metrics and harvest information bring clarity to the conversation, from your first sample to your shipment.",
-    tags: ["Lab specifications", "Moisture checks", "Sample evaluation"],
-    image: "/assets/company-verification-lab.jpg", alt: "A laboratory specialist using a high-precision microscope to examine food commodity samples and verify purity",
-  },
-  {
-    name: "Dispatch", title: "From our origins to your next chapter.",
-    copy: "Care continues beyond the harvest. Documented lots, coordinated container loading and export support connect the quality at origin with the needs of buyers around the world.",
-    tags: ["Export documentation", "Container loading", "Global trade"],
-    image: "/assets/about-global-port.jpg", alt: "Shipping containers and cargo cranes at an illuminated international port",
-  },
-];
-
-export default function CompanyPhilosophy({ onOpenQuoteModal }: CompanyPhilosophyProps) {
-  const [active, setActive] = useState(0);
-  const heading = useRef<HTMLHeadingElement>(null);
-  const lineLeftRef = useRef<HTMLSpanElement>(null);
-  const lineRightRef = useRef<HTMLSpanElement>(null);
-  const panel = useRef<HTMLDivElement>(null);
-  const steps = useRef<(HTMLElement | null)[]>([]);
+export default function CompanyPhilosophy() {
+  const founderNote = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const root = founderNote.current;
+    if (!root) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const letter = root.querySelector<HTMLElement>("blockquote");
+    if (!letter) return;
+    const words = Array.from(letter.querySelectorAll<HTMLElement>("[data-note-word]"));
     let frame = 0;
-    let displayed: number | undefined;
-    let previousTime = 0;
+    let disposed = false;
     const update = () => {
       frame = 0;
-      const height = window.innerHeight;
-      const mobile = window.innerWidth < 768;
-      const target = height * .52;
-      let closest = 0;
-      let distance = Infinity;
-      steps.current.forEach((step, index) => {
-        if (!step) return;
-        const rect = step.getBoundingClientRect();
-        const nextDistance = Math.abs(rect.top + rect.height / 2 - target);
-        if (nextDistance < distance) { distance = nextDistance; closest = index; }
+      if (disposed) return;
+      const bounds = letter.getBoundingClientRect();
+      const scrollProgress = Math.max(0, Math.min(1,
+        (window.innerHeight * .85 - bounds.top) / (bounds.height + window.innerHeight * .3)));
+      const revealedWords = scrollProgress * (words.length + 3);
+      words.forEach((word, index) => {
+        const progress = reduced.matches ? 1 : Math.max(0, Math.min(1, (revealedWords - index) / 3));
+        word.style.opacity = String(.18 + progress * .82);
       });
-      if (!mobile && !reduced.matches && panel.current) {
-        const centers = steps.current.map(step => {
-          const rect = step?.getBoundingClientRect();
-          return rect ? rect.top + rect.height / 2 : 0;
-        });
-        let position = 0;
-        for (let index = 0; index < centers.length - 1; index++) {
-          if (target >= centers[index]) position = index + Math.max(0, Math.min(1,
-            (target - centers[index]) / Math.max(1, centers[index + 1] - centers[index])));
-        }
-        const now = performance.now();
-        const elapsed = previousTime ? Math.min(64, now - previousTime) : 16;
-        previousTime = now;
-        if (displayed === undefined) displayed = position;
-        displayed += (position - displayed) * (1 - Math.exp(-elapsed / 45));
-        if (Math.abs(position - displayed) < .0001) displayed = position;
-        panel.current.dataset.scrub = "true";
-        panel.current.querySelectorAll<HTMLElement>("[data-story-photo]").forEach((photo, index) => {
-          const local = index === 0 ? 1 : Math.max(0, Math.min(1, (displayed! - index + .75) / .5));
-          const ease = local * local * (3 - 2 * local);
-          photo.style.transform = `translate3d(0, ${(1 - ease) * 102}%, 0)`;
-        });
-        closest = Math.round(displayed);
-        if (displayed !== position) frame = requestAnimationFrame(update);
-      } else {
-        displayed = undefined;
-        previousTime = 0;
-        if (panel.current) {
-          delete panel.current.dataset.scrub;
-          panel.current.querySelectorAll<HTMLElement>("[data-story-photo]").forEach(photo => photo.style.removeProperty("transform"));
-        }
-      }
-      setActive(closest);
-
-      // Scroll-driven smooth sliding animation for headline lines
-      if (heading.current && lineLeftRef.current && lineRightRef.current) {
-        if (reduced.matches || mobile) {
-          lineLeftRef.current.style.transform = "none";
-          lineRightRef.current.style.transform = "none";
-          lineLeftRef.current.style.opacity = "1";
-          lineRightRef.current.style.opacity = "1";
-        } else {
-          const rect = heading.current.getBoundingClientRect();
-          const enterTrigger = height * 0.95;
-          const lockTrigger = height * 0.40;
-          const progress = Math.max(0, Math.min(1, (enterTrigger - rect.top) / Math.max(1, enterTrigger - lockTrigger)));
-          const ease = 1 - Math.pow(1 - progress, 2.5);
-          const maxDist = Math.min(window.innerWidth * 0.35, 200);
-          const leftOffset = -maxDist * (1 - ease);
-          const rightOffset = maxDist * (1 - ease);
-          lineLeftRef.current.style.transform = `translate3d(${leftOffset.toFixed(2)}px, 0, 0)`;
-          lineRightRef.current.style.transform = `translate3d(${rightOffset.toFixed(2)}px, 0, 0)`;
-          const opacity = Math.min(1, Math.max(0.15, 0.15 + 0.85 * ease));
-          lineLeftRef.current.style.opacity = opacity.toFixed(2);
-          lineRightRef.current.style.opacity = opacity.toFixed(2);
-        }
-      }
     };
-    const schedule = () => { if (!frame) frame = window.requestAnimationFrame(update); };
+    const schedule = () => { if (!frame && !disposed) frame = requestAnimationFrame(update); };
+    const resize = new ResizeObserver(schedule);
+    resize.observe(root);
     schedule();
+    document.fonts.ready.then(schedule);
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     reduced.addEventListener("change", schedule);
     return () => {
-      window.cancelAnimationFrame(frame);
+      disposed = true;
+      cancelAnimationFrame(frame);
+      resize.disconnect();
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       reduced.removeEventListener("change", schedule);
+      root.querySelectorAll<HTMLElement>("[data-note-word]").forEach(word => {
+        word.style.removeProperty("opacity");
+      });
     };
   }, []);
-
   return (
     <section id="philosophy" className={styles.section} aria-labelledby="origin-heading">
       <div className={styles.container}>
-        <header className={styles.intro}>
-          <h2 id="origin-heading" ref={heading} className={styles.headline}>
-            <span ref={lineLeftRef} className={styles.headlineLeft}>Rooted in origin,</span>
-            <span ref={lineRightRef} className={styles.headlineRight}><em>delivered</em> with care</span>
-          </h2>
-          <div className={styles.principles}>
-            <p className={styles.lead}>Exceptional ingredients have a story. Ours starts at the source, with the people who grow them. No unnecessary layers. Just a shared respect for quality.</p>
-            <div className={styles.principle}><span className={styles.mark}>i</span><h3>Closer to source</h3><p>Direct relationships with origin mills and estates.</p></div>
-            <div className={styles.principle}><span className={styles.mark}>ii</span><h3>Clear by nature</h3><p>Documented specifications. Informed buying decisions.</p></div>
-            <div className={styles.principle}><span className={styles.mark}>iii</span><h3>Care in every lot</h3><p>Thoughtful selection, from the first sample to dispatch.</p></div>
-          </div>
+        <header ref={founderNote} className={styles.founderIntro}>
+          <p className={styles.founderBadge}><span aria-hidden="true" />Monagrow Founder&apos;s Note</p>
+          <h2 id="origin-heading" className={styles.founderTitle}>Good ingredients.<br /><em>Relationships that last.</em></h2>
+          <figure className={styles.founderCard}>
+            <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
+            <blockquote className={styles.founderLetter}>
+              <p data-note-text className={styles.revealParagraph}>{"At Monagrow, we believe exceptional ingredients begin with the people who grow them. Behind every grain, every bean, and every harvest is care that deserves to be carried forward.".split(" ").map((word, index) => <span key={index}><span data-note-word className={styles.revealWord}>{word}</span>{" "}</span>)}</p>
+              <p data-note-text className={styles.revealParagraph}>{"Our purpose is to bring growers and businesses closer together. Through direct relationships, clear specifications, and thoughtful selection, we want to make sourcing feel simpler and more personal.".split(" ").map((word, index) => <span key={index}><span data-note-word className={styles.revealWord}>{word}</span>{" "}</span>)}</p>
+              <p data-note-text className={styles.revealParagraph}>{"Whether it is Basmati rice, estate coffee, dry fruits, or sugar, our approach stays the same: respect the origin, pay attention to the details, and care for every lot from the first conversation to dispatch.".split(" ").map((word, index) => <span key={index}><span data-note-word className={styles.revealWord}>{word}</span>{" "}</span>)}</p>
+              <p data-note-text className={styles.revealParagraph}>{"We see every order as the beginning of a relationship. Thank you for being part of the Monagrow journey. We look forward to growing together.".split(" ").map((word, index) => <span key={index}><span data-note-word className={styles.revealWord}>{word}</span>{" "}</span>)}</p>
+            </blockquote>
+            <figcaption className={styles.founderFooter}>
+              <div className={styles.founderSignature}><strong>With gratitude,</strong><span>Founder, Monagrow</span></div>
+              <span className={styles.founderPromise}><span aria-hidden="true" />Rooted in origin. Built on trust.</span>
+            </figcaption>
+          </figure>
         </header>
-
-        <div className={styles.story}>
-          <div className={styles.storyViewport}>
-            {/* Left Column: Image Stack Panel (Unchanged) */}
-            <div ref={panel} className={styles.photoPanel}>
-              {stages.map((stage, index) => {
-                const isCurrent = active === index;
-                const isUnderneath = index < active;
-                const isUpcoming = index > active;
-                const statusClass = isCurrent
-                  ? styles.photoCurrent
-                  : isUnderneath
-                  ? styles.photoUnderneath
-                  : styles.photoUpcoming;
-
-                return (
-                  <div
-                    key={stage.name}
-                    data-story-photo
-                    style={{ "--stage-index": index } as CSSProperties}
-                    className={`${styles.photo} ${statusClass}`}
-                    aria-hidden={active !== index}
-                  >
-                    <Image
-                      src={stage.image}
-                      alt={stage.alt}
-                      fill
-                      unoptimized
-                      sizes="(max-width: 767px) 92vw, 48vw"
-                      priority={index === 0}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Right Column: Stages Text with Restrained Vertical Travel */}
-            <div className={styles.steps}>
-              {/* Desktop Sticky Stage Display - Text sits centered, transitioning with restrained travel */}
-              <div className={styles.stepsSticky} aria-live="polite">
-                {stages.map((stage, index) => {
-                  const isCurrent = active === index;
-                  const isPast = index < active;
-                  const statusClass = isCurrent
-                    ? styles.stepCurrent
-                    : isPast
-                    ? styles.stepPast
-                    : styles.stepUpcoming;
-
-                  return (
-                    <article
-                      key={stage.name}
-                      className={`${styles.stepCard} ${statusClass}`}
-                      aria-hidden={!isCurrent}
-                    >
-                      <h3>{stage.title}</h3>
-                      <p className={styles.stepCopy}>{stage.copy}</p>
-                      <ul className={styles.tags}>
-                        {stage.tags.map((tag) => (
-                          <li key={tag}>{tag}</li>
-                        ))}
-                      </ul>
-                    </article>
-                  );
-                })}
-              </div>
-
-              {/* Scroll Track Triggers (Desktop scroll anchors & mobile in-flow layout) */}
-              <div className={styles.stepRail}>
-                {stages.map((stage, index) => (
-                  <article
-                    key={stage.name}
-                    ref={(el) => { steps.current[index] = el; }}
-                    className={styles.step}
-                    data-active={active === index}
-                  >
-                    <div className={styles.stepMobileContent}>
-                      <div className={styles.mobilePhoto}>
-                        <Image src={stage.image} alt={stage.alt} fill unoptimized sizes="89vw" />
-                      </div>
-                      <h3>{stage.title}</h3>
-                      <p className={styles.stepCopy}>{stage.copy}</p>
-                      <ul className={styles.tags}>
-                        {stage.tags.map((tag) => (
-                          <li key={tag}>{tag}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
+      <OriginJourney />
     </section>
   );
 }

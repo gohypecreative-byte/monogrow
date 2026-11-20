@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Plus_Jakarta_Sans, Playfair_Display, Antonio, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -72,8 +73,10 @@ export default function RootLayout({
         className="min-h-screen bg-[#fcfcf9] text-[#192a20] antialiased selection:bg-[#2e6f40] selection:text-white font-sans"
         suppressHydrationWarning
       >
-        <ScrollToTop />
-        <SmoothScroll />
+        <Suspense fallback={null}>
+          <ScrollToTop />
+          <SmoothScroll />
+        </Suspense>
         {children}
       </body>
     </html>
