@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -52,6 +52,14 @@ export const OTHER_CURRENCIES = [
 ];
 
 export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) {
+  return (
+    <Suspense fallback={<div role="status" className="p-8 text-center">Loading product editor…</div>}>
+      <ProductEditContent isNewProp={isNewProp} />
+    </Suspense>
+  );
+}
+
+function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
   const params = useParams();
   const router = useRouter();
   const rawId = (params?.id as string) || "";
