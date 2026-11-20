@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import styles from "./AboutMonagrow.module.css";
@@ -8,6 +10,13 @@ export default function AboutMonagrow() {
       <div className={styles.container}>
         <div className={styles.visual}>
           <video key="gemini_generated_video_90b25d74"
+            ref={(video) => {
+              if (video) {
+                video.defaultPlaybackRate = 2;
+                video.playbackRate = 2;
+              }
+            }}
+            onLoadedMetadata={(event) => { event.currentTarget.playbackRate = 2; }}
             className={styles.video}
             autoPlay
             muted
