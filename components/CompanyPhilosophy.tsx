@@ -19,7 +19,7 @@ const stages = [
     name: "Selection", title: "Carefully selected. Never left to chance.",
     copy: "Long-grain Basmati, estate Arabica, refined sugar and handpicked cashews. Each commodity is selected to its own specification, with attention to the details that matter to your business.",
     tags: ["Basmati & Arabica", "Sugar & cashews", "Lot specifications"],
-    image: "/assets/company-selection-coffee.jpg", alt: "Hands cupping and selecting premium estate Arabica coffee beans",
+    image: "/assets/company-selection-commodities.jpg", alt: "Carefully selected Basmati rice, estate Arabica coffee, refined sugar, and royal cashews in ceramic sampling bowls",
   },
   {
     name: "Verification", title: "Purity you can put to the test.",

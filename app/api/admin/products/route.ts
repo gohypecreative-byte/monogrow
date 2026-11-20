@@ -1,11 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/adminAuth";
-import { getAdminProducts, saveAdminProduct, deleteAdminProduct } from "@/lib/db";
+import { getAdminProducts, getAdminProductById, saveAdminProduct, deleteAdminProduct } from "@/lib/db";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const session = await getAdminSession();
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  if (id) {
+    const decodedId = decodeURIComponent(id);
+    const product = (await getAdminProductById(id)) || (await getAdminProductById(decodedId));
+    if (!product) {
+      return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    }
+    return NextResponse.json({ product });
   }
 
   const products = await getAdminProducts();
@@ -64,7 +75,8 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "Product ID is required." }, { status: 400 });
     }
 
-    const deleted = await deleteAdminProduct(id);
+    const decodedId = decodeURIComponent(id);
+    const deleted = (await deleteAdminProduct(id)) || (await deleteAdminProduct(decodedId));
     return NextResponse.json({ success: deleted });
   } catch (err: any) {
     return NextResponse.json({ error: err.message || "Failed to delete product" }, { status: 500 });

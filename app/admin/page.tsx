@@ -97,7 +97,7 @@ export default function AdminPage() {
   // Loading spinner while verifying authentication
   if (checkingAuth) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#f6efe6]">
+      <div className="min-h-screen flex items-center justify-center bg-transparent">
         <div className="text-center space-y-3">
           <Loader2 size={32} className="animate-spin text-[#740707] mx-auto" />
           <p className="text-xs text-[#6f6257] font-medium tracking-wide">
@@ -136,7 +136,7 @@ export default function AdminPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f6efe6] text-[#261c16]">
+    <div className="min-h-screen flex flex-col bg-transparent text-[#261c16]">
       {/* 1. Header */}
       <AdminHeader
         user={session}
@@ -146,19 +146,23 @@ export default function AdminPage() {
       />
 
       {/* 2. Main Body with Sidebar Navigation */}
-      <div className="flex-1 flex flex-col md:flex-row max-w-7xl w-full mx-auto p-4 sm:p-6 gap-6">
+      <div className="flex-1 flex flex-col md:flex-row w-full px-4 sm:px-6 lg:px-8 py-6 gap-6 lg:gap-8">
         {/* Navigation Sidebar */}
-        <aside className="w-full md:w-64 shrink-0 space-y-1.5">
-          <div className="p-3 bg-white border border-[#e2d7c9] shadow-sm rounded-2xl mb-4">
-            <span className="text-[11px] font-mono text-[#7d7064] uppercase block mb-1">Signed In As</span>
-            <span className="text-xs font-bold text-[#261c16] block truncate">{session.email}</span>
-            <span className="text-[10px] text-emerald-700 font-semibold flex items-center gap-1 mt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+        <aside className="w-full md:w-72 lg:w-80 shrink-0 space-y-4">
+          <div className="p-5 sm:p-6 bg-white border border-[#e2d7c9] shadow-sm rounded-2xl">
+            <span className="text-[11px] font-mono font-semibold text-[#7d7064] uppercase tracking-wider block mb-1.5">
+              Signed In As
+            </span>
+            <span className="text-sm sm:text-[15px] font-bold text-[#261c16] block truncate mb-2">
+              {session.email}
+            </span>
+            <span className="text-xs text-emerald-700 font-semibold inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
               <span>Full Access &bull; Super Admin</span>
             </span>
           </div>
 
-          <nav className="space-y-1">
+          <nav className="space-y-2.5">
             {navTabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.key;
@@ -166,27 +170,27 @@ export default function AdminPage() {
                 <button
                   key={tab.key}
                   onClick={() => setActiveTab(tab.key as any)}
-                  className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-semibold transition-all border ${
+                  className={`w-full flex items-center justify-between px-5 py-4 sm:py-4.5 rounded-2xl text-sm sm:text-[15px] font-bold transition-all border min-h-[58px] sm:min-h-[62px] text-left shadow-xs ${
                     isActive
                       ? "bg-[#740707] text-white border-[#5e0606] shadow-md shadow-[#740707]/20"
-                      : "bg-white text-[#6f6257] border-[#e2d7c9] hover:bg-[#ede4d8] hover:text-[#261c16]"
+                      : "bg-white text-[#52443a] border-[#e2d7c9] hover:bg-[#ede4d8] hover:text-[#261c16]"
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <Icon size={16} className={isActive ? "text-white" : "text-[#7d7064]"} />
+                  <div className="flex items-center gap-3.5">
+                    <Icon size={19} className={isActive ? "text-white" : "text-[#740707]"} />
                     <span>{tab.label}</span>
                   </div>
 
                   {tab.badge !== undefined && (
                     <span
-                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                      className={`px-2.5 py-1 rounded-full text-xs font-bold ${
                         isActive
                           ? "bg-white/20 text-white"
                           : tab.badgeColor === "emerald"
                           ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
                           : tab.badgeColor === "amber"
                           ? "bg-amber-50 text-amber-800 border border-amber-200"
-                          : "bg-[#ede4d8] text-[#6f6257]"
+                          : "bg-[#faf6f0] text-[#6f6257] border border-[#e2d7c9]"
                       }`}
                     >
                       {tab.badge}

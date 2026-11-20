@@ -44,7 +44,7 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-[#f8f4ed] via-[#f6efe6] to-[#ede3d5] text-[#261c16]">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-transparent text-[#261c16]">
       <div className="w-full max-w-md">
         {/* Brand Header */}
         <div className="text-center mb-8">

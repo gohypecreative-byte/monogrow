@@ -2,6 +2,23 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    dangerouslyAllowSVG: true,
+    localPatterns: [
+      {
+        pathname: "/**",
+      },
+      {
+        pathname: "**",
+      },
+    ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
   experimental: {
     agentFeedback: true,
   },

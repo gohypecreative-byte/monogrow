@@ -30,7 +30,7 @@
           ],
           "location": "Origin farm estates \u00b7 Harvest procurement",
           "subCaption": "Direct grower partnerships & verified agricultural harvest provenance",
-          "image": "/assets/about-harvest-origin.jpg?v=golden2"
+          "image": "/assets/about-harvest-origin.jpg"
         },
         {
           "id": "purity",
@@ -75,7 +75,7 @@
           ],
           "location": "Wholesale trade desk \u00b7 Strategic partnership",
           "subCaption": "Long-term commercial contracts & dedicated account director support",
-          "image": "/assets/about-partnership-handshake.jpg?v=shake1"
+          "image": "/assets/about-partnership-handshake.jpg"
         }
       ]
     },
@@ -1897,7 +1897,7 @@
     {
       "id": "img-about-origin",
       "fileName": "about-harvest-origin.jpg",
-      "path": "/assets/about-harvest-origin.jpg?v=golden2",
+      "path": "/assets/about-harvest-origin.jpg",
       "category": "About Section",
       "altText": "Golden agricultural grain harvest field at sunrise with morning sunbeams across rolling crops"
     },
@@ -1918,7 +1918,7 @@
     {
       "id": "img-about-partnership",
       "fileName": "about-partnership-handshake.jpg",
-      "path": "/assets/about-partnership-handshake.jpg?v=shake1",
+      "path": "/assets/about-partnership-handshake.jpg",
       "category": "About Section",
       "altText": "Close-up of two hands shaking in commercial business agreement and wholesale partnership"
     },
