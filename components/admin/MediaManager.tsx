@@ -118,7 +118,7 @@ export default function MediaManager({ media, onRefresh }: MediaManagerProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search images by name or path..."
-            className="w-full pl-9 pr-3.5 py-2 bg-white border border-[#e2d7c9] rounded-xl text-xs text-white placeholder-[#9c8e82] focus:outline-none focus:border-[#740707]"
+            className="w-full pl-9 pr-3.5 py-2 bg-white border border-[#e2d7c9] rounded-xl text-xs text-[#261c16] placeholder-[#9c8e82] focus:outline-none focus:border-[#740707]"
           />
         </div>
       </div>
@@ -137,7 +137,7 @@ export default function MediaManager({ media, onRefresh }: MediaManagerProps) {
                 alt={asset.altText}
                 className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
               />
-              <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-black/70 backdrop-blur-md text-[#261c16] border border-[#e2d7c9]">
+              <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-black/70 backdrop-blur-md text-white border border-white/20">
                 {asset.category}
               </span>
             </div>
@@ -162,7 +162,7 @@ export default function MediaManager({ media, onRefresh }: MediaManagerProps) {
                   onClick={() => handleCopyPath(asset.path, asset.id)}
                   className={`px-2.5 py-1 rounded-lg text-[10px] font-medium flex items-center gap-1 transition-all border ${
                     copiedId === asset.id
-                      ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                      ? "bg-emerald-50 text-emerald-700 border-emerald-200"
                       : "bg-[#ede4d8] text-[#40332a] border-[#e2d7c9] hover:bg-[#ede4d8] hover:text-[#261c16]"
                   }`}
                   title="Copy asset path to clipboard"
@@ -208,7 +208,7 @@ export default function MediaManager({ media, onRefresh }: MediaManagerProps) {
                   onChange={(e) => setFileName(e.target.value)}
                   placeholder="e.g. hero-harvest.jpg"
                   required
-                  className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-white focus:outline-none focus:border-[#740707]"
+                  className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-[#261c16] focus:outline-none focus:border-[#740707]"
                 />
               </div>
 
@@ -220,7 +220,7 @@ export default function MediaManager({ media, onRefresh }: MediaManagerProps) {
                   onChange={(e) => setAssetPath(e.target.value)}
                   placeholder="e.g. /assets/hero-harvest.jpg or https://..."
                   required
-                  className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-white focus:outline-none focus:border-[#740707]"
+                  className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-[#261c16] focus:outline-none focus:border-[#740707]"
                 />
               </div>
 
@@ -229,7 +229,7 @@ export default function MediaManager({ media, onRefresh }: MediaManagerProps) {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-white focus:outline-none focus:border-[#740707]"
+                  className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-[#261c16] focus:outline-none focus:border-[#740707]"
                 >
                   <option value="Hero Bowls">Hero Bowls</option>
                   <option value="About Section">About Section</option>
@@ -246,7 +246,7 @@ export default function MediaManager({ media, onRefresh }: MediaManagerProps) {
                   value={altText}
                   onChange={(e) => setAltText(e.target.value)}
                   placeholder="Descriptive caption for screen readers"
-                  className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-white focus:outline-none focus:border-[#740707]"
+                  className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-[#261c16] focus:outline-none focus:border-[#740707]"
                 />
               </div>
 

@@ -14,8 +14,10 @@ export default function NeonDbManager() {
   const fetchStatus = async () => {
     try {
       const res = await fetch("/api/admin/neon");
-      const data = await res.json();
-      setStatus(data.status);
+      if (res.ok) {
+        const data = await res.json();
+        setStatus(data.status || null);
+      }
     } catch (err) {
       console.error("Neon status error:", err);
     } finally {
@@ -232,7 +234,7 @@ export default function NeonDbManager() {
             value={customConnStr}
             onChange={(e) => setCustomConnStr(e.target.value)}
             placeholder="postgresql://[user]:[password]@[endpoint].neon.tech/neondb?sslmode=require"
-            className="w-full px-3.5 py-2.5 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-xs text-white font-mono placeholder-[#9c8e82] focus:outline-none focus:border-[#740707]"
+            className="w-full px-3.5 py-2.5 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-xs text-[#261c16] font-mono placeholder-[#9c8e82] focus:outline-none focus:border-[#740707]"
           />
           <span className="text-[11px] text-[#7d7064] mt-1 block">
             Leave blank to use the active <code className="text-[#40332a]">process.env.DATABASE_URL</code>, or paste your connection string here to test.

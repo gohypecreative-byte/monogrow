@@ -20,7 +20,16 @@ interface ProductsManagerProps {
   onRefresh: () => void;
 }
 
-export default function ProductsManager({ products, onRefresh }: ProductsManagerProps) {
+function safeImgSrc(src?: string): string {
+  if (!src || !src.trim()) return "/assets/monagrow-rice-bag-cutout.png";
+  const clean = src.trim();
+  if (clean.startsWith("http://") || clean.startsWith("https://") || clean.startsWith("/")) {
+    return clean;
+  }
+  return `/${clean}`;
+}
+
+export default function ProductsManager({ products = [], onRefresh }: ProductsManagerProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -32,27 +41,33 @@ export default function ProductsManager({ products, onRefresh }: ProductsManager
     setTimeout(() => setStatusMsg(null), 4000);
   };
 
-  // Filter products
-  const filteredProducts = products.filter((p) => {
+  const safeProducts = Array.isArray(products) ? products : [];
+
+  // Filter products safely
+  const q = searchQuery.toLowerCase().trim();
+  const filteredProducts = safeProducts.filter((p) => {
     const matchesCat = selectedCategory === "all" || p.categoryKey === selectedCategory;
-    const matchesSearch =
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.originBadge.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.variations.some(
-        (v) =>
-          v.sku.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          v.weight.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    return matchesCat && matchesSearch;
+    if (!matchesCat) return false;
+    if (!q) return true;
+
+    const matchesName = (p.name || "").toLowerCase().includes(q);
+    const matchesCategory = (p.category || "").toLowerCase().includes(q);
+    const matchesOrigin = (p.originBadge || "").toLowerCase().includes(q);
+    const matchesVariations = (p.variations || []).some(
+      (v) =>
+        (v.sku || "").toLowerCase().includes(q) ||
+        (v.weight || "").toLowerCase().includes(q)
+    );
+
+    return matchesName || matchesCategory || matchesOrigin || matchesVariations;
   });
 
   const categories = [
-    { key: "all", name: "All", count: products.length },
-    { key: "rice", name: "Rice", count: products.filter((p) => p.categoryKey === "rice").length },
-    { key: "coffee", name: "Coffee", count: products.filter((p) => p.categoryKey === "coffee").length },
-    { key: "dry-fruits", name: "Dry Fruits", count: products.filter((p) => p.categoryKey === "dry-fruits").length },
-    { key: "sugar", name: "Sugar", count: products.filter((p) => p.categoryKey === "sugar").length },
+    { key: "all", name: "All", count: safeProducts.length },
+    { key: "rice", name: "Rice", count: safeProducts.filter((p) => p.categoryKey === "rice").length },
+    { key: "coffee", name: "Coffee", count: safeProducts.filter((p) => p.categoryKey === "coffee").length },
+    { key: "dry-fruits", name: "Dry Fruits", count: safeProducts.filter((p) => p.categoryKey === "dry-fruits").length },
+    { key: "sugar", name: "Sugar", count: safeProducts.filter((p) => p.categoryKey === "sugar").length },
   ];
 
   // Delete product
@@ -199,10 +214,11 @@ export default function ProductsManager({ products, onRefresh }: ProductsManager
                           title="Click to edit product"
                         >
                           <Image
-                            src={product.packImg || "/assets/monagrow-rice-bag-cutout.png"}
-                            alt={product.name}
+                            src={safeImgSrc(product.packImg)}
+                            alt={product.name || "Commodity"}
                             width={44}
                             height={44}
+                            unoptimized
                             className="object-contain transition-transform group-hover:scale-105"
                           />
                         </Link>

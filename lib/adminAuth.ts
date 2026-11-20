@@ -39,7 +39,7 @@ export function verifySessionToken(token: string): AdminSession | null {
 
     const payload = JSON.parse(Buffer.from(str, "base64url").toString("utf8")) as AdminSession;
     if (payload.exp < Date.now()) return null;
-    if (payload.email !== ADMIN_CREDENTIALS.email) return null;
+    if (payload.email.trim().toLowerCase() !== ADMIN_CREDENTIALS.email.trim().toLowerCase()) return null;
 
     return payload;
   } catch {

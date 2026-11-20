@@ -48,8 +48,8 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
         <div
           className={`p-3.5 rounded-xl text-xs font-medium border flex items-center justify-between shadow-xl transition-all ${
             statusMsg.type === "success"
-              ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-300"
-              : "bg-red-500/15 border-red-500/30 text-red-300"
+              ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+              : "bg-red-50 text-red-800 border-red-200"
           }`}
         >
           <div className="flex items-center gap-2">
@@ -196,7 +196,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                         updated[selectedCardIdx] = { ...card, stepTag: e.target.value };
                         setContent({ ...content, about: { ...content.about, cards: updated } });
                       }}
-                      className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white font-mono text-xs focus:outline-none focus:border-[#740707]"
+                      className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] font-mono text-xs focus:outline-none focus:border-[#740707]"
                     />
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                       updated[selectedCardIdx] = { ...card, headline: e.target.value };
                       setContent({ ...content, about: { ...content.about, cards: updated } });
                     }}
-                    className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-sm font-semibold focus:outline-none focus:border-[#740707]"
+                    className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-sm font-semibold focus:outline-none focus:border-[#740707]"
                   />
                 </div>
 
@@ -229,7 +229,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                       updated[selectedCardIdx] = { ...card, copy: e.target.value };
                       setContent({ ...content, about: { ...content.about, cards: updated } });
                     }}
-                    className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-xs leading-relaxed focus:outline-none focus:border-[#740707]"
+                    className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-xs leading-relaxed focus:outline-none focus:border-[#740707]"
                   />
                 </div>
 
@@ -254,7 +254,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                             updated[selectedCardIdx] = { ...card, specs: newSpecs };
                             setContent({ ...content, about: { ...content.about, cards: updated } });
                           }}
-                          className="flex-1 px-3 py-1.5 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-xs text-white focus:outline-none focus:border-[#740707]"
+                          className="flex-1 px-3 py-1.5 bg-[#faf6f0] border border-[#e2d7c9] rounded-lg text-xs text-[#261c16] focus:outline-none focus:border-[#740707]"
                         />
                       </div>
                     ))}
@@ -276,7 +276,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                           updated[selectedCardIdx] = { ...card, image: e.target.value };
                           setContent({ ...content, about: { ...content.about, cards: updated } });
                         }}
-                        className="flex-1 px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-xs text-white focus:outline-none focus:border-[#740707]"
+                        className="flex-1 px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-xs text-[#261c16] focus:outline-none focus:border-[#740707]"
                       />
                     </div>
                     <span className="text-[11px] text-[#7d7064] mt-1 block">
@@ -296,7 +296,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                         updated[selectedCardIdx] = { ...card, location: e.target.value };
                         setContent({ ...content, about: { ...content.about, cards: updated } });
                       }}
-                      className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-xs text-white focus:outline-none focus:border-[#740707]"
+                      className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-xs text-[#261c16] focus:outline-none focus:border-[#740707]"
                     />
                   </div>
                 </div>
@@ -348,7 +348,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
               type="text"
               value={content.hero.kicker}
               onChange={(e) => setContent({ ...content, hero: { ...content.hero, kicker: e.target.value } })}
-              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-xs font-mono focus:outline-none focus:border-[#740707]"
+              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-xs font-mono focus:outline-none focus:border-[#740707]"
             />
           </div>
 
@@ -359,7 +359,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                 type="text"
                 value={content.hero.headingLine1}
                 onChange={(e) => setContent({ ...content, hero: { ...content.hero, headingLine1: e.target.value } })}
-                className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-sm focus:outline-none focus:border-[#740707]"
+                className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-sm focus:outline-none focus:border-[#740707]"
               />
             </div>
             <div>
@@ -368,7 +368,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                 type="text"
                 value={content.hero.headingItalic}
                 onChange={(e) => setContent({ ...content, hero: { ...content.hero, headingItalic: e.target.value } })}
-                className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#ff8080] italic text-sm font-serif focus:outline-none focus:border-[#740707]"
+                className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#740707] italic text-sm font-serif focus:outline-none focus:border-[#740707]"
               />
             </div>
             <div>
@@ -377,7 +377,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                 type="text"
                 value={content.hero.headingLine2}
                 onChange={(e) => setContent({ ...content, hero: { ...content.hero, headingLine2: e.target.value } })}
-                className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-sm focus:outline-none focus:border-[#740707]"
+                className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-sm focus:outline-none focus:border-[#740707]"
               />
             </div>
           </div>
@@ -388,7 +388,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
               rows={3}
               value={content.hero.subheading}
               onChange={(e) => setContent({ ...content, hero: { ...content.hero, subheading: e.target.value } })}
-              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-xs leading-relaxed focus:outline-none focus:border-[#740707]"
+              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-xs leading-relaxed focus:outline-none focus:border-[#740707]"
             />
           </div>
 
@@ -431,7 +431,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
               type="text"
               value={content.philosophy.title}
               onChange={(e) => setContent({ ...content, philosophy: { ...content.philosophy, title: e.target.value } })}
-              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-sm font-semibold focus:outline-none focus:border-[#740707]"
+              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-sm font-semibold focus:outline-none focus:border-[#740707]"
             />
           </div>
 
@@ -439,7 +439,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
             {content.philosophy.pillars.map((pillar, pIdx) => (
               <div key={pIdx} className="p-4 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#ff8080] uppercase">
+                  <span className="text-xs font-bold text-[#740707] uppercase">
                     Pillar 0{pIdx + 1}: {pillar.name}
                   </span>
                 </div>
@@ -454,7 +454,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                         newPillars[pIdx] = { ...pillar, title: e.target.value };
                         setContent({ ...content, philosophy: { ...content.philosophy, pillars: newPillars } });
                       }}
-                      className="w-full px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs text-white focus:outline-none focus:border-[#740707]"
+                      className="w-full px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs text-[#261c16] focus:outline-none focus:border-[#740707]"
                     />
                   </div>
                   <div>
@@ -467,7 +467,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                         newPillars[pIdx] = { ...pillar, name: e.target.value };
                         setContent({ ...content, philosophy: { ...content.philosophy, pillars: newPillars } });
                       }}
-                      className="w-full px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs text-white focus:outline-none focus:border-[#740707]"
+                      className="w-full px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs text-[#261c16] focus:outline-none focus:border-[#740707]"
                     />
                   </div>
                 </div>
@@ -481,7 +481,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
                       newPillars[pIdx] = { ...pillar, copy: e.target.value };
                       setContent({ ...content, philosophy: { ...content.philosophy, pillars: newPillars } });
                     }}
-                    className="w-full px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs text-white focus:outline-none focus:border-[#740707]"
+                    className="w-full px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs text-[#261c16] focus:outline-none focus:border-[#740707]"
                   />
                 </div>
               </div>
@@ -526,7 +526,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
               type="text"
               value={content.announcement.text}
               onChange={(e) => setContent({ ...content, announcement: { ...content.announcement, text: e.target.value } })}
-              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-xs focus:outline-none focus:border-[#740707]"
+              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-xs focus:outline-none focus:border-[#740707]"
             />
           </div>
 
@@ -537,7 +537,7 @@ export default function ContentManager({ initialContent, onRefresh }: ContentMan
               value={content.announcement.link}
               onChange={(e) => setContent({ ...content, announcement: { ...content.announcement, link: e.target.value } })}
               placeholder="/contact or https://..."
-              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-white text-xs focus:outline-none focus:border-[#740707]"
+              className="w-full px-3 py-2 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-[#261c16] text-xs focus:outline-none focus:border-[#740707]"
             />
           </div>
         </div>

@@ -24,9 +24,18 @@ export function parseNeonConnectionString(connStr?: string): NeonConfig | null {
     // strip '-pooler' so the HTTP SQL proxy resolves directly to the serverless proxy.
     const httpHost = host.replace("-pooler", "");
 
+    // Clean connection string for Neon HTTP Proxy:
+    // 1. Strip -pooler from host in the connection string
+    // 2. Remove channel_binding parameter (HTTP proxy doesn't support channel_binding)
+    let cleanConnStr = str.replace(host, httpHost);
+    cleanConnStr = cleanConnStr
+      .replace(/([?&])channel_binding=[^&]*(&|$)/g, "$1")
+      .replace(/\?&/, "?")
+      .replace(/[?&]$/, "");
+
     return {
-      connectionString: str,
-      host,
+      connectionString: cleanConnStr,
+      host: httpHost,
       user,
       database,
       endpoint: `https://${httpHost}/sql`,

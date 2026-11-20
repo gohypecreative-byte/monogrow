@@ -29,11 +29,12 @@ import AdminLogin from "@/components/admin/AdminLogin";
 import AdminHeader from "@/components/admin/AdminHeader";
 import { AdminProduct, ProductVariation } from "@/lib/db";
 
-// Global Trade Currencies with Priority Currencies for Monagrow UAE & Global Commodity Trade
+// Global Trade Currencies with Priority: NPR (Topmost), INR (2nd), USD (3rd), followed by others
 export const PRIORITY_CURRENCIES = [
+  { code: "NPR", symbol: "रू", name: "Nepalese Rupee", region: "Nepal Commercial Trade" },
+  { code: "INR", symbol: "₹", name: "Indian Rupee", region: "Origin Agricultural Belt" },
   { code: "USD", symbol: "$", name: "US Dollar", region: "Global Commodity Standard" },
   { code: "AED", symbol: "AED", name: "UAE Dirham", region: "Monagrow UAE Headquarters" },
-  { code: "INR", symbol: "₹", name: "Indian Rupee", region: "Origin Agricultural Belt" },
   { code: "EUR", symbol: "€", name: "Euro", region: "European Wholesale" },
   { code: "GBP", symbol: "£", name: "British Pound", region: "United Kingdom" },
   { code: "SAR", symbol: "SAR", name: "Saudi Riyal", region: "GCC & Middle East" },
@@ -108,7 +109,7 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
         weight: "1 kg",
         unit: "kg",
         price: 4.5,
-        currency: "USD",
+        currency: "NPR",
         sku: "MNG-PROD-1KG",
         packageType: "Aroma-Lock Standup Pouch",
         inStock: true,
@@ -130,7 +131,7 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
   const [newVarWeight, setNewVarWeight] = useState("");
   const [newVarUnit, setNewVarUnit] = useState("kg");
   const [newVarPrice, setNewVarPrice] = useState("");
-  const [newVarCurrency, setNewVarCurrency] = useState("USD");
+  const [newVarCurrency, setNewVarCurrency] = useState("NPR");
   const [newVarSku, setNewVarSku] = useState("");
   const [newVarPkg, setNewVarPkg] = useState("Aroma-Lock Standup Pouch");
   const [newVarMoq, setNewVarMoq] = useState(1);
@@ -183,7 +184,12 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
         }
         const data = await res.json();
         if (data.product) {
-          setProduct(data.product);
+          setProduct({
+            ...data.product,
+            variations: data.product.variations || [],
+            specs: data.product.specs || [],
+            keyHighlights: data.product.keyHighlights || [],
+          });
         } else {
           throw new Error("Product data is empty");
         }
@@ -306,7 +312,7 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
       weight: newVarWeight.trim(),
       unit: newVarUnit.trim() || "kg",
       price: priceNum,
-      currency: newVarCurrency || "USD",
+      currency: newVarCurrency || "NPR",
       sku: generatedSku,
       packageType: newVarPkg.trim() || "Commercial Packaging",
       inStock: newVarInStock,
@@ -329,7 +335,7 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
 
   // Quick Preset Add
   const handleQuickAddPreset = (weightPreset: string, pkgPreset: string, priceEstimate: number) => {
-    const defaultCurrency = product.variations[0]?.currency || newVarCurrency || "USD";
+    const defaultCurrency = product.variations[0]?.currency || newVarCurrency || "NPR";
     const skuCode = `MNG-${product.categoryKey.slice(0, 3).toUpperCase()}-${weightPreset.replace(/\s+/g, "").toUpperCase()}`;
     const newVariation: ProductVariation = {
       id: `var-${product.id || "p"}-${Date.now()}`,
@@ -825,7 +831,7 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
                 <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#faf6f0] border border-[#e2d7c9] rounded-xl text-xs">
                   <span className="text-[#6f6257] font-semibold text-[11px] whitespace-nowrap">Currency:</span>
                   <select
-                    value={product.variations[0]?.currency || newVarCurrency || "USD"}
+                    value={product.variations[0]?.currency || newVarCurrency || "NPR"}
                     onChange={(e) => handleApplyCurrencyToAll(e.target.value)}
                     className="bg-transparent font-bold text-[#740707] focus:outline-none cursor-pointer text-xs"
                     title="Set currency for all variations"
@@ -833,14 +839,14 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
                     <optgroup label="⭐ Priority Currencies">
                       {PRIORITY_CURRENCIES.map((c) => (
                         <option key={c.code} value={c.code}>
-                          {c.symbol} {c.code} ({c.name})
+                          {c.code} ({c.name})
                         </option>
                       ))}
                     </optgroup>
                     <optgroup label="Other Global Currencies">
                       {OTHER_CURRENCIES.map((c) => (
                         <option key={c.code} value={c.code}>
-                          {c.symbol} {c.code} ({c.name})
+                          {c.code} ({c.name})
                         </option>
                       ))}
                     </optgroup>
@@ -955,14 +961,14 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
                         <optgroup label="⭐ Priority Currencies">
                           {PRIORITY_CURRENCIES.map((c) => (
                             <option key={c.code} value={c.code}>
-                              {c.symbol} {c.code}
+                              {c.code}
                             </option>
                           ))}
                         </optgroup>
                         <optgroup label="Other Currencies">
                           {OTHER_CURRENCIES.map((c) => (
                             <option key={c.code} value={c.code}>
-                              {c.symbol} {c.code}
+                              {c.code}
                             </option>
                           ))}
                         </optgroup>
@@ -1131,24 +1137,24 @@ export default function ProductEditPage({ isNewProp }: { isNewProp?: boolean }) 
                           <td className="py-2.5 px-3.5">
                             <div className="flex items-center gap-1.5 font-semibold text-[#261c16]">
                               <select
-                                value={v.currency || "USD"}
+                                value={v.currency || "NPR"}
                                 onChange={(e) =>
                                   handleUpdateVariationField(v.id, "currency", e.target.value)
                                 }
                                 className="px-2 py-1 bg-[#faf6f0] border border-[#e2d7c9] rounded text-xs font-bold text-[#261c16] focus:bg-white focus:border-[#740707] cursor-pointer"
                                 title="Select currency"
                               >
-                                <optgroup label="⭐ Priority">
+                                <optgroup label="⭐ Priority Currencies">
                                   {PRIORITY_CURRENCIES.map((c) => (
                                     <option key={c.code} value={c.code}>
-                                      {c.symbol} {c.code}
+                                      {c.code}
                                     </option>
                                   ))}
                                 </optgroup>
-                                <optgroup label="Other">
+                                <optgroup label="Other Currencies">
                                   {OTHER_CURRENCIES.map((c) => (
                                     <option key={c.code} value={c.code}>
-                                      {c.symbol} {c.code}
+                                      {c.code}
                                     </option>
                                   ))}
                                 </optgroup>

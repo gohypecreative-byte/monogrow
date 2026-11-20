@@ -28,28 +28,26 @@ export default function AdminPage() {
   const loadAllData = async () => {
     setLoadingData(true);
     try {
-      const [prodRes, contentRes, mediaRes, neonRes] = await Promise.all([
-        fetch("/api/admin/products"),
-        fetch("/api/admin/content"),
-        fetch("/api/admin/media"),
-        fetch("/api/admin/neon"),
+      const results = await Promise.allSettled([
+        fetch("/api/admin/products").then((r) => (r.ok ? r.json() : null)),
+        fetch("/api/admin/content").then((r) => (r.ok ? r.json() : null)),
+        fetch("/api/admin/media").then((r) => (r.ok ? r.json() : null)),
+        fetch("/api/admin/neon").then((r) => (r.ok ? r.json() : null)),
       ]);
 
-      if (prodRes.ok) {
-        const pData = await prodRes.json();
-        setProducts(pData.products || []);
+      const [prodRes, contentRes, mediaRes, neonRes] = results;
+
+      if (prodRes.status === "fulfilled" && prodRes.value?.products) {
+        setProducts(prodRes.value.products);
       }
-      if (contentRes.ok) {
-        const cData = await contentRes.json();
-        setContent(cData.content);
+      if (contentRes.status === "fulfilled" && contentRes.value?.content) {
+        setContent(contentRes.value.content);
       }
-      if (mediaRes.ok) {
-        const mData = await mediaRes.json();
-        setMedia(mData.registered || []);
+      if (mediaRes.status === "fulfilled" && mediaRes.value?.registered) {
+        setMedia(mediaRes.value.registered);
       }
-      if (neonRes.ok) {
-        const nData = await neonRes.json();
-        setNeonStatus(nData.status);
+      if (neonRes.status === "fulfilled" && neonRes.value?.status) {
+        setNeonStatus(neonRes.value.status);
       }
     } catch (err) {
       console.error("Error loading admin data:", err);
@@ -211,11 +209,18 @@ export default function AdminPage() {
             />
           )}
 
-          {activeTab === "content" && content && (
-            <ContentManager
-              initialContent={content}
-              onRefresh={loadAllData}
-            />
+          {activeTab === "content" && (
+            content ? (
+              <ContentManager
+                initialContent={content}
+                onRefresh={loadAllData}
+              />
+            ) : (
+              <div className="bg-white border border-[#e2d7c9] shadow-sm rounded-2xl p-12 text-center space-y-3">
+                <Loader2 size={28} className="animate-spin text-[#740707] mx-auto" />
+                <p className="text-xs text-[#6f6257] font-medium">Loading website content...</p>
+              </div>
+            )
           )}
 
           {activeTab === "media" && (

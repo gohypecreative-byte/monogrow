@@ -341,11 +341,19 @@ export async function testNeonConnection(customConnStr?: string) {
 }
 
 export async function initializeNeonTables(customConnStr?: string) {
-  const result = await executeNeonQuery(NEON_SCHEMA_SQL, [], customConnStr);
+  // Execute table definitions individually to ensure reliable execution across Neon HTTP proxy
+  const statements = NEON_SCHEMA_SQL.split(";")
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0 && !s.startsWith("--"));
+
+  for (const stmt of statements) {
+    await executeNeonQuery(stmt, [], customConnStr);
+  }
+
   const store = readStore();
   store.neon.tablesInitialized = true;
   writeStore(store);
-  return { success: true, result };
+  return { success: true, count: statements.length };
 }
 
 export async function syncLocalToNeon(customConnStr?: string) {
