@@ -53,7 +53,7 @@ export default function CompanyPhilosophy() {
       <div className={styles.container}>
         <header ref={founderNote} className={styles.founderIntro}>
           <p className={styles.founderBadge}><span aria-hidden="true" />Monagrow Founder&apos;s Note</p>
-          <h2 id="origin-heading" className={styles.founderTitle}>Good ingredients.<br /><em>Relationships that last.</em></h2>
+          <h2 id="origin-heading" className={styles.founderTitle}>Good ingredients.<br /><span className={styles.founderAccent}>Relationships that last.</span></h2>
           <figure className={styles.founderCard}>
             <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
             <blockquote className={styles.founderLetter}>

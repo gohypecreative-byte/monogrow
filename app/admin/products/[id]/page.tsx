@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,14 +16,11 @@ import {
   X,
   AlertCircle,
   Tag,
-  DollarSign,
   Layers,
   Sparkles,
   Loader2,
   Eye,
-  ExternalLink,
-  Shield,
-  HelpCircle,
+  Upload,
 } from "lucide-react";
 import AdminLogin from "@/components/admin/AdminLogin";
 import AdminHeader from "@/components/admin/AdminHeader";
@@ -67,7 +64,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
   const isNew = isNewProp || !rawId || rawId === "new";
   const productId = isNew ? "" : decodeURIComponent(rawId);
 
-  // Image sanitization helper to guarantee leading slash and avoid Next.js Image runtime errors
+  // Image sanitization helper
   const sanitizeImgSrc = (src?: string) => {
     if (!src || !src.trim()) return "";
     const clean = src.trim();
@@ -113,7 +110,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     ],
     variations: [
       {
-        id: `var-${Date.now()}-1`,
+        id: "var-init-1",
         weight: "1 kg",
         unit: "kg",
         price: 4.5,
@@ -127,7 +124,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     ],
     isActive: true,
     isFeatured: false,
-    updatedAt: new Date().toISOString(),
+    updatedAt: "",
   });
 
   // Saving state & Toast
@@ -145,6 +142,14 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
   const [newVarMoq, setNewVarMoq] = useState(1);
   const [newVarInStock, setNewVarInStock] = useState(true);
 
+  // Image Upload & Drag-and-Drop state
+  const packInputRef = useRef<HTMLInputElement | null>(null);
+  const bowlInputRef = useRef<HTMLInputElement | null>(null);
+  const [isUploadingPack, setIsUploadingPack] = useState(false);
+  const [isUploadingBowl, setIsUploadingBowl] = useState(false);
+  const [isDraggingPack, setIsDraggingPack] = useState(false);
+  const [isDraggingBowl, setIsDraggingBowl] = useState(false);
+
   // Check Auth
   const checkAuth = async () => {
     try {
@@ -153,7 +158,6 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
         const data = await res.json();
         if (data.authenticated) {
           setSession(data.user);
-          // Check neon status
           fetch("/api/admin/neon")
             .then((r) => r.json())
             .then((d) => setNeonConnected(Boolean(d?.status?.isConfigured)))
@@ -187,9 +191,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
       setLoadError(null);
       try {
         const res = await fetch(`/api/admin/products?id=${encodeURIComponent(productId)}`);
-        if (!res.ok) {
-          throw new Error("Product not found or failed to load");
-        }
+        if (!res.ok) throw new Error("Product not found or failed to load");
         const data = await res.json();
         if (data.product) {
           setProduct({
@@ -214,6 +216,84 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
   const showToast = (text: string, type: "success" | "error" = "success") => {
     setToastMsg({ type, text });
     setTimeout(() => setToastMsg(null), 4000);
+  };
+
+  // Image Upload Handlers
+  const MAX_UPLOAD_BYTES = 20 * 1024 * 1024; // 20 MB
+
+  const handleFileUpload = async (
+    file: File,
+    targetField: "packImg" | "bowlImg",
+    category: string
+  ) => {
+    if (file.size > MAX_UPLOAD_BYTES) {
+      const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+      showToast(`File size (${sizeMb} MB) exceeds the 20 MB limit.`, "error");
+      return;
+    }
+    if (!file.type.startsWith("image/") && !/\.(jpg|jpeg|png|webp|svg|gif|avif)$/i.test(file.name)) {
+      showToast("Invalid file format. Please upload an image file.", "error");
+      return;
+    }
+
+    const isPack = targetField === "packImg";
+    if (isPack) setIsUploadingPack(true);
+    else setIsUploadingBowl(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("category", category);
+
+      const res = await fetch("/api/admin/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to upload image");
+
+      setProduct((prev) => {
+        const altField = isPack ? "packAlt" : "bowlAlt";
+        const currentAlt = prev[altField];
+        const defaultAlt = isPack
+          ? `Monagrow ${prev.name} retail packaging`
+          : `Monagrow ${prev.name} commodity presentation`;
+        return {
+          ...prev,
+          [targetField]: data.url,
+          [altField]: currentAlt && currentAlt.trim() ? currentAlt : defaultAlt,
+        };
+      });
+
+      showToast(`Image uploaded successfully (${data.formattedSize})!`);
+    } catch (err: any) {
+      showToast(err.message || "Failed to upload image", "error");
+    } finally {
+      if (isPack) setIsUploadingPack(false);
+      else setIsUploadingBowl(false);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent, setDragging: (val: boolean) => void) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent, setDragging: (val: boolean) => void) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragging(false);
+  };
+
+  const handleDrop = (
+    e: React.DragEvent,
+    targetField: "packImg" | "bowlImg",
+    category: string,
+    setDragging: (val: boolean) => void
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragging(false);
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) handleFileUpload(files[0], targetField, category);
   };
 
   // Handle Category Change
@@ -248,10 +328,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
   };
 
   const handleRemoveSpec = (index: number) => {
-    setProduct((prev) => ({
-      ...prev,
-      specs: prev.specs.filter((_, i) => i !== index),
-    }));
+    setProduct((prev) => ({ ...prev, specs: prev.specs.filter((_, i) => i !== index) }));
   };
 
   // Highlights helpers
@@ -289,10 +366,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     if (product.variations.length <= 1) {
       if (!confirm("This product will have no weight variations configured. Continue?")) return;
     }
-    setProduct((prev) => ({
-      ...prev,
-      variations: prev.variations.filter((v) => v.id !== varId),
-    }));
+    setProduct((prev) => ({ ...prev, variations: prev.variations.filter((v) => v.id !== varId) }));
     showToast("Weight variation removed.");
   };
 
@@ -328,20 +402,14 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
       sortOrder: product.variations.length,
     };
 
-    setProduct((prev) => ({
-      ...prev,
-      variations: [...prev.variations, newVariation],
-    }));
-
+    setProduct((prev) => ({ ...prev, variations: [...prev.variations, newVariation] }));
     showToast(`Added weight variation: ${newVariation.weight}`);
-    // Reset form
     setNewVarWeight("");
     setNewVarPrice("");
     setNewVarSku("");
     setShowAddVariation(false);
   };
 
-  // Quick Preset Add
   const handleQuickAddPreset = (weightPreset: string, pkgPreset: string, priceEstimate: number) => {
     const defaultCurrency = product.variations[0]?.currency || newVarCurrency || "NPR";
     const skuCode = `MNG-${product.categoryKey.slice(0, 3).toUpperCase()}-${weightPreset.replace(/\s+/g, "").toUpperCase()}`;
@@ -357,15 +425,10 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
       minOrderQty: 1,
       sortOrder: product.variations.length,
     };
-
-    setProduct((prev) => ({
-      ...prev,
-      variations: [...prev.variations, newVariation],
-    }));
+    setProduct((prev) => ({ ...prev, variations: [...prev.variations, newVariation] }));
     showToast(`Quick added variation: ${weightPreset}`);
   };
 
-  // Batch update currency across all variations
   const handleApplyCurrencyToAll = (targetCurrency: string) => {
     setProduct((prev) => ({
       ...prev,
@@ -375,10 +438,8 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     showToast(`Currency updated to ${targetCurrency} for all variations.`);
   };
 
-  // Save product changes
   const handleSaveProduct = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-
     if (!product.name.trim()) {
       showToast("Product name is required", "error");
       return;
@@ -386,7 +447,12 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
 
     setIsSaving(true);
     try {
-      const finalId = product.id.trim() || product.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      const finalId =
+        product.id.trim() ||
+        product.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
       const payload: AdminProduct = {
         ...product,
         id: finalId,
@@ -405,11 +471,8 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
       if (!res.ok) throw new Error(data.error || "Failed to save product");
 
       showToast(`Product "${payload.name}" and all weight variations saved successfully!`);
-
       if (isNew) {
-        setTimeout(() => {
-          router.push(`/admin/products/${finalId}`);
-        }, 1200);
+        setTimeout(() => router.push(`/admin/products/${finalId}`), 1200);
       }
     } catch (err: any) {
       showToast(err.message || "Failed to save changes", "error");
@@ -418,12 +481,8 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     }
   };
 
-  // Delete Product
   const handleDeleteProduct = async () => {
-    if (!confirm(`Are you sure you want to delete "${product.name}"? This action cannot be undone.`)) {
-      return;
-    }
-
+    if (!confirm(`Are you sure you want to delete "${product.name}"? This action cannot be undone.`)) return;
     try {
       const res = await fetch(`/api/admin/products?id=${encodeURIComponent(product.id)}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete product");
@@ -434,7 +493,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     }
   };
 
-  // Auth Checking Screen
+  // ── Auth Checking Screen ──────────────────────────────────────────────────
   if (checkingAuth) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
@@ -448,18 +507,16 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     );
   }
 
-  // Not Logged In
+  // ── Not Logged In ─────────────────────────────────────────────────────────
   if (!session) {
     return (
       <AdminLogin
-        onLoginSuccess={(user) => {
-          setSession(user);
-        }}
+        onLoginSuccess={(user) => setSession(user)}
       />
     );
   }
 
-  // Loading Product Data
+  // ── Loading Product Data ──────────────────────────────────────────────────
   if (loadingProduct) {
     return (
       <div className="min-h-screen bg-transparent text-[#261c16]">
@@ -467,10 +524,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
           user={session}
           neonConnected={neonConnected}
           onSelectTab={() => router.push("/admin")}
-          onLogout={() => {
-            fetch("/api/admin/auth/logout", { method: "POST" });
-            setSession(null);
-          }}
+          onLogout={() => { fetch("/api/admin/auth/logout", { method: "POST" }); setSession(null); }}
         />
         <div className="max-w-5xl mx-auto p-12 text-center space-y-3">
           <Loader2 size={32} className="animate-spin text-[#740707] mx-auto" />
@@ -480,7 +534,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     );
   }
 
-  // Error Loading Product
+  // ── Error Loading Product ─────────────────────────────────────────────────
   if (loadError) {
     return (
       <div className="min-h-screen bg-transparent text-[#261c16]">
@@ -488,10 +542,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
           user={session}
           neonConnected={neonConnected}
           onSelectTab={() => router.push("/admin")}
-          onLogout={() => {
-            fetch("/api/admin/auth/logout", { method: "POST" });
-            setSession(null);
-          }}
+          onLogout={() => { fetch("/api/admin/auth/logout", { method: "POST" }); setSession(null); }}
         />
         <div className="max-w-2xl mx-auto p-8 mt-12 bg-white border border-red-200 rounded-2xl text-center space-y-4 shadow-sm">
           <AlertCircle size={36} className="text-red-500 mx-auto" />
@@ -513,17 +564,15 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     );
   }
 
+  // ── Main Editor ───────────────────────────────────────────────────────────
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[#261c16]">
-      {/* 1. Header */}
+      {/* Header */}
       <AdminHeader
         user={session}
         neonConnected={neonConnected}
         onSelectTab={() => router.push("/admin")}
-        onLogout={() => {
-          fetch("/api/admin/auth/logout", { method: "POST" });
-          setSession(null);
-        }}
+        onLogout={() => { fetch("/api/admin/auth/logout", { method: "POST" }); setSession(null); }}
       />
 
       {/* Toast Alert */}
@@ -545,7 +594,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
         </div>
       )}
 
-      {/* 2. Main Page Container */}
+      {/* Main Page Container */}
       <main className="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
         {/* Top Navigation & Breadcrumbs */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#e2d7c9]">
@@ -608,11 +657,9 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
           </div>
         </div>
 
-        {/* ------------------------------------------------------------- */}
-        {/* EDIT FORM                                                     */}
-        {/* ------------------------------------------------------------- */}
+        {/* EDIT FORM */}
         <form onSubmit={handleSaveProduct} className="space-y-6">
-          {/* CARD 1: BASIC INFORMATION */}
+          {/* ── CARD 1: BASIC INFORMATION ─────────────────────────────────── */}
           <section className="bg-white border border-[#e2d7c9] rounded-2xl p-5 sm:p-6 shadow-sm space-y-5">
             <div className="border-b border-[#f0e7dc] pb-3">
               <h2 className="text-base font-bold text-[#261c16] flex items-center gap-2">
@@ -658,9 +705,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-[#261c16] mb-1.5">
-                  Eyebrow / Kicker
-                </label>
+                <label className="block text-xs font-bold text-[#261c16] mb-1.5">Eyebrow / Kicker</label>
                 <input
                   type="text"
                   value={product.kicker}
@@ -671,9 +716,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#261c16] mb-1.5">
-                  Quote Modal Name
-                </label>
+                <label className="block text-xs font-bold text-[#261c16] mb-1.5">Quote Modal Name</label>
                 <input
                   type="text"
                   value={product.quoteName}
@@ -711,9 +754,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#261c16] mb-1.5">
-                Origin Badge Text
-              </label>
+              <label className="block text-xs font-bold text-[#261c16] mb-1.5">Origin Badge Text</label>
               <input
                 type="text"
                 value={product.originBadge}
@@ -724,7 +765,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
             </div>
           </section>
 
-          {/* CARD 2: MEDIA ASSETS & VISUAL PREVIEWS */}
+          {/* ── CARD 2: MEDIA ASSETS ──────────────────────────────────────── */}
           <section className="bg-white border border-[#e2d7c9] rounded-2xl p-5 sm:p-6 shadow-sm space-y-5">
             <div className="border-b border-[#f0e7dc] pb-3">
               <h2 className="text-base font-bold text-[#261c16] flex items-center gap-2">
@@ -737,36 +778,92 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Packaging Bag Image */}
-              <div className="p-4 rounded-xl bg-[#faf6f0] border border-[#e2d7c9] space-y-3">
+              {/* ── Pack Image ── */}
+              <div
+                onDragOver={(e) => handleDragOver(e, setIsDraggingPack)}
+                onDragEnter={(e) => handleDragOver(e, setIsDraggingPack)}
+                onDragLeave={(e) => handleDragLeave(e, setIsDraggingPack)}
+                onDrop={(e) => handleDrop(e, "packImg", "Product Packaging", setIsDraggingPack)}
+                className={`p-4 rounded-xl border transition-all space-y-3 relative ${
+                  isDraggingPack
+                    ? "bg-[#740707]/10 border-2 border-dashed border-[#740707] shadow-md scale-[1.01]"
+                    : "bg-[#faf6f0] border-[#e2d7c9]"
+                }`}
+              >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#261c16]">Retail / Pack Image</span>
-                  <span className="text-[10px] text-[#7d7064] font-mono">Transparent cutout</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] text-[#740707] font-semibold bg-[#740707]/10 px-1.5 py-0.5 rounded">
+                      Max 20 MB
+                    </span>
+                    <span className="text-[10px] text-[#7d7064] font-mono">Transparent cutout</span>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 rounded-xl bg-white border border-[#e2d7c9] p-2 flex items-center justify-center shrink-0 relative overflow-hidden shadow-inner">
-                    {sanitizeImgSrc(product.packImg) ? (
-                      <Image
-                        src={sanitizeImgSrc(product.packImg)}
-                        alt="Preview"
-                        width={64}
-                        height={64}
-                        unoptimized
-                        className="object-contain max-h-full"
-                      />
+                <div className="flex items-start gap-4">
+                  {/* Thumbnail */}
+                  <div
+                    onClick={() => packInputRef.current?.click()}
+                    className="w-20 h-20 rounded-xl bg-white border border-[#e2d7c9] p-2 flex items-center justify-center shrink-0 relative overflow-hidden shadow-inner cursor-pointer group hover:border-[#740707] transition-all"
+                    title="Click or drag image here to upload (Max 20 MB)"
+                  >
+                    {isUploadingPack ? (
+                      <div className="flex flex-col items-center justify-center gap-1 text-[#740707]">
+                        <Loader2 size={20} className="animate-spin" />
+                        <span className="text-[9px] font-bold">Uploading</span>
+                      </div>
+                    ) : sanitizeImgSrc(product.packImg) ? (
+                      <>
+                        <Image
+                          src={sanitizeImgSrc(product.packImg)}
+                          alt="Preview"
+                          width={64}
+                          height={64}
+                          unoptimized
+                          className="object-contain max-h-full transition-transform group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                          <Upload size={16} className="text-white" />
+                        </div>
+                      </>
                     ) : (
-                      <Package size={24} className="text-[#a89d91]" />
+                      <div className="flex flex-col items-center justify-center text-[#a89d91] group-hover:text-[#740707]">
+                        <Upload size={20} />
+                        <span className="text-[9px] mt-0.5 font-medium">Upload</span>
+                      </div>
                     )}
                   </div>
-                  <div className="flex-1 space-y-2">
-                    <input
-                      type="text"
-                      value={product.packImg}
-                      onChange={(e) => setProduct({ ...product, packImg: e.target.value })}
-                      placeholder="/assets/monagrow-rice-bag-cutout.png"
-                      className="w-full px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs font-mono text-[#261c16] focus:outline-none focus:border-[#740707]"
-                    />
+
+                  {/* Inputs + Upload Button */}
+                  <div className="flex-1 space-y-2 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={product.packImg}
+                        onChange={(e) => setProduct({ ...product, packImg: e.target.value })}
+                        placeholder="/assets/monagrow-rice-bag-cutout.png or /uploads/..."
+                        className="flex-1 min-w-0 px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs font-mono text-[#261c16] focus:outline-none focus:border-[#740707]"
+                      />
+                      <button
+                        type="button"
+                        disabled={isUploadingPack}
+                        onClick={() => packInputRef.current?.click()}
+                        className="px-3 py-1.5 rounded-lg bg-[#740707] hover:bg-[#880a0a] text-white text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 disabled:opacity-50 cursor-pointer"
+                        title="Upload image from your device (Max 20 MB)"
+                      >
+                        {isUploadingPack ? (
+                          <>
+                            <Loader2 size={13} className="animate-spin" />
+                            <span>Uploading...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Upload size={13} />
+                            <span>Upload Image</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
                     <input
                       type="text"
                       value={product.packAlt}
@@ -776,38 +873,112 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                     />
                   </div>
                 </div>
-              </div>
 
-              {/* Bowl / Commodity Image */}
-              <div className="p-4 rounded-xl bg-[#faf6f0] border border-[#e2d7c9] space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#261c16]">Commodity Display / Bowl Image</span>
-                  <span className="text-[10px] text-[#7d7064] font-mono">Hero graphic</span>
+                {/* Drag & Drop Hint */}
+                <div className="text-[10px] text-[#7d7064] flex items-center justify-between pt-1 border-t border-[#e8dfd3]">
+                  <span>💡 Drag &amp; drop image here or click Upload</span>
+                  <span>Max file size: <strong className="text-[#261c16]">20 MB</strong></span>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 rounded-xl bg-white border border-[#e2d7c9] p-2 flex items-center justify-center shrink-0 relative overflow-hidden shadow-inner">
-                    {sanitizeImgSrc(product.bowlImg) ? (
-                      <Image
-                        src={sanitizeImgSrc(product.bowlImg)}
-                        alt="Preview"
-                        width={64}
-                        height={64}
-                        unoptimized
-                        className="object-contain max-h-full"
-                      />
+                <input
+                  ref={packInputRef}
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif,image/avif"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) handleFileUpload(file, "packImg", "Product Packaging");
+                    e.target.value = "";
+                  }}
+                />
+              </div>
+
+              {/* ── Bowl Image ── */}
+              <div
+                onDragOver={(e) => handleDragOver(e, setIsDraggingBowl)}
+                onDragEnter={(e) => handleDragOver(e, setIsDraggingBowl)}
+                onDragLeave={(e) => handleDragLeave(e, setIsDraggingBowl)}
+                onDrop={(e) => handleDrop(e, "bowlImg", "Hero Bowls", setIsDraggingBowl)}
+                className={`p-4 rounded-xl border transition-all space-y-3 relative ${
+                  isDraggingBowl
+                    ? "bg-[#740707]/10 border-2 border-dashed border-[#740707] shadow-md scale-[1.01]"
+                    : "bg-[#faf6f0] border-[#e2d7c9]"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#261c16]">Commodity Display / Bowl Image</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] text-[#740707] font-semibold bg-[#740707]/10 px-1.5 py-0.5 rounded">
+                      Max 20 MB
+                    </span>
+                    <span className="text-[10px] text-[#7d7064] font-mono">Hero graphic</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  {/* Thumbnail */}
+                  <div
+                    onClick={() => bowlInputRef.current?.click()}
+                    className="w-20 h-20 rounded-xl bg-white border border-[#e2d7c9] p-2 flex items-center justify-center shrink-0 relative overflow-hidden shadow-inner cursor-pointer group hover:border-[#740707] transition-all"
+                    title="Click or drag image here to upload (Max 20 MB)"
+                  >
+                    {isUploadingBowl ? (
+                      <div className="flex flex-col items-center justify-center gap-1 text-[#740707]">
+                        <Loader2 size={20} className="animate-spin" />
+                        <span className="text-[9px] font-bold">Uploading</span>
+                      </div>
+                    ) : sanitizeImgSrc(product.bowlImg) ? (
+                      <>
+                        <Image
+                          src={sanitizeImgSrc(product.bowlImg)}
+                          alt="Preview"
+                          width={64}
+                          height={64}
+                          unoptimized
+                          className="object-contain max-h-full transition-transform group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                          <Upload size={16} className="text-white" />
+                        </div>
+                      </>
                     ) : (
-                      <Package size={24} className="text-[#a89d91]" />
+                      <div className="flex flex-col items-center justify-center text-[#a89d91] group-hover:text-[#740707]">
+                        <Upload size={20} />
+                        <span className="text-[9px] mt-0.5 font-medium">Upload</span>
+                      </div>
                     )}
                   </div>
-                  <div className="flex-1 space-y-2">
-                    <input
-                      type="text"
-                      value={product.bowlImg}
-                      onChange={(e) => setProduct({ ...product, bowlImg: e.target.value })}
-                      placeholder="/assets/hero-center-rice.png"
-                      className="w-full px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs font-mono text-[#261c16] focus:outline-none focus:border-[#740707]"
-                    />
+
+                  {/* Inputs + Upload Button */}
+                  <div className="flex-1 space-y-2 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={product.bowlImg}
+                        onChange={(e) => setProduct({ ...product, bowlImg: e.target.value })}
+                        placeholder="/assets/hero-center-rice.png or /uploads/..."
+                        className="flex-1 min-w-0 px-3 py-1.5 bg-white border border-[#e2d7c9] rounded-lg text-xs font-mono text-[#261c16] focus:outline-none focus:border-[#740707]"
+                      />
+                      <button
+                        type="button"
+                        disabled={isUploadingBowl}
+                        onClick={() => bowlInputRef.current?.click()}
+                        className="px-3 py-1.5 rounded-lg bg-[#740707] hover:bg-[#880a0a] text-white text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 disabled:opacity-50 cursor-pointer"
+                        title="Upload image from your device (Max 20 MB)"
+                      >
+                        {isUploadingBowl ? (
+                          <>
+                            <Loader2 size={13} className="animate-spin" />
+                            <span>Uploading...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Upload size={13} />
+                            <span>Upload Image</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
                     <input
                       type="text"
                       value={product.bowlAlt}
@@ -817,11 +988,29 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                     />
                   </div>
                 </div>
+
+                {/* Drag & Drop Hint */}
+                <div className="text-[10px] text-[#7d7064] flex items-center justify-between pt-1 border-t border-[#e8dfd3]">
+                  <span>💡 Drag &amp; drop image here or click Upload</span>
+                  <span>Max file size: <strong className="text-[#261c16]">20 MB</strong></span>
+                </div>
+
+                <input
+                  ref={bowlInputRef}
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif,image/avif"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) handleFileUpload(file, "bowlImg", "Hero Bowls");
+                    e.target.value = "";
+                  }}
+                />
               </div>
             </div>
           </section>
 
-          {/* CARD 3: WEIGHT VARIATIONS (INLINE - NOT A SEPARATE CARD/MODAL) */}
+          {/* ── CARD 3: WEIGHT VARIATIONS ─────────────────────────────────── */}
           <section className="bg-white border-2 border-[#740707]/30 rounded-2xl p-5 sm:p-6 shadow-md space-y-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#f0e7dc] pb-3">
               <div>
@@ -830,7 +1019,8 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                   <span>Weight Variations &amp; Packaging Sizes</span>
                 </h2>
                 <p className="text-xs text-[#6f6257]">
-                  Manage retail weights (250g, 500g, 1kg, 5kg) and commercial bulk sacks (10kg, 25kg, 50kg) directly inline on this product page
+                  Manage retail weights (250g, 500g, 1kg, 5kg) and commercial bulk sacks (10kg, 25kg, 50kg) directly
+                  inline on this product page
                 </p>
               </div>
 
@@ -862,7 +1052,8 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                 </div>
 
                 <span className="px-2.5 py-1.5 rounded-xl text-[11px] font-bold bg-[#740707]/10 text-[#740707] border border-[#740707]/20">
-                  {product.variations.length} {product.variations.length === 1 ? "Variation" : "Variations"} Configured
+                  {product.variations.length}{" "}
+                  {product.variations.length === 1 ? "Variation" : "Variations"} Configured
                 </span>
                 <button
                   type="button"
@@ -881,53 +1072,28 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                 <Tag size={12} className="text-[#740707]" />
                 <span>Quick Add Presets:</span>
               </span>
-              <button
-                type="button"
-                onClick={() => handleQuickAddPreset("500 g", "Aroma-Lock Foil Pouch", 2.75)}
-                className="px-2.5 py-1 rounded-lg bg-white border border-[#e2d7c9] hover:border-[#740707] hover:text-[#740707] text-[#261c16] text-[11px] font-medium transition-all"
-              >
-                + 500 g Pouch
-              </button>
-              <button
-                type="button"
-                onClick={() => handleQuickAddPreset("1 kg", "Aroma-Lock Standup Box Bag", 4.95)}
-                className="px-2.5 py-1 rounded-lg bg-white border border-[#e2d7c9] hover:border-[#740707] hover:text-[#740707] text-[#261c16] text-[11px] font-medium transition-all"
-              >
-                + 1 kg Bag
-              </button>
-              <button
-                type="button"
-                onClick={() => handleQuickAddPreset("5 kg", "Heavy Handle Zipper Bag", 19.5)}
-                className="px-2.5 py-1 rounded-lg bg-white border border-[#e2d7c9] hover:border-[#740707] hover:text-[#740707] text-[#261c16] text-[11px] font-medium transition-all"
-              >
-                + 5 kg Bag
-              </button>
-              <button
-                type="button"
-                onClick={() => handleQuickAddPreset("10 kg", "Multi-layer Moisture Sack", 36.0)}
-                className="px-2.5 py-1 rounded-lg bg-white border border-[#e2d7c9] hover:border-[#740707] hover:text-[#740707] text-[#261c16] text-[11px] font-medium transition-all"
-              >
-                + 10 kg Sack
-              </button>
-              <button
-                type="button"
-                onClick={() => handleQuickAddPreset("25 kg", "Export BOPP Woven Sack", 75.0)}
-                className="px-2.5 py-1 rounded-lg bg-white border border-[#e2d7c9] hover:border-[#740707] hover:text-[#740707] text-[#261c16] text-[11px] font-medium transition-all"
-              >
-                + 25 kg Bulk
-              </button>
-              <button
-                type="button"
-                onClick={() => handleQuickAddPreset("50 kg", "Commercial Container Sack", 145.0)}
-                className="px-2.5 py-1 rounded-lg bg-white border border-[#e2d7c9] hover:border-[#740707] hover:text-[#740707] text-[#261c16] text-[11px] font-medium transition-all"
-              >
-                + 50 kg Bulk
-              </button>
+              {[
+                { label: "+ 500 g Pouch", w: "500 g", pkg: "Aroma-Lock Foil Pouch", p: 2.75 },
+                { label: "+ 1 kg Bag", w: "1 kg", pkg: "Aroma-Lock Standup Box Bag", p: 4.95 },
+                { label: "+ 5 kg Bag", w: "5 kg", pkg: "Heavy Handle Zipper Bag", p: 19.5 },
+                { label: "+ 10 kg Sack", w: "10 kg", pkg: "Multi-layer Moisture Sack", p: 36.0 },
+                { label: "+ 25 kg Bulk", w: "25 kg", pkg: "Export BOPP Woven Sack", p: 75.0 },
+                { label: "+ 50 kg Bulk", w: "50 kg", pkg: "Commercial Container Sack", p: 145.0 },
+              ].map(({ label, w, pkg, p }) => (
+                <button
+                  key={w}
+                  type="button"
+                  onClick={() => handleQuickAddPreset(w, pkg, p)}
+                  className="px-2.5 py-1 rounded-lg bg-white border border-[#e2d7c9] hover:border-[#740707] hover:text-[#740707] text-[#261c16] text-[11px] font-medium transition-all"
+                >
+                  {label}
+                </button>
+              ))}
             </div>
 
             {/* Inline Add Variation Form */}
             {showAddVariation && (
-              <div className="p-4 bg-[#f8f4ed] border-2 border-dashed border-[#740707]/40 rounded-xl space-y-4 animate-fadeIn">
+              <div className="p-4 bg-[#f8f4ed] border-2 border-dashed border-[#740707]/40 rounded-xl space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#261c16] flex items-center gap-1.5">
                     <Plus size={14} className="text-[#740707]" />
@@ -944,9 +1110,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-[#6f6257] mb-1">
-                      Weight Label *
-                    </label>
+                    <label className="block text-[11px] font-bold text-[#6f6257] mb-1">Weight Label *</label>
                     <input
                       type="text"
                       value={newVarWeight}
@@ -968,16 +1132,12 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                       >
                         <optgroup label="⭐ Priority Currencies">
                           {PRIORITY_CURRENCIES.map((c) => (
-                            <option key={c.code} value={c.code}>
-                              {c.code}
-                            </option>
+                            <option key={c.code} value={c.code}>{c.code}</option>
                           ))}
                         </optgroup>
                         <optgroup label="Other Currencies">
                           {OTHER_CURRENCIES.map((c) => (
-                            <option key={c.code} value={c.code}>
-                              {c.code}
-                            </option>
+                            <option key={c.code} value={c.code}>{c.code}</option>
                           ))}
                         </optgroup>
                       </select>
@@ -993,9 +1153,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-[#6f6257] mb-1">
-                      SKU Code (optional)
-                    </label>
+                    <label className="block text-[11px] font-bold text-[#6f6257] mb-1">SKU Code (optional)</label>
                     <input
                       type="text"
                       value={newVarSku}
@@ -1008,9 +1166,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-[#6f6257] mb-1">
-                      Packaging Format
-                    </label>
+                    <label className="block text-[11px] font-bold text-[#6f6257] mb-1">Packaging Format</label>
                     <input
                       type="text"
                       value={newVarPkg}
@@ -1024,13 +1180,12 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                     <label className="block text-[11px] font-bold text-[#6f6257] mb-1">
                       Min Order Quantity (Units)
                     </label>
-                    <div className="inline-flex items-center bg-white border border-[#e2d7c9] rounded-lg p-1 shadow-2xs">
+                    <div className="inline-flex items-center bg-white border border-[#e2d7c9] rounded-lg p-1">
                       {newVarMoq > 1 && (
                         <button
                           type="button"
                           onClick={() => setNewVarMoq(Math.max(1, newVarMoq - 1))}
                           className="w-6 h-6 rounded flex items-center justify-center text-[#740707] hover:bg-[#faf6f0] transition-all shrink-0"
-                          title="Decrease quantity"
                         >
                           <Minus size={13} strokeWidth={2.5} />
                         </button>
@@ -1043,13 +1198,12 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                           const parsed = parseInt(e.target.value);
                           setNewVarMoq(isNaN(parsed) || parsed < 1 ? 1 : parsed);
                         }}
-                        className={`w-10 text-center bg-transparent border-0 font-bold text-xs text-[#261c16] focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${newVarMoq <= 1 ? "pl-2" : ""}`}
+                        className={`w-10 text-center bg-transparent border-0 font-bold text-xs text-[#261c16] focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none${newVarMoq <= 1 ? " pl-2" : ""}`}
                       />
                       <button
                         type="button"
                         onClick={() => setNewVarMoq(newVarMoq + 1)}
                         className="w-6 h-6 rounded flex items-center justify-center text-[#740707] hover:bg-[#faf6f0] transition-all shrink-0"
-                        title="Increase quantity"
                       >
                         <Plus size={13} strokeWidth={2.5} />
                       </button>
@@ -1067,7 +1221,6 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                     />
                     <span>Mark variation as currently in stock</span>
                   </label>
-
                   <button
                     type="button"
                     onClick={handleAddVariationSubmit}
@@ -1121,7 +1274,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                             </div>
                           </td>
 
-                          {/* Packaging Type */}
+                          {/* Packaging */}
                           <td className="py-2.5 px-3.5 text-[#40332a]">
                             <input
                               type="text"
@@ -1141,29 +1294,22 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                             />
                           </td>
 
-                          {/* Unit Price & Currency Dropdown */}
+                          {/* Price */}
                           <td className="py-2.5 px-3.5">
                             <div className="flex items-center gap-1.5 font-semibold text-[#261c16]">
                               <select
                                 value={v.currency || "NPR"}
-                                onChange={(e) =>
-                                  handleUpdateVariationField(v.id, "currency", e.target.value)
-                                }
+                                onChange={(e) => handleUpdateVariationField(v.id, "currency", e.target.value)}
                                 className="px-2 py-1 bg-[#faf6f0] border border-[#e2d7c9] rounded text-xs font-bold text-[#261c16] focus:bg-white focus:border-[#740707] cursor-pointer"
-                                title="Select currency"
                               >
                                 <optgroup label="⭐ Priority Currencies">
                                   {PRIORITY_CURRENCIES.map((c) => (
-                                    <option key={c.code} value={c.code}>
-                                      {c.code}
-                                    </option>
+                                    <option key={c.code} value={c.code}>{c.code}</option>
                                   ))}
                                 </optgroup>
                                 <optgroup label="Other Currencies">
                                   {OTHER_CURRENCIES.map((c) => (
-                                    <option key={c.code} value={c.code}>
-                                      {c.code}
-                                    </option>
+                                    <option key={c.code} value={c.code}>{c.code}</option>
                                   ))}
                                 </optgroup>
                               </select>
@@ -1179,9 +1325,9 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                             </div>
                           </td>
 
-                          {/* Min Order Qty Stepper */}
+                          {/* MOQ Stepper */}
                           <td className="py-2.5 px-3.5">
-                            <div className="inline-flex items-center justify-center bg-[#faf6f0] border border-[#e2d7c9] rounded-lg p-0.5 shadow-2xs">
+                            <div className="inline-flex items-center justify-center bg-[#faf6f0] border border-[#e2d7c9] rounded-lg p-0.5">
                               {(v.minOrderQty || 1) > 1 && (
                                 <button
                                   type="button"
@@ -1193,7 +1339,6 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                                     )
                                   }
                                   className="w-5 h-5 rounded flex items-center justify-center text-[#740707] hover:bg-[#ede4d8] transition-all shrink-0"
-                                  title="Decrease quantity"
                                 >
                                   <Minus size={11} strokeWidth={2.5} />
                                 </button>
@@ -1210,26 +1355,21 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                                     isNaN(parsed) || parsed < 1 ? 1 : parsed
                                   );
                                 }}
-                                className={`w-8 text-center bg-transparent border-0 font-bold text-xs text-[#261c16] focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${(v.minOrderQty || 1) <= 1 ? "pl-2" : ""}`}
+                                className={`w-8 text-center bg-transparent border-0 font-bold text-xs text-[#261c16] focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none${(v.minOrderQty || 1) <= 1 ? " pl-2" : ""}`}
                               />
                               <button
                                 type="button"
                                 onClick={() =>
-                                  handleUpdateVariationField(
-                                    v.id,
-                                    "minOrderQty",
-                                    (v.minOrderQty || 1) + 1
-                                  )
+                                  handleUpdateVariationField(v.id, "minOrderQty", (v.minOrderQty || 1) + 1)
                                 }
                                 className="w-5 h-5 rounded flex items-center justify-center text-[#740707] hover:bg-[#ede4d8] transition-all shrink-0"
-                                title="Increase quantity"
                               >
                                 <Plus size={11} strokeWidth={2.5} />
                               </button>
                             </div>
                           </td>
 
-                          {/* Stock Status Toggle */}
+                          {/* Stock Toggle */}
                           <td className="py-2.5 px-3.5 text-center">
                             <button
                               type="button"
@@ -1244,7 +1384,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                             </button>
                           </td>
 
-                          {/* Action Delete */}
+                          {/* Delete */}
                           <td className="py-2.5 px-3.5 text-right">
                             <button
                               type="button"
@@ -1264,7 +1404,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
             </div>
           </section>
 
-          {/* CARD 4: SPECIFICATIONS & HIGHLIGHTS */}
+          {/* ── CARD 4: SPECIFICATIONS & HIGHLIGHTS ───────────────────────── */}
           <section className="bg-white border border-[#e2d7c9] rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
             <div className="border-b border-[#f0e7dc] pb-3">
               <h2 className="text-base font-bold text-[#261c16] flex items-center gap-2">
@@ -1277,7 +1417,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Specs Key-Value Table */}
+              {/* Specs */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#261c16]">Specification Attributes</span>
@@ -1290,7 +1430,6 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                     <span>Add Row</span>
                   </button>
                 </div>
-
                 <div className="space-y-2">
                   {product.specs.map((spec, sIdx) => (
                     <div key={sIdx} className="flex items-center gap-2">
@@ -1320,7 +1459,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                 </div>
               </div>
 
-              {/* Commercial Highlights */}
+              {/* Highlights */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#261c16]">Commercial Key Highlights</span>
@@ -1333,7 +1472,6 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                     <span>Add Highlight</span>
                   </button>
                 </div>
-
                 <div className="space-y-2">
                   {product.keyHighlights.map((hl, hIdx) => (
                     <div key={hIdx} className="flex items-center gap-2">
@@ -1358,7 +1496,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
             </div>
           </section>
 
-          {/* CARD 5: PUBLICATION & VISIBILITY */}
+          {/* ── CARD 5: PUBLICATION & VISIBILITY ─────────────────────────── */}
           <section className="bg-white border border-[#e2d7c9] rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
             <div className="border-b border-[#f0e7dc] pb-3">
               <h2 className="text-base font-bold text-[#261c16] flex items-center gap-2">
@@ -1379,7 +1517,9 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                   className="mt-0.5 rounded bg-white border-[#e2d7c9] text-[#740707] focus:ring-0"
                 />
                 <div>
-                  <span className="block text-xs font-bold text-[#261c16]">Product is Active &amp; Published</span>
+                  <span className="block text-xs font-bold text-[#261c16]">
+                    Product is Active &amp; Published
+                  </span>
                   <span className="block text-[11px] text-[#6f6257]">
                     When checked, product and variations appear across the public commodity catalog.
                   </span>
@@ -1403,7 +1543,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
             </div>
           </section>
 
-          {/* BOTTOM STICKY SAVE BAR */}
+          {/* ── BOTTOM STICKY SAVE BAR ────────────────────────────────────── */}
           <div className="sticky bottom-4 z-30 p-4 bg-white/95 backdrop-blur-md border border-[#e2d7c9] rounded-2xl shadow-2xl flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <Link
@@ -1413,21 +1553,20 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                 Back to Catalog
               </Link>
               <span className="hidden sm:inline text-xs text-[#7d7064]">
-                Editing <span className="font-semibold text-[#261c16]">{product.name || "New Commodity"}</span> with{" "}
+                Editing{" "}
+                <span className="font-semibold text-[#261c16]">{product.name || "New Commodity"}</span> with{" "}
                 <span className="font-semibold text-[#740707]">{product.variations.length}</span> weight options
               </span>
             </div>
 
-            <div className="flex items-center gap-3">
-              <button
-                type="submit"
-                disabled={isSaving}
-                className="py-2.5 px-6 rounded-xl bg-[#740707] hover:bg-[#880a0a] text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-[#740707]/30 border border-[#a81414]/30 transition-all active:scale-95 disabled:opacity-50"
-              >
-                {isSaving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
-                <span>{isSaving ? "Saving..." : "Save Product Details & Weight Variations"}</span>
-              </button>
-            </div>
+            <button
+              type="submit"
+              disabled={isSaving}
+              className="py-2.5 px-6 rounded-xl bg-[#740707] hover:bg-[#880a0a] text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-[#740707]/30 border border-[#a81414]/30 transition-all active:scale-95 disabled:opacity-50"
+            >
+              {isSaving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
+              <span>{isSaving ? "Saving..." : "Save Product Details & Weight Variations"}</span>
+            </button>
           </div>
         </form>
       </main>

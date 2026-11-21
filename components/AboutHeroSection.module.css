@@ -13,7 +13,7 @@
 .sourceIntro { display:grid; grid-template-columns:1fr 1fr; gap:25px 9%; max-width:1280px; margin:auto; padding:110px 40px 85px; }
 .sourceIntro>.eyebrow { grid-column:1/-1; }
 .sourceIntro h2 { font-size:clamp(32px,3.7vw,54px); letter-spacing:-.05em; line-height:1.12; font-weight:600; }
-.sourceIntro em { color:#740707; font-weight:400; }
+.sourceIntro em { color:#740707; font-weight:400; font-style: normal; }
 .sourceIntro>p { align-self:end; color:#6b6c60; font-size:15px; line-height:1.9; max-width:440px; }
 .content { max-width:1280px; padding:0 40px 90px; margin:auto; }
 .about a:focus-visible,.about button:focus-visible { outline:3px solid #740707; outline-offset:6px; }
@@ -58,6 +58,7 @@
 .approachHeader>.eyebrow { display:block; margin-bottom:24px; }
 .approachHeader h2 { font-size:clamp(34px,3.5vw,50px); line-height:1.12; letter-spacing:-.05em; font-weight:600; }
 .approachHeader em { color:#740707; font-style:normal; font-weight:500; }
+.approachAccent { color:#740707; font-style:normal; font-weight:500; }
 .approachHeader p { color:#77786f; font-size:13px; line-height:1.8; max-width:230px; margin-top:22px; }
 .processSteps { list-style:none; padding:0; margin:0; }
 .processStep { position:relative; display:grid; grid-template-columns:35px 1fr 32px; column-gap:20px; padding:23px 0; border-top:1px solid #deded6; transform:translateY(var(--step-offset,0px)); }

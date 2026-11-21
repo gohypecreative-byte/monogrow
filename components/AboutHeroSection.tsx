@@ -195,7 +195,7 @@ export default function AboutHeroSection({ onOpenQuoteModal }: AboutHeroSectionP
       <section id="about-source" className={styles.foundation}>
         <div ref={approach} className={styles.approach}>
           <header className={styles.approachHeader}>
-            <h2>From source<br /><em>to your doorstep.</em></h2>
+            <h2>From source<br /><span className={styles.approachAccent}>to your doorstep.</span></h2>
             <div className={styles.processGallery}>
               {PROCESS_STEPS.map((step, index) => (
                 <figure key={step.step} data-process-image data-visible={index === 0} aria-hidden={index !== 0} className={styles.processImage}>

@@ -115,7 +115,7 @@ return (
           <div className={styles.progress} aria-hidden="true"><span ref={progressBar} style={{ transform: `scaleX(${active / (JOURNEY_STAGES.length - 1)})` }} /></div>
           <header className={styles.heading}>
             <div>
-              <h2 id="journey-heading">From harvest.<br /><em>To your business.</em></h2>
+              <h2 id="journey-heading">From harvest.<br /><span className={styles.accent}>To your business.</span></h2>
             </div>
           </header>
           <div className={styles.editorial}>

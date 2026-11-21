@@ -1,4 +1,4 @@
-.section { background: #f8f5f0; color: #30241e; padding: 88px 0; scroll-margin-top: 90px; }
+.section { background: #fbf8f3; color: #30241e; padding: 88px 0; scroll-margin-top: 90px; }
 .container { width: min(1440px, 88%); margin-inline: auto; }
 .header { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: 80px; padding-bottom: 48px; border-bottom: 1px solid #e3ddd5; margin-bottom: 40px; }
 .kicker { color: #740707; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .15em; }
@@ -6,7 +6,7 @@
 .header h2 em, .header h2 .highlight { color: #740707; font-weight: 500; font-style: normal; }
 .introduction p { color: #75675d; line-height: 1.8; font-size: 15px; max-width: 430px; }
 .introduction a { display: inline-flex; align-items: center; gap: 22px; margin-top: 16px; min-height: 44px; color: #740707; font-size: 13px; }
-.layout { min-width: 0; padding: clamp(28px, 3.2vw, 52px); background: #fdfbf7; }
+.layout { min-width: 0; padding: clamp(28px, 3.2vw, 52px); background: #fbf8f3; }
 .section [hidden] { display: none; }
 .stepper ol { display: flex; list-style: none; padding: 0; margin: 0; border-bottom: 1px solid #e3ddd5; }
 .stepper li { flex: 1; }
@@ -134,11 +134,11 @@
 @media (max-width: 359px) { .fields { grid-template-columns: 1fr; } .header h2 { font-size: 32px; } .products { grid-template-columns: repeat(2, 1fr); } }
 
 /* A product editorial beside the working estimate form. */
-.splitLayout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); border: 1px solid #e6ded4; border-radius: 24px; overflow: clip; background: #fdfbf7; }
-.showcase { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 44px 28px 24px; background: #f0e8da; text-align: center; overflow: hidden; }
+.splitLayout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); border: 1px solid #e6ded4; border-radius: 24px; overflow: clip; background: #fbf8f3; }
+.showcase { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 44px 28px 24px; background: #fbf8f3; text-align: center; overflow: hidden; }
 .showcaseHeading { position: relative; z-index: 1; }
 .showcaseHeading h2 { margin: 18px 0; font-size: clamp(30px, 3vw, 46px); line-height: 1.15; letter-spacing: -.045em; font-weight: 500; }
-.showcaseHeading h2 em { color: #740707; font-weight: 500; }
+.showcaseHeading h2 em { color: #740707; font-weight: 500; font-style: normal; }
 .showcaseHeading > p:last-child { font-size: 14px; line-height: 1.8; color: #75675d; margin: 0; }
 .showcaseHeading .kicker { font-size: 10px; color: #967434; }
 .productStage { position: relative; flex: 1; min-height: 390px; margin-top: 22px; isolation: isolate; }

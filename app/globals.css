@@ -59,6 +59,15 @@ html.lenis, html.lenis body { height: auto; }
   font-family: var(--font-sans), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
+h1 em, h2 em, h3 em, h4 em {
+  font-style: normal;
+}
+
+/* Prevent browser from synthesising italic on headings */
+h1, h2, h3, h4 {
+  font-synthesis: none;
+}
+
 .font-condensed-display {
   font-family: var(--font-bebas), var(--font-antonio), "Oswald", "Impact", -apple-system, sans-serif;
   font-stretch: ultra-condensed;

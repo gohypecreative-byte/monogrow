@@ -20,7 +20,8 @@
 .founderBadge { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 22px; padding: 7px 14px; border: 1px solid #dfd0bc; border-radius: 100px; color: var(--accent); background: #efe5d7; font-size: 12px; font-weight: 600; }
 .founderBadge > span, .founderPromise > span { width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: #b48b39; }
 .founderTitle { margin: 0 0 34px; color: var(--ink); font-size: clamp(30px, 3.5vw, 50px); font-weight: 500; line-height: 1.2; letter-spacing: -.04em; }
-.founderTitle em { color: var(--accent); font-weight: 500; }
+.founderTitle em { color: var(--accent); font-weight: 500; font-style: normal; }
+.founderAccent { color: var(--accent); font-weight: 500; font-style: normal; }
 .founderCard { position: relative; margin: 0; padding: 64px clamp(26px, 3.5vw, 48px) clamp(26px, 3.5vw, 48px); border: 1px solid #dfd0bc; border-radius: 24px; background: #fcf8f2; box-shadow: 0 14px 40px #60451e06; }
 .quoteMark { position: absolute; top: -45px; left: 22px; color: #c5a366; font-family: Georgia, serif; font-size: 140px; line-height: 1; pointer-events: none; }
 .founderLetter { margin: 0; color: #594b40; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.85; }
