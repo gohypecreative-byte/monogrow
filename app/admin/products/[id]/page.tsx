@@ -390,7 +390,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
       `MNG-${product.categoryKey.slice(0, 3).toUpperCase()}-${newVarWeight.replace(/\s+/g, "").toUpperCase()}`;
 
     const newVariation: ProductVariation = {
-      id: `var-${product.id || "p"}-${Date.now()}`,
+      id: `var-${product.id || "p"}-${newVarWeight.replace(/\s+/g, "").toLowerCase()}-${product.variations.length + 1}`,
       weight: newVarWeight.trim(),
       unit: newVarUnit.trim() || "kg",
       price: priceNum,
@@ -414,7 +414,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     const defaultCurrency = product.variations[0]?.currency || newVarCurrency || "NPR";
     const skuCode = `MNG-${product.categoryKey.slice(0, 3).toUpperCase()}-${weightPreset.replace(/\s+/g, "").toUpperCase()}`;
     const newVariation: ProductVariation = {
-      id: `var-${product.id || "p"}-${Date.now()}`,
+      id: `var-${product.id || "p"}-${weightPreset.replace(/\s+/g, "").toLowerCase()}-${product.variations.length + 1}`,
       weight: weightPreset,
       unit: weightPreset.toLowerCase().includes("kg") ? "kg" : "g",
       price: priceEstimate,

@@ -56,22 +56,23 @@ export default function AboutHeroBrandStory(_props: AboutHeroBrandStoryProps = {
       {/* ══════════════════════════════════════════════════════
           BLOCK 1 — Hero Intro
           ══════════════════════════════════════════════════════ */}
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-10 lg:px-16">
         {/* Centered Heading & Food Beyond Borders below */}
         <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
           <h1
             id="about-hero-title"
             data-reveal
             data-delay="0"
-            className="font-serif font-bold text-[clamp(44px,6.5vw,88px)] leading-[1.05] tracking-tight text-[#1c1a16]"
+            className="font-serif font-bold text-[clamp(30px,6.5vw,84px)] leading-[1.08] tracking-tight text-[#1c1a16] break-words"
           >
-            About&nbsp;<span className="text-[#740707]">Monagrow</span>
+            <span>About</span>{" "}
+            <span className="text-[#740707]">Monagrow</span>
           </h1>
 
           <p
             data-reveal
             data-delay="80"
-            className="text-sm sm:text-base lg:text-[17px] font-bold uppercase tracking-[0.25em] text-[#740707] font-sans mt-3.5 sm:mt-4"
+            className="text-xs sm:text-base lg:text-[17px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.25em] text-[#740707] font-sans mt-3 sm:mt-4"
           >
             Food Beyond Borders
           </p>
