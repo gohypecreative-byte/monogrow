@@ -7,7 +7,7 @@ import styles from "./WholesaleCalculator.module.css";
 const collection = [
   { name: "Basmati rice", note: "Extra long grain. Exceptional aroma.", image: "monagrow-rice-pack-v2.png" },
   { name: "Estate coffee", note: "Rich character, from origin to cup.", image: "monagrow-coffee-pack-v2.png" },
-  { name: "Royal dry fruits", note: "A carefully selected collection.", image: "monagrow-dryfruits-packaging.png" },
+  { name: "Royal dry fruits", note: "A carefully selected collection.", image: "monagrow-mix-dryfruits-packaging.png" },
   { name: "Refined sugar", note: "Everyday sweetness, thoughtfully sourced.", image: "monagrow-sugar-pack-v2.png" },
 ];
 

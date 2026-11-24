@@ -19,12 +19,12 @@ interface ContactSectionProps {
 }
 
 const PRODUCTS_LIST = [
-  "Basmati Rice (1121 Supreme Long Grain)",
+  "Premium Basmati Steam Rice",
   "Pure Refined Sugar (ICUMSA 45)",
   "Specialty Estate Coffee (Arabica Dark Roast)",
   "Royal Jumbo Cashews (W240 Whole)",
   "Royal Mixed Dry Fruits (4-in-1)",
-  "Katarni Premium Fragrant Rice",
+  "Premium Basmati Sella Rice",
   "Mixed Container / Full Agro Portfolio",
   "Custom Commodity Sourcing Enquiry",
 ];

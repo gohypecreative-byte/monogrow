@@ -34,14 +34,14 @@ export default function ProductDetailModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/65 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 bg-black/65 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="product-detail-modal-title"
     >
       <div
-        className="relative w-full max-w-[92vw] lg:max-w-4xl xl:max-w-5xl bg-[#FAF9F6] rounded-3xl border border-[#dfd5c6] shadow-2xl p-6 sm:p-8 lg:p-10 max-h-[92vh] overflow-y-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-[95vw] lg:max-w-4xl xl:max-w-5xl bg-[#FAF9F6] rounded-2xl sm:rounded-3xl border border-[#dfd5c6] shadow-2xl p-4 sm:p-6 lg:p-8 max-h-[96vh] overflow-y-auto sm:overflow-hidden no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}

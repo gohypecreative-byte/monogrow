@@ -10,7 +10,7 @@ export default function CommodityTicker() {
     { name: "Refined White Sugar (ICUMSA 45)", price: "$520 / MT", change: "-0.4%", status: "Steady" },
     { name: "California Jumbo Almonds (27/30)", price: "$6,200 / MT", change: "+2.1%", status: "Fresh Crop" },
     { name: "Premium W240 Cashews", price: "$7,450 / MT", change: "+1.2%", status: "Direct Estate" },
-    { name: "1121 Golden Sella Rice", price: "$980 / MT", change: "+0.5%", status: "Ready Port" },
+    { name: "Premium Basmati Sella Rice", price: "$980 / MT", change: "+0.5%", status: "Ready Port" },
     { name: "Green Unroasted Coffee Beans", price: "$3,800 / MT", change: "+1.4%", status: "In Stock" },
   ];
 

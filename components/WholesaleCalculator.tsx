@@ -8,10 +8,62 @@ import styles from "./WholesaleCalculator.module.css";
 import EstimateShowcase from "./EstimateShowcase";
 
 const PRODUCTS = [
-  { label: "Basmati rice", image: "rice", rate: 1050, varieties: ["1121 Basmati", "Traditional Basmati"], processes: ["Sella / parboiled", "Steam", "Raw / white"], grades: ["Premium long grain", "Standard long grain"] },
-  { label: "Mix dry fruits", image: "dryfruit", rate: 6500, varieties: ["Royal 4-in-1 Mix", "Cashews & Almonds", "Walnuts & Pistachios"], processes: ["Raw / Natural", "Roasted"], grades: ["Royal Select Grade", "Whole & Selected"] },
-  { label: "Sugar", image: "sugar", rate: 550, varieties: ["Refined sugar"], processes: ["Crystalline"], grades: ["ICUMSA 45", "ICUMSA 100"] },
-  { label: "Estate coffee", image: "coffee", rate: 4200, varieties: ["Arabica", "Robusta"], processes: ["Whole bean", "Ground", "Green bean"], grades: ["Estate selection", "Commercial grade"] },
+  {
+    label: "Rice",
+    image: "rice",
+    rate: 1050,
+    varieties: [
+      "Premium Basmati Steam Rice",
+      "Classic Basmati Steam Rice",
+      "Rozana Basmati Steam Rice",
+      "Premium Basmati Sella Rice",
+      "Classic Basmati Sella Rice",
+      "Rozana Basmati Sella Rice",
+      "Premium Sona Masoori Rice",
+      "Rozana Sona Masoori Rice",
+    ],
+    processes: ["Steam", "Golden Sella", "White / Creamy Sella", "Parboiled"],
+    grades: ["Premium Category (8.35mm)", "Classic Category (8.40mm)", "Rozana Category (7.65mm)", "Export Grade 100% Sortex"],
+  },
+  {
+    label: "Dry Fruits",
+    image: "dryfruit",
+    rate: 6500,
+    varieties: [
+      "Royal Mixed Dry Fruits (4-in-1)",
+      "Royal King Cashews W240",
+      "California Select Royal Almonds",
+      "Kashmiri Snow White Walnuts",
+      "Roasted Salted Jumbo Pistachios",
+      "Golden Long Seedless Raisins",
+    ],
+    processes: ["Raw / Natural", "Roasted & Lightly Salted", "Slow Sun-Dried", "Hand-Sorted / Shelled"],
+    grades: ["Royal Select Grade", "W240 Whole Jumbo", "California Nonpareil Extra No. 1", "Snow White Halves (100% Light)"],
+  },
+  {
+    label: "Sugar",
+    image: "sugar",
+    rate: 550,
+    varieties: [
+      "Pure Refined Sugar (ICUMSA 45)",
+      "Natural Brown Cane Sugar",
+    ],
+    processes: ["Crystalline Refined", "Centrifuged Natural", "Dry Granulated", "Direct Cane Extraction"],
+    grades: ["ICUMSA 45 (Ultra Purity)", "ICUMSA 100 (Commercial Refined)", "ICUMSA 600-1200 (Brown Cane)", "VHP Export Grade"],
+  },
+  {
+    label: "Coffee",
+    image: "coffee",
+    rate: 4200,
+    varieties: [
+      "Specialty Estate Dark Arabica",
+      "Monagrow Premium Roasted Coffee Beans",
+      "Highland Monsooned Malabar AA",
+      "Himalayan Peaberry Reserve Arabica",
+    ],
+    processes: ["Whole bean", "Ground (Espresso / Filter)", "Green bean (Unroasted)", "Monsooned Cured", "Washed / Sun-Dried"],
+    grades: ["Estate selection", "Screen 18/19 AA Grade", "Specialty Micro-Lot (85+ Cup)", "Commercial Export Grade"],
+  },
 ];
 
 export const CURRENCIES = [
@@ -54,7 +106,7 @@ const PACKS = [
 ];
 
 const QUOTE_NAMES = [
-  "Basmati Rice (1121 Supreme)",
+  "Premium Basmati Steam Rice",
   "Royal Mixed Dry Fruits",
   "Refined Sugar (ICUMSA 45)",
   "Specialty Estate Coffee",
@@ -272,428 +324,428 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
   return (
     <section id="calculator" className={styles.section} aria-labelledby="estimate-heading">
       <div className={styles.container}>
-<div className={styles.splitLayout}>
+        <div className={styles.splitLayout}>
           <EstimateShowcase selectedProduct={productChosen ? product.image : null} />
-        <div className={styles.layout}>
-          <nav className={styles.stepper} aria-label="Estimator progress">
-            <ol>
-              {steps.map((value, index) => (
-                <li key={value}>
-                  <button
-                    type="button"
-                    disabled={index > stepIndex}
-                    aria-current={step === value ? "step" : undefined}
-                    onClick={() => goToStep(value)}
-                  >
-                    <span>{index < stepIndex ? <Check size={14} /> : index + 1}</span>
-                    {stepNames[value]}
-                  </button>
-                </li>
-              ))}
-            </ol>
-          </nav>
-          <div className={styles.stepIntro}>
-            <p className={styles.kicker}>
-              Step {stepIndex + 1} of {steps.length} · {retail ? "Retail" : "Wholesale"}
-            </p>
-            <h3 ref={stepHeading} tabIndex={-1}>
-              {stepTitles[step]}
-            </h3>
-          </div>
-          <div id="estimate-inputs" className={styles.inputs}>
-            <fieldset hidden={step !== 0} className={styles.group}>
-              <legend>Choose your commodity</legend>
-              <div className={styles.products}>
-                {PRODUCTS.map((item, index) => (
-                  <button
-                    key={item.image}
-                    type="button"
-                    aria-pressed={productIndex === index}
-                    onClick={() => changeProduct(index)}
-                  >
-                    <Image src={`/assets/hero-center-${item.image}.png`} alt="" width={90} height={90} sizes="90px" />
-                    <span>{item.label}</span>
-                    {productIndex === index && <Check size={14} className={styles.check} />}
-                  </button>
+          <div className={styles.layout}>
+            <nav className={styles.stepper} aria-label="Estimator progress">
+              <ol>
+                {steps.map((value, index) => (
+                  <li key={value}>
+                    <button
+                      type="button"
+                      disabled={index > stepIndex}
+                      aria-current={step === value ? "step" : undefined}
+                      onClick={() => goToStep(value)}
+                    >
+                      <span>{index < stepIndex ? <Check size={14} /> : index + 1}</span>
+                      {stepNames[value]}
+                    </button>
+                  </li>
                 ))}
-              </div>
-              <div className={styles.fields}>
-                <label>
-                  Variety
-                  <select value={variety} onChange={(event) => setVariety(event.target.value)}>
-                    {product.varieties.map((value) => (
-                      <option key={value}>{value}</option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  Processing
-                  <select value={processing} onChange={(event) => setProcessing(event.target.value)}>
-                    {product.processes.map((value) => (
-                      <option key={value}>{value}</option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  Origin preference
-                  <select value={origin} onChange={(event) => setOrigin(event.target.value)}>
-                    {["India", "Pakistan", "Nepal", "Other / discuss with us"].map((value) => (
-                      <option key={value}>{value}</option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  Grade
-                  <select value={grade} onChange={(event) => setGrade(event.target.value)}>
-                    {product.grades.map((value) => (
-                      <option key={value}>{value}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              <p className={styles.hint}>Specifications are preferences for your enquiry, subject to availability.</p>
-            </fieldset>
-
-            <fieldset hidden={step !== 1} className={styles.group}>
-              <legend>Quantity & packaging</legend>
-              <div className={styles.fields}>
-                <label>
-                  Order quantity
-                  <input
-                    type="number"
-                    min={unit === "bags" ? 1 : 0.001}
-                    max={maxQuantity}
-                    step={unit === "bags" ? 1 : "any"}
-                    value={quantity}
-                    onChange={(event) => setQuantity(event.target.value)}
-                    aria-invalid={!validQuantity}
-                    aria-describedby={!validQuantity ? "quantity-error" : undefined}
-                  />
-                </label>
-                <label>
-                  Measure in
-                  <select value={unit} onChange={(event) => changeUnit(event.target.value)}>
-                    <option value="mt">Metric tonnes (MT)</option>
-                    <option value="kg">Kilograms (kg)</option>
-                    <option value="bags">Number of bags</option>
-                  </select>
-                </label>
-              </div>
-              {!validQuantity && (
-                <p id="quantity-error" className={styles.error}>
-                  Enter a positive quantity up to 200 MT. Bag quantities must be whole numbers.
-                </p>
-              )}
-              {!retail && (
-                <label className={styles.rangeLabel}>
-                  Adjust quantity <span>{number(kg / 1000)} MT</span>
-                  <input
-                    aria-label="Quantity in metric tonnes"
-                    type="range"
-                    min="1"
-                    max="200"
-                    step="1"
-                    value={Math.max(1, kg / 1000)}
-                    onChange={(event) => {
-                      setUnit("mt");
-                      setQuantity(event.target.value);
-                    }}
-                  />
-                </label>
-              )}
-              <div className={styles.packages} role="group" aria-label="Bag size">
-                {PACKS.map((item, index) => (
-                  <button
-                    key={item.kg}
-                    type="button"
-                    aria-pressed={packIndex === index}
-                    onClick={() => setPackIndex(index)}
-                  >
-                    <Package size={19} />
-                    <strong>{item.kg} kg</strong>
-                    <small>{item.label}</small>
-                  </button>
-                ))}
-              </div>
-              <p className={styles.hint}>
-                {number(estimate.bags)} bags at {pack.kg} kg each.{" "}
-                {kg % pack.kg !== 0
-                  ? "The final bag is partially filled; packaging is rounded up."
-                  : "Packaging is included in the estimate."}
+              </ol>
+            </nav>
+            <div className={styles.stepIntro}>
+              <p className={styles.kicker}>
+                Step {stepIndex + 1} of {steps.length} · {retail ? "Retail" : "Wholesale"}
               </p>
-            </fieldset>
-
-            {!retail && (
-              <fieldset hidden={step !== 2} className={styles.group}>
-                <legend>Destination & delivery</legend>
+              <h3 ref={stepHeading} tabIndex={-1}>
+                {stepTitles[step]}
+              </h3>
+            </div>
+            <div id="estimate-inputs" className={styles.inputs}>
+              <fieldset hidden={step !== 0} className={styles.group}>
+                <legend>Choose your commodity</legend>
+                <div className={styles.products}>
+                  {PRODUCTS.map((item, index) => (
+                    <button
+                      key={item.image}
+                      type="button"
+                      aria-pressed={productIndex === index}
+                      onClick={() => changeProduct(index)}
+                    >
+                      <Image src={`/assets/hero-center-${item.image}.png`} alt="" width={90} height={90} sizes="90px" />
+                      <span>{item.label}</span>
+                      {productIndex === index && <Check size={14} className={styles.check} />}
+                    </button>
+                  ))}
+                </div>
                 <div className={styles.fields}>
                   <label>
-                    Destination country
-                    <select
-                      value={destination}
-                      onChange={(event) => handleDestinationChange(Number(event.target.value))}
-                    >
-                      {DESTINATIONS.map((item, index) => (
-                        <option key={item.country} value={index}>
-                          {item.country} ({item.currency})
-                        </option>
+                    Variety
+                    <select value={variety} onChange={(event) => setVariety(event.target.value)}>
+                      {product.varieties.map((value) => (
+                        <option key={value}>{value}</option>
                       ))}
                     </select>
                   </label>
                   <label>
-                    {shipping === "sea" ? "Destination port" : "Delivery location"}
-                    <input
-                      required
-                      aria-invalid={!port.trim()}
-                      value={port}
-                      onChange={(event) => setPort(event.target.value)}
-                      placeholder="Port or delivery location"
-                    />
-                  </label>
-                  <label>
-                    Shipping mode
-                    <select
-                      value={shipping}
-                      onChange={(event) => {
-                        const value = event.target.value as "sea" | "air";
-                        setShipping(value);
-                        const baseFreight = value === "sea" ? 1600 : 4;
-                        const freightInCurr =
-                          value === "sea"
-                            ? String(Math.round(baseFreight * CURRENCY_RATES[currency]))
-                            : String(Number((baseFreight * CURRENCY_RATES[currency]).toFixed(2)));
-                        setRates((previous) => ({ ...previous, freight: freightInCurr }));
-                        if (value === "air") setIncoterm("EXW");
-                      }}
-                    >
-                      <option value="sea">Sea freight</option>
-                      <option value="air">Air freight</option>
+                    Processing
+                    <select value={processing} onChange={(event) => setProcessing(event.target.value)}>
+                      {product.processes.map((value) => (
+                        <option key={value}>{value}</option>
+                      ))}
                     </select>
                   </label>
                   <label>
-                    Quotation basis
-                    <select value={incoterm} onChange={(event) => setIncoterm(event.target.value)}>
-                      <option value="EXW">EXW · Ex works</option>
-                      {shipping === "sea" && (
-                        <>
-                          <option value="FOB">FOB · Free on board</option>
-                          <option value="CFR">CFR · Cost & freight</option>
-                          <option value="CIF">CIF · Cost, insurance & freight</option>
-                        </>
-                      )}
+                    Origin preference
+                    <select value={origin} onChange={(event) => setOrigin(event.target.value)}>
+                      {["India", "Pakistan", "Nepal", "Other / discuss with us"].map((value) => (
+                        <option key={value}>{value}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    Grade
+                    <select value={grade} onChange={(event) => setGrade(event.target.value)}>
+                      {product.grades.map((value) => (
+                        <option key={value}>{value}</option>
+                      ))}
                     </select>
                   </label>
                 </div>
-                {!port.trim() && <p className={styles.error}>Enter a destination port or delivery location to continue.</p>}
-                <p className={styles.hint}>
-                  Changing the destination configures default regional routing and currency. Review planning rates in the next step.
-                </p>
+                <p className={styles.hint}>Specifications are preferences for your enquiry, subject to availability.</p>
               </fieldset>
-            )}
 
-            <div hidden={step !== 3} className={styles.assumptions}>
-              <div className={styles.assumptionsHead}>
-                <div className={styles.assumptionsTitle}>
-                  <SlidersHorizontal size={17} />
-                  <h4>Rate assumptions</h4>
-                  <span className={styles.currencyInfoTag}>{currency}</span>
-                </div>
-                <div className={styles.currencySelector}>
-                  <span className={styles.currencyLabel}>Currency:</span>
-                  <div className={styles.currencyPills} role="radiogroup" aria-label="Quotation currency">
-                    {CURRENCIES.map((c) => (
-                      <button
-                        key={c.code}
-                        type="button"
-                        role="radio"
-                        aria-checked={currency === c.code}
-                        className={`${styles.currencyBtn} ${currency === c.code ? styles.currencyBtnActive : ""}`}
-                        onClick={() => handleCurrencyChange(c.code)}
-                        title={`${c.code} · ${c.country} (${c.name})`}
-                      >
-                        {c.code}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p>
-                Sample inputs for planning in <strong>{currency}</strong> ({currentCurrencyObj.country} · {currentCurrencyObj.name}). Edit with your supplier or freight partner&apos;s rates. Duty and tax start at 0% and need confirmation.
-              </p>
-              <div className={styles.fields}>
-                {rateFields.map(([key, label]) => (
-                  <label key={key}>
-                    {label}
+              <fieldset hidden={step !== 1} className={styles.group}>
+                <legend>Quantity & packaging</legend>
+                <div className={styles.fields}>
+                  <label>
+                    Order quantity
                     <input
                       type="number"
-                      min="0"
-                      max={["insurance", "duty", "tax"].includes(key) ? 100 : 100000000}
-                      step="any"
-                      value={rates[key]}
-                      onChange={(event) => setRates((previous) => ({ ...previous, [key]: event.target.value }))}
+                      min={unit === "bags" ? 1 : 0.001}
+                      max={maxQuantity}
+                      step={unit === "bags" ? 1 : "any"}
+                      value={quantity}
+                      onChange={(event) => setQuantity(event.target.value)}
+                      aria-invalid={!validQuantity}
+                      aria-describedby={!validQuantity ? "quantity-error" : undefined}
                     />
                   </label>
-                ))}
-              </div>
-              {!validRates && (
-                <p className={styles.error}>
-                  Enter non-negative rates up to 100,000,000. Percentages must be between 0 and 100.
+                  <label>
+                    Measure in
+                    <select value={unit} onChange={(event) => changeUnit(event.target.value)}>
+                      <option value="mt">Metric tonnes (MT)</option>
+                      <option value="kg">Kilograms (kg)</option>
+                      <option value="bags">Number of bags</option>
+                    </select>
+                  </label>
+                </div>
+                {!validQuantity && (
+                  <p id="quantity-error" className={styles.error}>
+                    Enter a positive quantity up to 200 MT. Bag quantities must be whole numbers.
+                  </p>
+                )}
+                {!retail && (
+                  <label className={styles.rangeLabel}>
+                    Adjust quantity <span>{number(kg / 1000)} MT</span>
+                    <input
+                      aria-label="Quantity in metric tonnes"
+                      type="range"
+                      min="1"
+                      max="200"
+                      step="1"
+                      value={Math.max(1, kg / 1000)}
+                      onChange={(event) => {
+                        setUnit("mt");
+                        setQuantity(event.target.value);
+                      }}
+                    />
+                  </label>
+                )}
+                <div className={styles.packages} role="group" aria-label="Bag size">
+                  {PACKS.map((item, index) => (
+                    <button
+                      key={item.kg}
+                      type="button"
+                      aria-pressed={packIndex === index}
+                      onClick={() => setPackIndex(index)}
+                    >
+                      <Package size={19} />
+                      <strong>{item.kg} kg</strong>
+                      <small>{item.label}</small>
+                    </button>
+                  ))}
+                </div>
+                <p className={styles.hint}>
+                  {number(estimate.bags)} bags at {pack.kg} kg each.{" "}
+                  {kg % pack.kg !== 0
+                    ? "The final bag is partially filled; packaging is rounded up."
+                    : "Packaging is included in the estimate."}
                 </p>
-              )}
-              <p>
-                Packaging: {money(packCost, currency)} / bag.{" "}
-                {retail
-                  ? "Retail uses the same sample commodity rate; retail margins are not included."
-                  : "Insurance applies to goods plus freight. Tax applies to CIF plus duty. Actual assessment rules may differ."}
-              </p>
-            </div>
-          </div>
+              </fieldset>
 
-          {step === 4 && (
-            <aside className={styles.result} aria-labelledby="estimate-result-heading">
-              <div className={styles.resultTop}>
-                <span className={styles.kicker}>Your planning estimate</span>
-                <span className={styles.badge}>Illustrative · {currency}</span>
-              </div>
-              <h3 id="estimate-result-heading">
-                {product.label}
-                <span>
-                  {variety} · {grade}
-                </span>
-              </h3>
-              <div className={styles.metrics}>
-                <div>
-                  <small>Total quantity</small>
-                  <strong>
-                    {number(estimate.mt)} <span>MT</span>
-                  </strong>
-                  <small>{number(kg)} kg</small>
-                </div>
-                <div>
-                  <small>{pack.kg} kg bags</small>
-                  <strong>{number(estimate.bags)}</strong>
-                  <small>{pack.label}</small>
-                </div>
-              </div>
-              <div className={styles.route}>
-                <Ship size={19} />
-                <div>
-                  {retail
-                    ? "Local delivery estimate"
-                    : shipping === "sea"
-                    ? `${estimate.containers} × 20ft container${estimate.containers === 1 ? "" : "s"} (approx.)`
-                    : "Air cargo estimate"}
-                  <small>
-                    {retail
-                      ? "Delivery and tax assumptions shown below"
-                      : `${origin} → ${DESTINATIONS[destination].country} · ${port || "Location to confirm"}`}
-                  </small>
-                </div>
-              </div>
-              <div className={styles.breakdown}>
-                <div className={styles.breakdownHead}>
-                  <h4>
-                    Cost breakdown <span>{currency}</span>
-                  </h4>
-                  <div className={styles.currencyPillsSmall} role="radiogroup" aria-label="Toggle quotation currency">
-                    {CURRENCIES.map((c) => (
-                      <button
-                        key={c.code}
-                        type="button"
-                        role="radio"
-                        aria-checked={currency === c.code}
-                        className={`${styles.currencyBtnSmall} ${currency === c.code ? styles.currencyBtnSmallActive : ""}`}
-                        onClick={() => handleCurrencyChange(c.code)}
-                        title={`${c.code} · ${c.country}`}
+              {!retail && (
+                <fieldset hidden={step !== 2} className={styles.group}>
+                  <legend>Destination & delivery</legend>
+                  <div className={styles.fields}>
+                    <label>
+                      Destination country
+                      <select
+                        value={destination}
+                        onChange={(event) => handleDestinationChange(Number(event.target.value))}
                       >
-                        {c.code}
-                      </button>
-                    ))}
+                        {DESTINATIONS.map((item, index) => (
+                          <option key={item.country} value={index}>
+                            {item.country} ({item.currency})
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      {shipping === "sea" ? "Destination port" : "Delivery location"}
+                      <input
+                        required
+                        aria-invalid={!port.trim()}
+                        value={port}
+                        onChange={(event) => setPort(event.target.value)}
+                        placeholder="Port or delivery location"
+                      />
+                    </label>
+                    <label>
+                      Shipping mode
+                      <select
+                        value={shipping}
+                        onChange={(event) => {
+                          const value = event.target.value as "sea" | "air";
+                          setShipping(value);
+                          const baseFreight = value === "sea" ? 1600 : 4;
+                          const freightInCurr =
+                            value === "sea"
+                              ? String(Math.round(baseFreight * CURRENCY_RATES[currency]))
+                              : String(Number((baseFreight * CURRENCY_RATES[currency]).toFixed(2)));
+                          setRates((previous) => ({ ...previous, freight: freightInCurr }));
+                          if (value === "air") setIncoterm("EXW");
+                        }}
+                      >
+                        <option value="sea">Sea freight</option>
+                        <option value="air">Air freight</option>
+                      </select>
+                    </label>
+                    <label>
+                      Quotation basis
+                      <select value={incoterm} onChange={(event) => setIncoterm(event.target.value)}>
+                        <option value="EXW">EXW · Ex works</option>
+                        {shipping === "sea" && (
+                          <>
+                            <option value="FOB">FOB · Free on board</option>
+                            <option value="CFR">CFR · Cost & freight</option>
+                            <option value="CIF">CIF · Cost, insurance & freight</option>
+                          </>
+                        )}
+                      </select>
+                    </label>
+                  </div>
+                  {!port.trim() && <p className={styles.error}>Enter a destination port or delivery location to continue.</p>}
+                  <p className={styles.hint}>
+                    Changing the destination configures default regional routing and currency. Review planning rates in the next step.
+                  </p>
+                </fieldset>
+              )}
+
+              <div hidden={step !== 3} className={styles.assumptions}>
+                <div className={styles.assumptionsHead}>
+                  <div className={styles.assumptionsTitle}>
+                    <SlidersHorizontal size={17} />
+                    <h4>Rate assumptions</h4>
+                    <span className={styles.currencyInfoTag}>{currency}</span>
+                  </div>
+                  <div className={styles.currencySelector}>
+                    <span className={styles.currencyLabel}>Currency:</span>
+                    <div className={styles.currencyPills} role="radiogroup" aria-label="Quotation currency">
+                      {CURRENCIES.map((c) => (
+                        <button
+                          key={c.code}
+                          type="button"
+                          role="radio"
+                          aria-checked={currency === c.code}
+                          className={`${styles.currencyBtn} ${currency === c.code ? styles.currencyBtnActive : ""}`}
+                          onClick={() => handleCurrencyChange(c.code)}
+                          title={`${c.code} · ${c.country} (${c.name})`}
+                        >
+                          {c.code}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <dl>
-                  {rows.map(([label, value]) => (
-                    <div key={label}>
-                      <dt>{label}</dt>
-                      <dd>{money(value, currency)}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-              {!retail && (
-                <p className={styles.basis}>
-                  {incoterm} planning subtotal <strong>{money(basis, currency)}</strong>
-                  <small>The landed total also includes costs beyond this delivery term.</small>
+                <p>
+                  Sample inputs for planning in <strong>{currency}</strong> ({currentCurrencyObj.country} · {currentCurrencyObj.name}). Edit with your supplier or freight partner&apos;s rates. Duty and tax start at 0% and need confirmation.
                 </p>
-              )}
-              <div className={styles.total} aria-live="polite" aria-atomic="true">
-                <span>Estimated {retail ? "delivered" : "landed"} total</span>
-                <strong>{valid ? money(estimate.total, currency) : "—"}</strong>
-                <div>
-                  <span>{money(estimate.perMt, currency)} / MT</span>
-                  <span>{money(estimate.perKg, currency)} / kg</span>
+                <div className={styles.fields}>
+                  {rateFields.map(([key, label]) => (
+                    <label key={key}>
+                      {label}
+                      <input
+                        type="number"
+                        min="0"
+                        max={["insurance", "duty", "tax"].includes(key) ? 100 : 100000000}
+                        step="any"
+                        value={rates[key]}
+                        onChange={(event) => setRates((previous) => ({ ...previous, [key]: event.target.value }))}
+                      />
+                    </label>
+                  ))}
                 </div>
+                {!validRates && (
+                  <p className={styles.error}>
+                    Enter non-negative rates up to 100,000,000. Percentages must be between 0 and 100.
+                  </p>
+                )}
+                <p>
+                  Packaging: {money(packCost, currency)} / bag.{" "}
+                  {retail
+                    ? "Retail uses the same sample commodity rate; retail margins are not included."
+                    : "Insurance applies to goods plus freight. Tax applies to CIF plus duty. Actual assessment rules may differ."}
+                </p>
               </div>
-              <p className={styles.disclaimer}>
-                A planning guide in {currency}, not an official offer. Sample rates exclude unlisted charges and are not live market prices. Container capacity assumes 25 MT and must be checked against cargo dimensions and route limits.
-              </p>
-              <button
-                className={styles.primary}
-                type="button"
-                disabled={!valid}
-                onClick={() => onOpenQuoteModal(`${QUOTE_NAMES[productIndex]} (${currency} Quotation)`)}
-              >
-                Request an official quote <ArrowUpRight size={18} />
-              </button>
-              <div className={styles.actions}>
-                <button type="button" disabled={!valid} onClick={printEstimate}>
-                  <Download size={16} /> Save as PDF ({currency})
-                </button>
+            </div>
+
+            {step === 4 && (
+              <aside className={styles.result} aria-labelledby="estimate-result-heading">
+                <div className={styles.resultTop}>
+                  <span className={styles.kicker}>Your planning estimate</span>
+                  <span className={styles.badge}>Illustrative · {currency}</span>
+                </div>
+                <h3 id="estimate-result-heading">
+                  {product.label}
+                  <span>
+                    {variety} · {grade}
+                  </span>
+                </h3>
+                <div className={styles.metrics}>
+                  <div>
+                    <small>Total quantity</small>
+                    <strong>
+                      {number(estimate.mt)} <span>MT</span>
+                    </strong>
+                    <small>{number(kg)} kg</small>
+                  </div>
+                  <div>
+                    <small>{pack.kg} kg bags</small>
+                    <strong>{number(estimate.bags)}</strong>
+                    <small>{pack.label}</small>
+                  </div>
+                </div>
+                <div className={styles.route}>
+                  <Ship size={19} />
+                  <div>
+                    {retail
+                      ? "Local delivery estimate"
+                      : shipping === "sea"
+                        ? `${estimate.containers} × 20ft container${estimate.containers === 1 ? "" : "s"} (approx.)`
+                        : "Air cargo estimate"}
+                    <small>
+                      {retail
+                        ? "Delivery and tax assumptions shown below"
+                        : `${origin} → ${DESTINATIONS[destination].country} · ${port || "Location to confirm"}`}
+                    </small>
+                  </div>
+                </div>
+                <div className={styles.breakdown}>
+                  <div className={styles.breakdownHead}>
+                    <h4>
+                      Cost breakdown <span>{currency}</span>
+                    </h4>
+                    <div className={styles.currencyPillsSmall} role="radiogroup" aria-label="Toggle quotation currency">
+                      {CURRENCIES.map((c) => (
+                        <button
+                          key={c.code}
+                          type="button"
+                          role="radio"
+                          aria-checked={currency === c.code}
+                          className={`${styles.currencyBtnSmall} ${currency === c.code ? styles.currencyBtnSmallActive : ""}`}
+                          onClick={() => handleCurrencyChange(c.code)}
+                          title={`${c.code} · ${c.country}`}
+                        >
+                          {c.code}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <dl>
+                    {rows.map(([label, value]) => (
+                      <div key={label}>
+                        <dt>{label}</dt>
+                        <dd>{money(value, currency)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+                {!retail && (
+                  <p className={styles.basis}>
+                    {incoterm} planning subtotal <strong>{money(basis, currency)}</strong>
+                    <small>The landed total also includes costs beyond this delivery term.</small>
+                  </p>
+                )}
+                <div className={styles.total} aria-live="polite" aria-atomic="true">
+                  <span>Estimated {retail ? "delivered" : "landed"} total</span>
+                  <strong>{valid ? money(estimate.total, currency) : "—"}</strong>
+                  <div>
+                    <span>{money(estimate.perMt, currency)} / MT</span>
+                    <span>{money(estimate.perKg, currency)} / kg</span>
+                  </div>
+                </div>
+                <p className={styles.disclaimer}>
+                  A planning guide in {currency}, not an official offer. Sample rates exclude unlisted charges and are not live market prices. Container capacity assumes 25 MT and must be checked against cargo dimensions and route limits.
+                </p>
                 <button
+                  className={styles.primary}
                   type="button"
                   disabled={!valid}
-                  onClick={() =>
-                    window.open(
-                      `https://wa.me/9779801234567?text=${encodeURIComponent(summary)}`,
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
+                  onClick={() => onOpenQuoteModal(`${variety || QUOTE_NAMES[productIndex]} (${currency} Quotation)`)}
                 >
-                  <MessageCircle size={16} /> WhatsApp enquiry
+                  Request an official quote <ArrowUpRight size={18} />
                 </button>
-              </div>
-              {exportError && <p role="alert" className={styles.error}>{exportError}</p>}
-            </aside>
-          )}
+                <div className={styles.actions}>
+                  <button type="button" disabled={!valid} onClick={printEstimate}>
+                    <Download size={16} /> Save as PDF ({currency})
+                  </button>
+                  <button
+                    type="button"
+                    disabled={!valid}
+                    onClick={() =>
+                      window.open(
+                        `https://wa.me/9779801234567?text=${encodeURIComponent(summary)}`,
+                        "_blank",
+                        "noopener,noreferrer"
+                      )
+                    }
+                  >
+                    <MessageCircle size={16} /> WhatsApp enquiry
+                  </button>
+                </div>
+                {exportError && <p role="alert" className={styles.error}>{exportError}</p>}
+              </aside>
+            )}
 
-          <div className={styles.navigation}>
-            <button
-              type="button"
-              className={styles.back}
-              disabled={stepIndex === 0}
-              onClick={() => goToStep(steps[stepIndex - 1])}
-            >
-              Back
-            </button>
-            {step !== 4 ? (
+            <div className={styles.navigation}>
               <button
                 type="button"
-                className={styles.continue}
-                disabled={!canContinue}
-                onClick={() => goToStep(steps[stepIndex + 1])}
+                className={styles.back}
+                disabled={stepIndex === 0}
+                onClick={() => goToStep(steps[stepIndex - 1])}
               >
-                {step === 3 ? "See my estimate" : `Continue to ${stepNames[steps[stepIndex + 1]].toLowerCase()}`}{" "}
-                <ArrowUpRight size={17} />
+                Back
               </button>
-            ) : (
-              <button type="button" className={styles.back} onClick={() => goToStep(0)}>
-                Edit product details
-              </button>
-            )}
+              {step !== 4 ? (
+                <button
+                  type="button"
+                  className={styles.continue}
+                  disabled={!canContinue}
+                  onClick={() => goToStep(steps[stepIndex + 1])}
+                >
+                  {step === 3 ? "See my estimate" : `Continue to ${stepNames[steps[stepIndex + 1]].toLowerCase()}`}{" "}
+                  <ArrowUpRight size={17} />
+                </button>
+              ) : (
+                <button type="button" className={styles.back} onClick={() => goToStep(0)}>
+                  Edit product details
+                </button>
+              )}
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );

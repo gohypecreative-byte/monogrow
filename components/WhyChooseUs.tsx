@@ -37,17 +37,17 @@ const COMMODITY_JOURNEYS: CommodityJourney[] = [
     id: "rice",
     tabLabel: "Basmati Rice",
     icon: "🌾",
-    name: "Supreme 1121 Long Grain Basmati",
+    name: "Premium Basmati Steam Rice",
     categoryTag: "Flagship 5KG Export Pack",
     originBadge: "Himalayan Foothills",
     productImage: "/assets/monagrow-rice-bag-cutout.png",
     productAlt: "Monagrow 5kg Basmati Rice Box Bag",
     description:
-      "Aged naturally over two full seasons for exquisite aroma, slender 8.9mm grain elongation, and non-sticky fluffiness upon cooking.",
+      "Carefully steam-processed to support better grain separation, distinctive natural aroma, and consistent cooking results.",
     specs: [
-      { label: "Milled Grain", value: "8.9 mm+ Slender" },
-      { label: "Elongation", value: "Over 2.2x Fluffiness" },
-      { label: "Moisture", value: "< 12.0% Certified" },
+      { label: "Milled Grain", value: "8.35 mm+ Slender" },
+      { label: "Separation", value: "Fluffy & Non-Sticky" },
+      { label: "Purity", value: "100% Sortex Clean" },
       { label: "Packaging", value: "5kg Box Bag / 25kg Sacks" },
     ],
     steps: {
@@ -96,7 +96,7 @@ const COMMODITY_JOURNEYS: CommodityJourney[] = [
     name: "Monagrow Royal Mixed Dry Fruits",
     categoryTag: "Royal 2.5KG Resealable Pouch",
     originBadge: "Curated Origin Estates",
-    productImage: "/assets/monagrow-dryfruits-packaging.png",
+    productImage: "/assets/monagrow-mix-dryfruits-packaging.png",
     productAlt: "Monagrow 2.5kg Royal Mixed Dry Fruits Pouch",
     description:
       "Handpicked 4-in-1 harvest of golden Whole Dryfruits, California almonds, rich walnuts, and crunchy green pistachios.",

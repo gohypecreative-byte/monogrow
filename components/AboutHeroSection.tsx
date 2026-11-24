@@ -12,7 +12,7 @@ interface AboutHeroSectionProps {
 const PRODUCTS = [
   { name: "Basmati rice", background: "#e4eef0", image: "monagrow-rice-bag-cutout.png", description: "Delicate aroma. Beautifully long grains. Basmati for everyday meals and memorable occasions.", details: ["Extra-long grain", "Naturally aged", "Retail & bulk"] },
   { name: "Estate coffee", background: "#f0e5da", image: "monagrow-coffee-bag-cutout.png", description: "Rich, aromatic Arabica with a deep roast and a character all its own.", details: ["Estate Arabica", "Dark roast", "Whole bean & ground"] },
-  { name: "Royal dry fruits", background: "#eee4f2", image: "monagrow-dryfruits-packaging.png", description: "A generous selection of cashews, almonds, walnuts and pistachios. Naturally rich in flavour and crunch.", details: ["Selected mixed nuts", "Resealable pack", "Retail & bulk"] },
+  { name: "Royal dry fruits", background: "#eee4f2", image: "monagrow-mix-dryfruits-packaging.png", description: "A generous selection of cashews, almonds, walnuts and pistachios. Naturally rich in flavour and crunch.", details: ["Selected mixed nuts", "Resealable pack", "Retail & bulk"] },
   { name: "Sugar", background: "#edf0db", image: "monagrow-sugar-bag-cutout.png", description: "Fine, sparkling crystals with clean sweetness for kitchens, bakeries and confectionery.", details: ["Refined sugar", "ICUMSA 45", "Retail & bulk"] },
 ];
 const PROCESS_STEPS = [

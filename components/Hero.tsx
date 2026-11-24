@@ -12,9 +12,9 @@ interface HeroProps {
 }
 
 const PRODUCTS = [
-  { name: "Basmati Rice", short: "Rice", title: ["Every grain.", "Exceptional."], image: "/assets/monagrow-rice-bag-cutout.png", colour: "#b9cdef", glow: "#315a9c", note: "EXTRA LONG GRAIN", description: "A delicate aroma. An extraordinary length. Basmati that makes every meal worth remembering.", detail: "Extra-long grain", size: "5 kg", ingredient: "rice", atlas: "0% 0%" },
+  { name: "Basmati Rice", short: "Rice", title: ["Every grain.", "Exceptional."], image: "/assets/monagrow-rice-bag-cutout.png", colour: "#b9cdef", glow: "#315a9c", note: "STEAM & SELLA BASMATI", description: "Carefully steam-processed to support better grain separation and consistent cooking results.", detail: "Steam & Sella", size: "5 kg", ingredient: "rice", atlas: "0% 0%" },
   { name: "Estate Coffee", short: "Coffee", title: ["Deep roots.", "Deeper flavour."], image: "/assets/monagrow-coffee-bag-cutout.png", colour: "#e7ad76", glow: "#aa633c", note: "SPECIALTY ESTATE COFFEE", description: "Rich, aromatic Arabica. Carefully sourced from the estate, for a cup with a character all its own.", detail: "Dark roast Arabica", size: "2.5 kg", ingredient: "coffee", atlas: "100% 0%" },
-  { name: "Royal Dry Fruits", short: "Dry Fruits", title: ["Naturally rich.", "Royally good."], image: "/assets/monagrow-dryfruits-packaging.png", colour: "#e5c5f0", glow: "#78328d", note: "WHOLE & SELECTED MIX", description: "A royal harvest of selected cashews, California almonds, rich walnuts, and crunchy pistachios.", detail: "Four-nut mix", size: "2.5 kg", ingredient: "dryfruit", atlas: "0% 100%" },
+  { name: "Royal Dry Fruits", short: "Dry Fruits", title: ["Naturally rich.", "Royally good."], image: "/assets/monagrow-mix-dryfruits-packaging.png", colour: "#e5c5f0", glow: "#78328d", note: "WHOLE & SELECTED MIX", description: "A royal harvest of selected cashews, California almonds, rich walnuts, and crunchy pistachios.", detail: "Four-nut mix", size: "2.5 kg", ingredient: "dryfruit", atlas: "0% 100%" },
   { name: "Sugar", short: "Sugar", title: ["Pure sweetness.", "Sweet simplicity."], image: "/assets/monagrow-sugar-bag-cutout.png", colour: "#d1db94", glow: "#7e994c", note: "REFINED SUGAR · ICUMSA 45", description: "Sparkling crystals. Consistent purity. Refined sugar, ready for everything you create.", detail: "ICUMSA 45", size: "1 kg", ingredient: "sugar", atlas: "100% 100%" },
 ];
 
@@ -38,7 +38,7 @@ const COFFEE_PARTICLES = [
   "/assets/coffee-particle-2.png",
   "/assets/coffee-particle-3.png",
 ];
-const QUOTE_NAMES = ["Basmati Rice (1121 Supreme)", "Specialty Estate Coffee", "Royal Mixed Dry Fruits", "Refined Sugar (ICUMSA 45)"];
+const QUOTE_NAMES = ["Premium Basmati Steam Rice", "Specialty Estate Coffee", "Royal Mixed Dry Fruits", "Refined Sugar (ICUMSA 45)"];
 const BACKGROUNDS = ["#142e61", "#754832", "#3e164f", "#516b3b"];
 function blendColour(from: string, to: string, progress: number) {
   const channels = [1, 3, 5].map(offset => {
@@ -53,7 +53,7 @@ export default function Hero({ onOpenQuoteModal, filterProduct }: HeroProps) {
   const stage = useRef<HTMLDivElement>(null);
 
   const isSingleProduct = Boolean(filterProduct);
-  const productIndex = filterProduct ? { rice: 0, coffee: 1, "dry-fruits": 2, sugar: 3 }[filterProduct] : 0;
+  const productIndex = filterProduct ? (({ rice: 0, coffee: 1, "dry-fruits": 2, dryfruits: 2, sugar: 3 } as Record<string, number>)[filterProduct] ?? 0) : 0;
   const activeProducts = useMemo(() => isSingleProduct ? [PRODUCTS[productIndex]] : PRODUCTS, [isSingleProduct, productIndex]);
   const activeBackgrounds = useMemo(() => isSingleProduct ? [BACKGROUNDS[productIndex]] : BACKGROUNDS, [isSingleProduct, productIndex]);
   const activeQuoteNames = isSingleProduct ? [QUOTE_NAMES[productIndex]] : QUOTE_NAMES;

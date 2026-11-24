@@ -93,9 +93,8 @@ export default function RiceHistorySection({
   // Filter products for the Varieties Showcase
   const filteredProducts = products.filter((p) => {
     if (selectedFilter === "all") return true;
-    if (selectedFilter === "basmati") return p.id.includes("basmati");
-    if (selectedFilter === "heritage") return p.id.includes("katarni") || p.id.includes("traditional");
-    if (selectedFilter === "sella") return p.id.includes("sella");
+    if (selectedFilter === "steam") return p.name.toLowerCase().includes("steam");
+    if (selectedFilter === "sella") return p.name.toLowerCase().includes("sella");
     return true;
   });
 
@@ -179,7 +178,7 @@ export default function RiceHistorySection({
       shortDesc: "Dual-camera optical laser sorting and GI certifications ensure 100% purity and digital lot traceability.",
       region: "Himalayan Basmati Belt & Global Ports",
       summary:
-        "Today, high-resolution optical camera sorting, laser purity verification, and strict Geographical Indication (GI) laws ensure varieties like Monagrow 1121 Supreme deliver unmatched length, zero broken grains, and verifiable origin.",
+        "Today, high-resolution optical camera sorting, laser purity verification, and strict Geographical Indication (GI) laws ensure varieties like Monagrow Premium Basmati deliver unmatched length, zero broken grains, and verifiable origin.",
       milestone: "Laser sortex 100% purity and digital lot-level origin certification",
       significance: "Unites ten millennia of botanical heritage with aerospace-grade sorting technology.",
       icon: Sparkles,
@@ -257,7 +256,7 @@ export default function RiceHistorySection({
   // Nutritional profiles (per 100g cooked)
   const nutritionProfiles = {
     white: {
-      name: "1121 Supreme White Basmati",
+      name: "Premium Basmati Steam Rice",
       calories: 130,
       carbs: 28,
       protein: 2.7,
@@ -269,7 +268,7 @@ export default function RiceHistorySection({
       culinaryUse: "Biryani, Persian Chelow, Royal Pilafs, Saffron Steamed Rice",
     },
     brown: {
-      name: "100% Whole Grain Brown Basmati",
+      name: "Rozana Basmati Steam Rice",
       calories: 122,
       carbs: 25,
       protein: 3.1,
@@ -281,7 +280,7 @@ export default function RiceHistorySection({
       culinaryUse: "Wellness Bowls, High-Fiber Salads, Daily Wholesome Steaming",
     },
     sella: {
-      name: "1121 Golden Sella (Parboiled)",
+      name: "Premium Basmati Sella Rice",
       calories: 134,
       carbs: 29,
       protein: 2.9,
@@ -651,9 +650,8 @@ export default function RiceHistorySection({
           <div className="flex flex-wrap items-center justify-center gap-2 mb-8 sm:mb-10">
             {[
               { id: "all", label: "All Portfolio Varieties" },
-              { id: "basmati", label: "Extra Long Basmati" },
-              { id: "heritage", label: "Heritage Fragrant" },
-              { id: "sella", label: "Golden Sella Parboiled" },
+              { id: "steam", label: "Steam Basmati" },
+              { id: "sella", label: "Sella Basmati" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -756,7 +754,7 @@ export default function RiceHistorySection({
                   : "bg-white text-[#231815] hover:bg-neutral-100 border border-[#dfd5c6]"
               }`}
             >
-              1121 White Basmati
+              Premium Steam Basmati
             </button>
             <button
               type="button"
@@ -767,7 +765,7 @@ export default function RiceHistorySection({
                   : "bg-white text-[#231815] hover:bg-neutral-100 border border-[#dfd5c6]"
               }`}
             >
-              Whole Grain Brown
+              Rozana Steam Basmati
             </button>
             <button
               type="button"
@@ -778,7 +776,7 @@ export default function RiceHistorySection({
                   : "bg-white text-[#231815] hover:bg-neutral-100 border border-[#dfd5c6]"
               }`}
             >
-              Golden Sella (Parboiled)
+              Golden Sella Basmati
             </button>
           </div>
 

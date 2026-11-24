@@ -32,7 +32,7 @@ const BANNER_PRODUCTS: BannerProduct[] = [
   },
   {
     id: "sella-basmati-rice",
-    name: "1121 Golden Sella Basmati",
+    name: "Premium Basmati Sella Rice",
     category: "Parboiled Rice",
     packImg: "/assets/monagrow-golden-sella-bag-cutout.png",
     leftPercent: 27.0,
@@ -44,8 +44,8 @@ const BANNER_PRODUCTS: BannerProduct[] = [
   },
   {
     id: "katarni-rice",
-    name: "Katarni Premium Fragrant Rice",
-    category: "Heritage Heirloom",
+    name: "Classic Basmati Steam Rice",
+    category: "Steam Basmati",
     packImg: "/assets/monagrow-katarni-bag-cutout.png",
     leftPercent: 36.5,
     bottomPercent: 19.0,
@@ -56,7 +56,7 @@ const BANNER_PRODUCTS: BannerProduct[] = [
   },
   {
     id: "basmati-rice",
-    name: "1121 Supreme Basmati Rice",
+    name: "Premium Basmati Steam Rice",
     category: "Flagship Basmati",
     packImg: "/assets/monagrow-rice-bag-cutout.png",
     leftPercent: 50.0,
@@ -68,8 +68,8 @@ const BANNER_PRODUCTS: BannerProduct[] = [
   },
   {
     id: "jeera-masino-rice",
-    name: "Jeera Masino Premium Rice",
-    category: "Fine Slender Rice",
+    name: "Classic Basmati Sella Rice",
+    category: "Sella Basmati",
     packImg: "/assets/monagrow-jeera-masino-bag-cutout.png",
     leftPercent: 61.5,
     bottomPercent: 30.0,
@@ -106,7 +106,7 @@ const BANNER_PRODUCTS: BannerProduct[] = [
     id: "royal-cashews",
     name: "Royal Mixed Dry Fruits",
     category: "Select Dry Fruits",
-    packImg: "/assets/monagrow-dryfruits-packaging.png",
+    packImg: "/assets/monagrow-mix-dryfruits-packaging.png",
     leftPercent: 88.5,
     bottomPercent: 24.5,
     heightPercent: 34.0,
