@@ -725,7 +725,7 @@ export const RICE_ADDITIONAL_PRODUCTS: CommodityProduct[] = [
     description:
       "Aged to perfection, Premium Sona Masoori Rice is a lightweight, aromatic medium-grain variety cherished for its delicate texture and low starch content. Naturally easy to digest and fluffy upon cooking, it is the ideal choice for everyday family meals, South Indian culinary classics, and aromatic rice preparations.",
     originBadge: "Average Grain Length: 5.2 MM · 100% Sortex Clean",
-    packImg: "/assets/monagrow-premium-sona-masoori-bag-cutout.png",
+    packImg: "/assets/monagrow-premium-sona-masoori-bag-v2.png",
     bowlImg: "/assets/hero-center-rice.png",
     bowlAlt: "Full ceramic bowl of Premium Sona Masoori Rice",
     packAlt: "Monagrow Premium Sona Masoori Rice Pack",
@@ -757,7 +757,7 @@ export const RICE_ADDITIONAL_PRODUCTS: CommodityProduct[] = [
     description:
       "Milled for daily family wellness, Rozana Sona Masoori Rice delivers wholesome everyday nutrition with a clean, pleasant taste and fluffy separation. Its naturally balanced starch profile and tender grain make it an indispensable staple for dal-rice, sambar rice, pulao, and wholesome regional delicacies.",
     originBadge: "Average Grain Length: 5.0 MM · 100% Sortex Clean",
-    packImg: "/assets/monagrow-rozana-sona-masoori-bag-cutout.png",
+    packImg: "/assets/monagrow-rozana-sona-masoori-bag-v2.png",
     bowlImg: "/assets/hero-center-rice.png",
     bowlAlt: "Full ceramic bowl of Rozana Sona Masoori Rice",
     packAlt: "Monagrow Rozana Sona Masoori Rice Pack",
