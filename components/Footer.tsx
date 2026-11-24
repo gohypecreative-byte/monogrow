@@ -218,7 +218,7 @@ export default function Footer({ onOpenQuoteModal }: FooterProps) {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#740707] shrink-0" />
-                <span>xxxxxx, Nepal (Port &amp; CFS Network)</span>
+                <span>MONAGROW Global Pvt Ltd, Kathmandu, Bagmati, Nepal</span>
               </div>
             </div>
           </div>
@@ -236,32 +236,12 @@ export default function Footer({ onOpenQuoteModal }: FooterProps) {
               <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-[13px] text-[#740707]/80 font-medium">
                 <li>
                   <Link href="/" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
-                    Home Overview
+                    Home
                   </Link>
                 </li>
                 <li>
                   <Link href="/about-us" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
                     About Monagrow
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/rice" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
-                    Basmati Rice 8.9mm
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/coffee" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
-                    Specialty Coffee
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/sugar" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
-                    Refined Sugar ICUMSA
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/dry-fruits" className="hover:text-[#740707] hover:translate-x-0.5 transition-all duration-150 inline-block py-0.5">
-                    Royal Mixed Dry Fruits
                   </Link>
                 </li>
                 <li>

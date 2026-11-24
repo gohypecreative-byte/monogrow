@@ -23,7 +23,38 @@ export default function SmoothScroll() {
           lerp: .09,
           smoothWheel: true,
           syncTouch: false,
-          prevent: (node: HTMLElement) => Boolean(node.closest("[data-lenis-prevent], textarea, [role='dialog']")),
+          prevent: (node: HTMLElement) => {
+            if (!node) return false;
+            try {
+              const tag = node.tagName?.toLowerCase();
+              if (tag === "select" || tag === "option" || tag === "textarea" || tag === "input") {
+                return true;
+              }
+              if (
+                node.closest &&
+                Boolean(
+                  node.closest(
+                    "[data-lenis-prevent], select, option, textarea, [role='listbox'], [role='combobox'], [role='dialog'], [role='menu']"
+                  )
+                )
+              ) {
+                return true;
+              }
+              let el: HTMLElement | null = node;
+              while (el && el !== document.body && el !== document.documentElement) {
+                if (el.hasAttribute?.("data-lenis-prevent")) return true;
+                const style = window.getComputedStyle(el);
+                const oy = style.overflowY;
+                if ((oy === "auto" || oy === "scroll") && el.scrollHeight > el.clientHeight) {
+                  return true;
+                }
+                el = el.parentElement;
+              }
+            } catch {
+              return false;
+            }
+            return false;
+          },
         });
         lenis.on("scroll", ScrollTrigger.update);
         let locked = false;

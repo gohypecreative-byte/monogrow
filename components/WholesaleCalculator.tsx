@@ -352,7 +352,7 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
                 {stepTitles[step]}
               </h3>
             </div>
-            <div id="estimate-inputs" className={styles.inputs}>
+            <div id="estimate-inputs" className={styles.inputs} data-lenis-prevent onWheelCapture={(e) => e.stopPropagation()}>
               <fieldset hidden={step !== 0} className={styles.group}>
                 <legend>Choose your commodity</legend>
                 <div className={styles.products}>
@@ -369,10 +369,15 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
                     </button>
                   ))}
                 </div>
-                <div className={styles.fields}>
+                <div className={styles.fields} data-lenis-prevent onWheelCapture={(e) => e.stopPropagation()}>
                   <label>
                     Variety
-                    <select value={variety} onChange={(event) => setVariety(event.target.value)}>
+                    <select
+                      data-lenis-prevent
+                      onWheel={(e) => e.stopPropagation()}
+                      value={variety}
+                      onChange={(event) => setVariety(event.target.value)}
+                    >
                       {product.varieties.map((value) => (
                         <option key={value}>{value}</option>
                       ))}
@@ -380,7 +385,12 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
                   </label>
                   <label>
                     Processing
-                    <select value={processing} onChange={(event) => setProcessing(event.target.value)}>
+                    <select
+                      data-lenis-prevent
+                      onWheel={(e) => e.stopPropagation()}
+                      value={processing}
+                      onChange={(event) => setProcessing(event.target.value)}
+                    >
                       {product.processes.map((value) => (
                         <option key={value}>{value}</option>
                       ))}
@@ -388,7 +398,12 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
                   </label>
                   <label>
                     Origin preference
-                    <select value={origin} onChange={(event) => setOrigin(event.target.value)}>
+                    <select
+                      data-lenis-prevent
+                      onWheel={(e) => e.stopPropagation()}
+                      value={origin}
+                      onChange={(event) => setOrigin(event.target.value)}
+                    >
                       {["India", "Pakistan", "Nepal", "Other / discuss with us"].map((value) => (
                         <option key={value}>{value}</option>
                       ))}
@@ -396,7 +411,12 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
                   </label>
                   <label>
                     Grade
-                    <select value={grade} onChange={(event) => setGrade(event.target.value)}>
+                    <select
+                      data-lenis-prevent
+                      onWheel={(e) => e.stopPropagation()}
+                      value={grade}
+                      onChange={(event) => setGrade(event.target.value)}
+                    >
                       {product.grades.map((value) => (
                         <option key={value}>{value}</option>
                       ))}
@@ -408,7 +428,7 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
 
               <fieldset hidden={step !== 1} className={styles.group}>
                 <legend>Quantity & packaging</legend>
-                <div className={styles.fields}>
+                <div className={styles.fields} data-lenis-prevent onWheelCapture={(e) => e.stopPropagation()}>
                   <label>
                     Order quantity
                     <input
@@ -424,7 +444,12 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
                   </label>
                   <label>
                     Measure in
-                    <select value={unit} onChange={(event) => changeUnit(event.target.value)}>
+                    <select
+                      data-lenis-prevent
+                      onWheel={(e) => e.stopPropagation()}
+                      value={unit}
+                      onChange={(event) => changeUnit(event.target.value)}
+                    >
                       <option value="mt">Metric tonnes (MT)</option>
                       <option value="kg">Kilograms (kg)</option>
                       <option value="bags">Number of bags</option>
@@ -478,10 +503,12 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
               {!retail && (
                 <fieldset hidden={step !== 2} className={styles.group}>
                   <legend>Destination & delivery</legend>
-                  <div className={styles.fields}>
+                  <div className={styles.fields} data-lenis-prevent onWheelCapture={(e) => e.stopPropagation()}>
                     <label>
                       Destination country
                       <select
+                        data-lenis-prevent
+                        onWheel={(e) => e.stopPropagation()}
                         value={destination}
                         onChange={(event) => handleDestinationChange(Number(event.target.value))}
                       >
@@ -505,6 +532,8 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
                     <label>
                       Shipping mode
                       <select
+                        data-lenis-prevent
+                        onWheel={(e) => e.stopPropagation()}
                         value={shipping}
                         onChange={(event) => {
                           const value = event.target.value as "sea" | "air";
@@ -524,7 +553,12 @@ export default function WholesaleCalculator({ onOpenQuoteModal }: { onOpenQuoteM
                     </label>
                     <label>
                       Quotation basis
-                      <select value={incoterm} onChange={(event) => setIncoterm(event.target.value)}>
+                      <select
+                        data-lenis-prevent
+                        onWheel={(e) => e.stopPropagation()}
+                        value={incoterm}
+                        onChange={(event) => setIncoterm(event.target.value)}
+                      >
                         <option value="EXW">EXW · Ex works</option>
                         {shipping === "sea" && (
                           <>

@@ -340,6 +340,8 @@ export default function ContactSection({ onOpenQuoteModal }: ContactSectionProps
                         <div className="relative">
                           <select
                             id="contact-country"
+                            data-lenis-prevent
+                            onWheel={(e) => e.stopPropagation()}
                             required
                             value={formData.country}
                             onChange={(e) => setFormData({ ...formData, country: e.target.value })}
@@ -362,6 +364,8 @@ export default function ContactSection({ onOpenQuoteModal }: ContactSectionProps
                       <div className="relative">
                         <select
                           id="contact-product"
+                          data-lenis-prevent
+                          onWheel={(e) => e.stopPropagation()}
                           required
                           value={formData.product}
                           onChange={(e) => setFormData({ ...formData, product: e.target.value })}

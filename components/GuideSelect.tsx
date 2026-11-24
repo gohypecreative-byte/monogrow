@@ -70,7 +70,7 @@ export default function GuideSelect({ id, label, options, value, onChange }: {
       onClick={() => { setActive(value); setOpen(!open); }}>
       <span>{options[value]}</span><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="m5 7 5 5 5-5" /></svg>
     </button>
-    {open && <ul id={`${id}-list`} role="listbox" aria-labelledby={`${id}-label`} className={styles.menu}>
+    {open && <ul id={`${id}-list`} role="listbox" data-lenis-prevent onWheel={(e) => e.stopPropagation()} aria-labelledby={`${id}-label`} className={styles.menu}>
       {options.map((option, index) => <li key={option} id={`${id}-option-${index}`} role="option"
         aria-selected={index === value} data-active={index === active}
         onPointerMove={() => setActive(index)} onMouseDown={event => event.preventDefault()}

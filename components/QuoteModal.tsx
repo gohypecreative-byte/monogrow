@@ -150,6 +150,8 @@ export default function QuoteModal({
                   </label>
                   <div className="relative group">
                     <select
+                      data-lenis-prevent
+                      onWheel={(e) => e.stopPropagation()}
                       value={formData.commodity}
                       onChange={(e) => setFormData({ ...formData, commodity: e.target.value })}
                       className="w-full h-11 sm:h-12 pl-4 pr-11 rounded-xl border border-stone-200 bg-[#FAF9F6]/70 hover:bg-white hover:border-stone-300 text-xs sm:text-sm font-semibold text-stone-900 focus:bg-white focus:border-[#740707] focus:ring-4 focus:ring-[#740707]/10 outline-none transition-all cursor-pointer appearance-none shadow-2xs"
@@ -234,6 +236,8 @@ export default function QuoteModal({
                     </label>
                     <div className="relative group">
                       <select
+                        data-lenis-prevent
+                        onWheel={(e) => e.stopPropagation()}
                         value={formData.volume}
                         onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
                         className="w-full h-11 sm:h-12 pl-4 pr-11 rounded-xl border border-stone-200 bg-[#FAF9F6]/70 hover:bg-white hover:border-stone-300 text-xs sm:text-sm font-semibold text-stone-900 focus:bg-white focus:border-[#740707] focus:ring-4 focus:ring-[#740707]/10 outline-none transition-all cursor-pointer appearance-none shadow-2xs"
