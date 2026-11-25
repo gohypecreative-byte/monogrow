@@ -258,36 +258,36 @@
       "id": "katarni-rice",
       "categoryKey": "rice",
       "category": "Grains & Rice",
-      "name": "Classic Basmati Steam Rice",
-      "kicker": "Everyday Flavour · Export Quality",
-      "quoteName": "Classic Basmati Steam Rice",
-      "tagline": "Everyday Flavour | Consistent Quality",
-      "description": "Classic Basmati Steam Rice brings together the convenience of steam processing and the versatility of Basmati rice. Suitable for daily meals, family favourites, and food-service applications, it is a dependable choice for those seeking the best rice to use.",
-      "originBadge": "Average Grain Length: 8.40 MM · Consistent Quality",
+      "name": "Premium Katarni Rice",
+      "kicker": "Naturally Aromatic · Heritage Grain",
+      "quoteName": "Premium Katarni Rice",
+      "tagline": "Naturally Aromatic | Perfect for Everyday",
+      "description": "Prized for its natural floral aroma and tender, non-sticky grains, Monagrow Premium Katarni Rice is a heritage staple celebrated across traditional and everyday cuisine. Naturally aged, lightweight, and easily digestible, it turns everyday meals, festive pulao, and regional recipes into a rich culinary experience.",
+      "originBadge": "Naturally Aromatic Heritage Grain · 100% Sortex Clean",
       "packImg": "/assets/monagrow-katarni-bag-cutout.png",
       "bowlImg": "/assets/hero-center-rice.png",
-      "bowlAlt": "Full ceramic bowl of Katarni aromatic rice",
-      "packAlt": "Monagrow Katarni Rice 5kg Standup Box Bag",
+      "bowlAlt": "Full ceramic bowl of Premium Katarni Rice",
+      "packAlt": "Monagrow Premium Katarni Rice 5kg Standup Box Bag",
       "specs": [
         {
-          "label": "Grain Length",
-          "value": "8.40 MM"
+          "label": "Grain Type",
+          "value": "Aromatic Medium Slender"
         },
         {
           "label": "Processing",
-          "value": "Steam Processed"
+          "value": "Naturally Aged & Milled"
         },
         {
           "label": "Energy",
-          "value": "364.03 kcal / 100g"
+          "value": "362.5 kcal / 100g"
         },
         {
           "label": "Protein",
-          "value": "8.79 g"
+          "value": "8.2 g"
         },
         {
           "label": "Carbohydrates",
-          "value": "80.81 g"
+          "value": "79.5 g"
         },
         {
           "label": "Purity",
@@ -295,9 +295,9 @@
         }
       ],
       "keyHighlights": [
-        "Consistent Cooking Quality: Dependable performance across daily home and food-service recipes",
-        "Aromatic Rice Grains: Naturally fragrant Basmati character",
-        "Everyday Versatility: Perfect pairing for gravies, curries, and fried rice",
+        "Naturally Aromatic: Prized heritage aroma that gently enhances daily meals and festive recipes",
+        "Lightweight & Fluffy: Cooked grains remain tender, soft, and separate without sticking",
+        "Easily Digestible: A wholesome everyday grain renowned for light texture and digestive comfort",
         "Optical Sortex Cleaned: Eliminates broken grains and foreign matter"
       ],
       "variations": [
@@ -554,36 +554,36 @@
       "id": "jeera-masino-rice",
       "categoryKey": "rice",
       "category": "Grains & Rice",
-      "name": "Classic Basmati Sella Rice",
-      "kicker": "Parboiled Rice Grains · Balanced Quality",
-      "quoteName": "Classic Basmati Sella Rice",
-      "tagline": "Balanced Quality | Versatile Cooking",
-      "description": "Classic Basmati Sella Rice provides a reliable and versatile parboiled rice option. Its firm grain texture and balanced qualities make it well-suited for everyday cooking and food-service needs, offering dependable results across a range of recipes.",
-      "originBadge": "Average Grain Length: 8.40 MM · Balanced Parboiled",
+      "name": "Jeera Masino Rice",
+      "kicker": "100% Natural · Aged Fine Grain",
+      "quoteName": "Jeera Masino Rice",
+      "tagline": "100% Natural | Aged Rice | Rich Taste",
+      "description": "Monagrow Jeera Masino Rice is a cherished fine-grain aromatic variety celebrated for its distinctive slender kernels, naturally aged aroma, and rich, delicate taste. Grown in fertile river valleys and carefully matured to achieve optimal fluffiness and soft texture, Jeera Masino is the gold standard for daily meals, wholesome family dining, and traditional cuisine.",
+      "originBadge": "Fine Slender Aromatic Grain · Naturally Aged",
       "packImg": "/assets/monagrow-jeera-masino-bag-cutout.png",
       "bowlImg": "/assets/hero-center-rice.png",
       "bowlAlt": "Full ceramic bowl of cooked Jeera Masino fine grain rice",
       "packAlt": "Monagrow Jeera Masino Rice 20kg Bag",
       "specs": [
         {
-          "label": "Grain Length",
-          "value": "8.40 MM"
+          "label": "Grain Type",
+          "value": "Fine Slender (Masino)"
         },
         {
           "label": "Processing",
-          "value": "Parboiled Sella"
+          "value": "Naturally Aged & Milled"
         },
         {
           "label": "Energy",
-          "value": "355 kcal / 100g"
+          "value": "358 kcal / 100g"
         },
         {
           "label": "Protein",
-          "value": "7.0 g"
+          "value": "7.8 g"
         },
         {
           "label": "Carbohydrates",
-          "value": "77.0 g"
+          "value": "78.5 g"
         },
         {
           "label": "Purity",
@@ -591,10 +591,10 @@
         }
       ],
       "keyHighlights": [
-        "Parboiled Rice Grains: Balanced cooking qualities with high thermal tolerance",
-        "Everyday Adaptability: Reliable performance across diverse regional cuisines",
-        "Firm Non-Breaking Kernels: Remains separate and intact in commercial food service",
-        "Dual Sortex Inspection: Guaranteed purity and low broken grain threshold"
+        "100% Natural & Aged: Naturally matured to unlock optimal grain fluffiness and authentic rich taste",
+        "Delicate Slender Grains: Fine, non-sticky kernels that cook tender, aromatic, and distinct",
+        "Beloved Daily Staple: The premier choice for wholesome everyday meals and traditional dining",
+        "Dual Optical Sortex Cleaned: Rigorously inspected and sortex-graded for spotless purity and consistent grain quality"
       ],
       "variations": [
         {
@@ -1866,36 +1866,36 @@
       "id": "basmati-brown-rice",
       "categoryKey": "rice",
       "category": "Grains & Rice",
-      "name": "Rozana Basmati Steam Rice",
-      "kicker": "Daily Essential · Steam Processed",
-      "quoteName": "Rozana Basmati Steam Rice",
-      "tagline": "Daily Essential | Delicious Meals",
-      "description": "Designed for everyday cooking, Rozana Basmati Steam Rice offers a practical choice for preparing satisfying meals at home or in commercial kitchens. Its steam-processing method supports grain separation, making it suitable for a variety of traditional rice dishes.",
-      "originBadge": "Average Grain Length: 7.65 MM · Daily Essential",
+      "name": "Premium Basmati Brown Rice",
+      "kicker": "100% Whole Grain · Naturally Aged",
+      "quoteName": "Premium Basmati Brown Rice",
+      "tagline": "100% Whole Grain | Naturally Aged | Rich Aroma",
+      "description": "Monagrow Premium Basmati Brown Rice preserves the nutrient-dense outer bran and germ layer, delivering a rich nutty flavour, wholesome dietary fibre, and the distinctive elongation of pure Basmati. Naturally aged and carefully milled without stripping vital nutrients, it is the premier choice for health-conscious dining, fitness nutrition, and hearty everyday meals.",
+      "originBadge": "100% Whole Grain Unpolished Basmati · Naturally Aged",
       "packImg": "/assets/monagrow-brown-rice-bag-cutout.png",
       "bowlImg": "/assets/hero-center-rice.png",
-      "bowlAlt": "Full ceramic bowl of wholesome Basmati brown rice",
+      "bowlAlt": "Full ceramic bowl of wholesome Premium Basmati Brown Rice",
       "packAlt": "Monagrow Premium Basmati Brown Rice 5kg Standup Box Bag",
       "specs": [
         {
-          "label": "Grain Length",
-          "value": "7.65 MM"
+          "label": "Grain Type",
+          "value": "Long Grain Whole Brown Basmati"
         },
         {
           "label": "Processing",
-          "value": "Steam Processed"
+          "value": "Unpolished Whole Grain"
         },
         {
           "label": "Energy",
-          "value": "366.42 kcal / 100g"
+          "value": "360 kcal / 100g"
         },
         {
           "label": "Protein",
-          "value": "8.91 g"
+          "value": "8.5 g"
         },
         {
-          "label": "Carbohydrates",
-          "value": "80.62 g"
+          "label": "Dietary Fibre",
+          "value": "3.8 g"
         },
         {
           "label": "Purity",
@@ -1903,10 +1903,10 @@
         }
       ],
       "keyHighlights": [
-        "Ideal for Daily Cooking: Practical, high-value choice for regular household meals",
-        "Easy Meal Pairing: Complements dals, vegetable curries, and regional side dishes",
-        "Suitable for Multiple Recipes: Fast hydration and consistent everyday texture",
-        "Steam Processing: Supports grain separation and prevents clumping"
+        "100% Whole Grain Nutrition: Intact bran layer rich in dietary fibre, B-vitamins, and essential minerals",
+        "Rich Aroma & Nutty Flavour: Naturally aged for wholesome depth, distinct grain elongation, and tender chew",
+        "Ultra-Low Glycemic Index: Slow-digesting complex carbohydrates support sustained energy and mindful wellness",
+        "Optical Sortex Cleaned: Eliminates broken grains and foreign matter while preserving the nutritious bran"
       ],
       "variations": [
         {
@@ -2000,154 +2000,6 @@
           "price": 166.5,
           "currency": "USD",
           "sku": "MNG-RIC-BASMAT-50KG",
-          "packageType": "Lined Ocean Export Sacks",
-          "inStock": true,
-          "minOrderQty": 5,
-          "sortOrder": 7
-        }
-      ],
-      "isActive": true,
-      "isFeatured": false,
-      "updatedAt": "2026-11-18T10:00:00.000Z"
-    },
-    {
-      "id": "traditional-basmati-rice",
-      "categoryKey": "rice",
-      "category": "Grains & Rice",
-      "name": "Rozana Basmati Sella Rice",
-      "kicker": "Everyday Convenience · Parboiled Variety",
-      "quoteName": "Rozana Basmati Sella Rice",
-      "tagline": "Everyday Convenience | Reliable Performance",
-      "description": "Rozana Basmati Sella Rice combines the practical benefits of parboiled rice with versatility for everyday cooking. Its light grains are suitable for a variety of rice-based meals, offering a convenient option for households and food-service kitchens.",
-      "originBadge": "Average Grain Length: 7.65 MM · Parboiled Rozana",
-      "packImg": "/assets/monagrow-traditional-basmati-bag-cutout.png",
-      "bowlImg": "/assets/hero-center-rice.png",
-      "bowlAlt": "Full ceramic bowl of Royal Reserve Traditional Basmati rice",
-      "packAlt": "Monagrow Royal Reserve Traditional Basmati Rice Pack",
-      "specs": [
-        {
-          "label": "Grain Length",
-          "value": "7.65 MM"
-        },
-        {
-          "label": "Processing",
-          "value": "Parboiled Sella"
-        },
-        {
-          "label": "Energy",
-          "value": "344 kcal / 100g"
-        },
-        {
-          "label": "Protein",
-          "value": "6.7 g"
-        },
-        {
-          "label": "Carbohydrates",
-          "value": "77.0 g"
-        },
-        {
-          "label": "Purity",
-          "value": "100% Sortex Clean"
-        }
-      ],
-      "keyHighlights": [
-        "Parboiled Rice Variety: Practical parboiling benefits for everyday efficiency",
-        "Separate Grain Texture: Stays light and fluffy without sticking",
-        "Suitable for Everyday Meals: Perfect for high-volume family and institutional cooking",
-        "Reliable Performance: Consistent cooking results and excellent holding times"
-      ],
-      "variations": [
-        {
-          "id": "var-traditional-basmati-rice-1",
-          "weight": "500gm",
-          "unit": "gm",
-          "price": 2.48,
-          "currency": "USD",
-          "sku": "MNG-RIC-TRADIT-500GM",
-          "packageType": "Aroma Seal Retail Pouch",
-          "inStock": true,
-          "minOrderQty": 1,
-          "sortOrder": 0
-        },
-        {
-          "id": "var-traditional-basmati-rice-2",
-          "weight": "1 kg",
-          "unit": "kg",
-          "price": 4.5,
-          "currency": "USD",
-          "sku": "MNG-RIC-TRADIT-1KG",
-          "packageType": "Aroma-Lock Standup Pouch",
-          "inStock": true,
-          "minOrderQty": 1,
-          "sortOrder": 1
-        },
-        {
-          "id": "var-traditional-basmati-rice-3",
-          "weight": "2 kg",
-          "unit": "kg",
-          "price": 8.55,
-          "currency": "USD",
-          "sku": "MNG-RIC-TRADIT-2KG",
-          "packageType": "Premium Standup Zipper Pouch",
-          "inStock": true,
-          "minOrderQty": 1,
-          "sortOrder": 2
-        },
-        {
-          "id": "var-traditional-basmati-rice-4",
-          "weight": "5 kg",
-          "unit": "kg",
-          "price": 19.8,
-          "currency": "USD",
-          "sku": "MNG-RIC-TRADIT-5KG",
-          "packageType": "Standup Box Bag with Handle",
-          "inStock": true,
-          "minOrderQty": 1,
-          "sortOrder": 3
-        },
-        {
-          "id": "var-traditional-basmati-rice-5",
-          "weight": "10 kg",
-          "unit": "kg",
-          "price": 36.9,
-          "currency": "USD",
-          "sku": "MNG-RIC-TRADIT-10KG",
-          "packageType": "Heavy BOPP Moisture Bag",
-          "inStock": true,
-          "minOrderQty": 5,
-          "sortOrder": 4
-        },
-        {
-          "id": "var-traditional-basmati-rice-6",
-          "weight": "20 kg",
-          "unit": "kg",
-          "price": 71.1,
-          "currency": "USD",
-          "sku": "MNG-RIC-TRADIT-20KG",
-          "packageType": "Heavy-Duty Woven Sack",
-          "inStock": true,
-          "minOrderQty": 5,
-          "sortOrder": 5
-        },
-        {
-          "id": "var-traditional-basmati-rice-7",
-          "weight": "25 kg",
-          "unit": "kg",
-          "price": 87.75,
-          "currency": "USD",
-          "sku": "MNG-RIC-TRADIT-25KG",
-          "packageType": "Woven Polypropylene Sacks",
-          "inStock": true,
-          "minOrderQty": 5,
-          "sortOrder": 6
-        },
-        {
-          "id": "var-traditional-basmati-rice-8",
-          "weight": "50 kg",
-          "unit": "kg",
-          "price": 166.5,
-          "currency": "USD",
-          "sku": "MNG-RIC-TRADIT-50KG",
           "packageType": "Lined Ocean Export Sacks",
           "inStock": true,
           "minOrderQty": 5,
@@ -2296,154 +2148,6 @@
           "price": 138.0,
           "currency": "USD",
           "sku": "MNG-RIC-PSONA-50KG",
-          "packageType": "Lined Ocean Export Sacks",
-          "inStock": true,
-          "minOrderQty": 5,
-          "sortOrder": 7
-        }
-      ],
-      "isActive": true,
-      "isFeatured": true,
-      "updatedAt": "2026-11-23T10:00:00.000Z"
-    },
-    {
-      "id": "rozana-sona-masoori-rice",
-      "categoryKey": "rice",
-      "category": "Grains & Rice",
-      "name": "Rozana Sona Masoori Rice",
-      "kicker": "Daily Essential Grains · Low Starch & Wholesome",
-      "quoteName": "Rozana Sona Masoori Rice",
-      "tagline": "Daily essential rice for wholesome, fluffy meals.",
-      "description": "Milled for daily family wellness, Rozana Sona Masoori Rice delivers wholesome everyday nutrition with a clean, pleasant taste and fluffy separation. Its naturally balanced starch profile and tender grain make it an indispensable staple for dal-rice, sambar rice, pulao, and wholesome regional delicacies.",
-      "originBadge": "Average Grain Length: 5.0 MM · 100% Sortex Clean",
-      "packImg": "/assets/monagrow-rozana-sona-masoori-bag-v2.png",
-      "bowlImg": "/assets/hero-center-rice.png",
-      "bowlAlt": "Full ceramic bowl of Rozana Sona Masoori Rice",
-      "packAlt": "Monagrow Rozana Sona Masoori Rice Pack",
-      "specs": [
-        {
-          "label": "Grain Length",
-          "value": "5.0 MM"
-        },
-        {
-          "label": "Processing",
-          "value": "Steam Milled"
-        },
-        {
-          "label": "Energy",
-          "value": "350 kcal / 100g"
-        },
-        {
-          "label": "Protein",
-          "value": "7.5 g"
-        },
-        {
-          "label": "Carbohydrates",
-          "value": "79.0 g"
-        },
-        {
-          "label": "Purity",
-          "value": "100% Sortex Clean"
-        }
-      ],
-      "keyHighlights": [
-        "Everyday Fluffy Separation: Steam-milled grains that cook evenly without stickiness",
-        "Wholesome Daily Staple: Low glycemic load and light digestion for healthy daily consumption",
-        "Ideal for Family Cooking: Excellent absorption for dal, rasam, curd rice, and curries",
-        "Strict Quality Control: Triple-cleaned and sortex inspected for uncompromised grain purity"
-      ],
-      "variations": [
-        {
-          "id": "var-rozana-sona-masoori-rice-1",
-          "weight": "500gm",
-          "unit": "gm",
-          "price": 2.1,
-          "currency": "USD",
-          "sku": "MNG-RIC-RSONA-500GM",
-          "packageType": "Aroma Seal Retail Pouch",
-          "inStock": true,
-          "minOrderQty": 1,
-          "sortOrder": 0
-        },
-        {
-          "id": "var-rozana-sona-masoori-rice-2",
-          "weight": "1 kg",
-          "unit": "kg",
-          "price": 3.9,
-          "currency": "USD",
-          "sku": "MNG-RIC-RSONA-1KG",
-          "packageType": "Aroma-Lock Standup Pouch",
-          "inStock": true,
-          "minOrderQty": 1,
-          "sortOrder": 1
-        },
-        {
-          "id": "var-rozana-sona-masoori-rice-3",
-          "weight": "2 kg",
-          "unit": "kg",
-          "price": 7.5,
-          "currency": "USD",
-          "sku": "MNG-RIC-RSONA-2KG",
-          "packageType": "Premium Standup Zipper Pouch",
-          "inStock": true,
-          "minOrderQty": 1,
-          "sortOrder": 2
-        },
-        {
-          "id": "var-rozana-sona-masoori-rice-4",
-          "weight": "5 kg",
-          "unit": "kg",
-          "price": 16.2,
-          "currency": "USD",
-          "sku": "MNG-RIC-RSONA-5KG",
-          "packageType": "Standup Box Bag with Handle",
-          "inStock": true,
-          "minOrderQty": 1,
-          "sortOrder": 3
-        },
-        {
-          "id": "var-rozana-sona-masoori-rice-5",
-          "weight": "10 kg",
-          "unit": "kg",
-          "price": 30.0,
-          "currency": "USD",
-          "sku": "MNG-RIC-RSONA-10KG",
-          "packageType": "Heavy BOPP Moisture Bag",
-          "inStock": true,
-          "minOrderQty": 5,
-          "sortOrder": 4
-        },
-        {
-          "id": "var-rozana-sona-masoori-rice-6",
-          "weight": "20 kg",
-          "unit": "kg",
-          "price": 56.0,
-          "currency": "USD",
-          "sku": "MNG-RIC-RSONA-20KG",
-          "packageType": "Heavy-Duty Woven Sack",
-          "inStock": true,
-          "minOrderQty": 5,
-          "sortOrder": 5
-        },
-        {
-          "id": "var-rozana-sona-masoori-rice-7",
-          "weight": "25 kg",
-          "unit": "kg",
-          "price": 68.0,
-          "currency": "USD",
-          "sku": "MNG-RIC-RSONA-25KG",
-          "packageType": "Woven Polypropylene Sacks",
-          "inStock": true,
-          "minOrderQty": 5,
-          "sortOrder": 6
-        },
-        {
-          "id": "var-rozana-sona-masoori-rice-8",
-          "weight": "50 kg",
-          "unit": "kg",
-          "price": 130.0,
-          "currency": "USD",
-          "sku": "MNG-RIC-RSONA-50KG",
           "packageType": "Lined Ocean Export Sacks",
           "inStock": true,
           "minOrderQty": 5,

@@ -44,8 +44,8 @@ const BANNER_PRODUCTS: BannerProduct[] = [
   },
   {
     id: "katarni-rice",
-    name: "Classic Basmati Steam Rice",
-    category: "Steam Basmati",
+    name: "Premium Katarni Rice",
+    category: "Heritage Aromatic Rice",
     packImg: "/assets/monagrow-katarni-bag-cutout.png",
     leftPercent: 36.5,
     bottomPercent: 19.0,
@@ -68,8 +68,8 @@ const BANNER_PRODUCTS: BannerProduct[] = [
   },
   {
     id: "jeera-masino-rice",
-    name: "Classic Basmati Sella Rice",
-    category: "Sella Basmati",
+    name: "Jeera Masino Rice",
+    category: "Fine Grain Aromatic Rice",
     packImg: "/assets/monagrow-jeera-masino-bag-cutout.png",
     leftPercent: 61.5,
     bottomPercent: 30.0,

@@ -268,7 +268,7 @@ export default function RiceHistorySection({
       culinaryUse: "Biryani, Persian Chelow, Royal Pilafs, Saffron Steamed Rice",
     },
     brown: {
-      name: "Rozana Basmati Steam Rice",
+      name: "Premium Basmati Brown Rice",
       calories: 122,
       carbs: 25,
       protein: 3.1,

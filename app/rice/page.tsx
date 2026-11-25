@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import RicePageClient from "./RicePageClient";
 
 export const metadata: Metadata = {
-  title: "Monagrow Rice | Premium, Classic & Rozana Basmati Rice (Steam & Sella)",
+  title: "Monagrow Rice | Premium Basmati, Katarni, Jeera Masino & Sona Masoori",
   description:
-    "Explore Monagrow's export-quality Basmati rice portfolio: Premium Basmati Steam, Classic Basmati Steam, Rozana Basmati Steam, Premium Basmati Sella, Classic Basmati Sella, and Rozana Basmati Sella Rice.",
+    "Explore Monagrow's export-quality rice portfolio: Premium Basmati Steam, Premium Katarni Rice, Premium Basmati Brown Rice, Premium Basmati Sella, Jeera Masino Rice, and Premium Sona Masoori Rice.",
 };
 
 export default function RicePage() {

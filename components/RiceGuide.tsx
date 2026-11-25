@@ -25,7 +25,7 @@ const metrics = { k: ["Energy", "kcal"], p: ["Protein", "g"], f: ["Fat", "g"], f
 const cookingProducts: Record<string, string> = {
   Basmati: "basmati-rice",
   Jasmine: "katarni-rice",
-  "White long-grain": "traditional-basmati-rice",
+  "White long-grain": "basmati-rice",
   "Sushi rice": "jeera-masino-rice",
   "Risotto (Arborio)": "sella-basmati-rice",
   "Brown rice": "basmati-brown-rice",

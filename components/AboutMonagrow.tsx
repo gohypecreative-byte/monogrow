@@ -9,14 +9,7 @@ export default function AboutMonagrow() {
     <section id="about-us" className={styles.section} aria-labelledby="about-heading">
       <div className={styles.container}>
         <div className={styles.visual}>
-          <video key="gemini_generated_video_90b25d74"
-            ref={(video) => {
-              if (video) {
-                video.defaultPlaybackRate = 2;
-                video.playbackRate = 2;
-              }
-            }}
-            onLoadedMetadata={(event) => { event.currentTarget.playbackRate = 2; }}
+          <video key="monagrow_showcase_video"
             className={styles.video}
             autoPlay
             muted
@@ -25,7 +18,9 @@ export default function AboutMonagrow() {
             preload="metadata"
             aria-label="Monagrow product showcase"
           >
-            <source src="/gemini_generated_video_90b25d74.mp4" type="video/mp4" />
+            <source src="/Monagrow%201.mp4" type="video/mp4" />
+            <source src="/Monagrow 1.mp4" type="video/mp4" />
+            <source src="/monagrow-1.mp4" type="video/mp4" />
             Your browser does not support video playback.
           </video>
         </div>

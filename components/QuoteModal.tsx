@@ -11,13 +11,11 @@ interface QuoteModalProps {
 
 const COMMODITIES = [
   "Premium Basmati Steam Rice",
-  "Classic Basmati Steam Rice",
-  "Rozana Basmati Steam Rice",
+  "Premium Katarni Rice",
+  "Premium Basmati Brown Rice",
   "Premium Basmati Sella Rice",
-  "Classic Basmati Sella Rice",
-  "Rozana Basmati Sella Rice",
+  "Jeera Masino Rice",
   "Premium Sona Masoori Rice",
-  "Rozana Sona Masoori Rice",
   "Specialty Estate Coffee",
   "Refined Sugar (ICUMSA 45)",
   "Natural Brown Sugar",
