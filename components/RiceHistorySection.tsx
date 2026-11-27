@@ -684,6 +684,7 @@ export default function RiceHistorySection({
                         alt={p.packAlt}
                         width={180}
                         height={240}
+                        unoptimized={Boolean(p.packImg?.startsWith("data:"))}
                         className="max-h-32 sm:max-h-36 w-auto object-contain drop-shadow-md"
                       />
                     </div>

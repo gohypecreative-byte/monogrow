@@ -175,6 +175,7 @@ export default function ShopProductsBanner() {
                 alt={product.name}
                 width={240}
                 height={320}
+                unoptimized={Boolean(product.packImg?.startsWith("data:"))}
                 className={styles.productImg}
                 priority
               />

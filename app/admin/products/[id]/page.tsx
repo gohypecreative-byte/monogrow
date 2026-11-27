@@ -64,11 +64,16 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
   const isNew = isNewProp || !rawId || rawId === "new";
   const productId = isNew ? "" : decodeURIComponent(rawId);
 
-  // Image sanitization helper
+  // Image sanitization helper (supports relative paths, absolute URLs, and base64 data URIs)
   const sanitizeImgSrc = (src?: string) => {
     if (!src || !src.trim()) return "";
     const clean = src.trim();
-    if (clean.startsWith("http://") || clean.startsWith("https://") || clean.startsWith("/")) {
+    if (
+      clean.startsWith("http://") ||
+      clean.startsWith("https://") ||
+      clean.startsWith("/") ||
+      clean.startsWith("data:")
+    ) {
       return clean;
     }
     return `/${clean}`;
@@ -218,21 +223,87 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     setTimeout(() => setToastMsg(null), 4000);
   };
 
-  // Image Upload Handlers
-  const MAX_UPLOAD_BYTES = 20 * 1024 * 1024; // 20 MB
+  // Image Upload Handlers & Auto-Compression
+  const MAX_UPLOAD_BYTES = 4.2 * 1024 * 1024; // 4.2 MB (aligned with serverless body limits)
+
+  /**
+   * Compresses and resizes high-resolution images in the browser using HTML5 Canvas.
+   * - Prevents HTTP 413 "Request Entity Too Large" errors on serverless deployments (Vercel 4.5 MB limit)
+   * - Preserves vector SVGs and animated GIFs
+   * - Scales images exceeding 1920px max dimension proportionally
+   * - Compresses to optimized WebP at 85% quality (~200KB - 500KB)
+   */
+  const compressImageForUpload = async (file: File): Promise<File> => {
+    // Skip non-raster or already small files (under 500 KB)
+    if (file.size <= 500 * 1024 || file.type === "image/svg+xml" || file.type === "image/gif") {
+      return file;
+    }
+
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = document.createElement("img");
+        img.onload = () => {
+          let width = img.naturalWidth || img.width;
+          let height = img.naturalHeight || img.height;
+          const maxDim = 1920;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            resolve(file);
+            return;
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+
+          canvas.toBlob(
+            (blob) => {
+              if (!blob || blob.size >= file.size) {
+                // Keep original if compression didn't reduce size
+                resolve(file);
+                return;
+              }
+
+              const baseName = file.name.replace(/\.[^/.]+$/, "");
+              const optimizedFile = new File([blob], `${baseName}.webp`, {
+                type: "image/webp",
+                lastModified: Date.now(),
+              });
+              resolve(optimizedFile);
+            },
+            "image/webp",
+            0.85
+          );
+        };
+        img.onerror = () => resolve(file);
+        img.src = e.target?.result as string;
+      };
+      reader.onerror = () => resolve(file);
+      reader.readAsDataURL(file);
+    });
+  };
 
   const handleFileUpload = async (
     file: File,
     targetField: "packImg" | "bowlImg",
     category: string
   ) => {
-    if (file.size > MAX_UPLOAD_BYTES) {
-      const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
-      showToast(`File size (${sizeMb} MB) exceeds the 20 MB limit.`, "error");
-      return;
-    }
     if (!file.type.startsWith("image/") && !/\.(jpg|jpeg|png|webp|svg|gif|avif)$/i.test(file.name)) {
-      showToast("Invalid file format. Please upload an image file.", "error");
+      showToast("Invalid file format. Please upload an image file (PNG, JPG, WEBP, SVG, GIF).", "error");
       return;
     }
 
@@ -241,13 +312,40 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
     else setIsUploadingBowl(true);
 
     try {
+      // 1. Client-side auto-compression to prevent 413 "Request Entity Too Large"
+      const fileToUpload = await compressImageForUpload(file);
+
+      if (fileToUpload.size > MAX_UPLOAD_BYTES) {
+        const sizeMb = (fileToUpload.size / (1024 * 1024)).toFixed(1);
+        showToast(`Image file (${sizeMb} MB) exceeds the 4 MB server upload limit. Please use a smaller image.`, "error");
+        return;
+      }
+
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", fileToUpload);
       formData.append("category", category);
 
       const res = await fetch("/api/admin/upload", { method: "POST", body: formData });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to upload image");
+
+      // 2. Safe response parsing: handle non-JSON responses (e.g. 413 Request Entity Too Large, 502, 504)
+      let data: any = {};
+      const contentType = res.headers.get("content-type") || "";
+
+      if (contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        if (!res.ok) {
+          if (res.status === 413 || text.toLowerCase().includes("request entity too large")) {
+            throw new Error("Image file is too large for the hosting server (HTTP 413: Request Entity Too Large). Please choose a smaller image.");
+          }
+          throw new Error(text.slice(0, 140) || `Upload failed with HTTP status ${res.status}`);
+        }
+      }
+
+      if (!res.ok) {
+        throw new Error(data.error || `Upload failed with status ${res.status}`);
+      }
 
       setProduct((prev) => {
         const altField = isPack ? "packAlt" : "bowlAlt";
@@ -262,7 +360,8 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
         };
       });
 
-      showToast(`Image uploaded successfully (${data.formattedSize})!`);
+      const displaySize = data.formattedSize || `${(fileToUpload.size / (1024 * 1024)).toFixed(2)} MB`;
+      showToast(`Image uploaded successfully (${displaySize})!`);
     } catch (err: any) {
       showToast(err.message || "Failed to upload image", "error");
     } finally {
@@ -794,7 +893,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                   <span className="text-xs font-bold text-[#261c16]">Retail / Pack Image</span>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] text-[#740707] font-semibold bg-[#740707]/10 px-1.5 py-0.5 rounded">
-                      Max 20 MB
+                      Max 4 MB
                     </span>
                     <span className="text-[10px] text-[#7d7064] font-mono">Transparent cutout</span>
                   </div>
@@ -805,7 +904,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                   <div
                     onClick={() => packInputRef.current?.click()}
                     className="w-20 h-20 rounded-xl bg-white border border-[#e2d7c9] p-2 flex items-center justify-center shrink-0 relative overflow-hidden shadow-inner cursor-pointer group hover:border-[#740707] transition-all"
-                    title="Click or drag image here to upload (Max 20 MB)"
+                    title="Click or drag image here to upload (Auto-optimized, Max 4 MB)"
                   >
                     {isUploadingPack ? (
                       <div className="flex flex-col items-center justify-center gap-1 text-[#740707]">
@@ -849,7 +948,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                         disabled={isUploadingPack}
                         onClick={() => packInputRef.current?.click()}
                         className="px-3 py-1.5 rounded-lg bg-[#740707] hover:bg-[#880a0a] text-white text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 disabled:opacity-50 cursor-pointer"
-                        title="Upload image from your device (Max 20 MB)"
+                        title="Upload image from your device (Auto-optimized, Max 4 MB)"
                       >
                         {isUploadingPack ? (
                           <>
@@ -877,7 +976,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                 {/* Drag & Drop Hint */}
                 <div className="text-[10px] text-[#7d7064] flex items-center justify-between pt-1 border-t border-[#e8dfd3]">
                   <span>💡 Drag &amp; drop image here or click Upload</span>
-                  <span>Max file size: <strong className="text-[#261c16]">20 MB</strong></span>
+                  <span>Max file size: <strong className="text-[#261c16]">4 MB (Auto-optimized)</strong></span>
                 </div>
 
                 <input
@@ -909,7 +1008,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                   <span className="text-xs font-bold text-[#261c16]">Commodity Display / Bowl Image</span>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] text-[#740707] font-semibold bg-[#740707]/10 px-1.5 py-0.5 rounded">
-                      Max 20 MB
+                      Max 4 MB
                     </span>
                     <span className="text-[10px] text-[#7d7064] font-mono">Hero graphic</span>
                   </div>
@@ -920,7 +1019,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                   <div
                     onClick={() => bowlInputRef.current?.click()}
                     className="w-20 h-20 rounded-xl bg-white border border-[#e2d7c9] p-2 flex items-center justify-center shrink-0 relative overflow-hidden shadow-inner cursor-pointer group hover:border-[#740707] transition-all"
-                    title="Click or drag image here to upload (Max 20 MB)"
+                    title="Click or drag image here to upload (Auto-optimized, Max 4 MB)"
                   >
                     {isUploadingBowl ? (
                       <div className="flex flex-col items-center justify-center gap-1 text-[#740707]">
@@ -964,7 +1063,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                         disabled={isUploadingBowl}
                         onClick={() => bowlInputRef.current?.click()}
                         className="px-3 py-1.5 rounded-lg bg-[#740707] hover:bg-[#880a0a] text-white text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 disabled:opacity-50 cursor-pointer"
-                        title="Upload image from your device (Max 20 MB)"
+                        title="Upload image from your device (Auto-optimized, Max 4 MB)"
                       >
                         {isUploadingBowl ? (
                           <>
@@ -992,7 +1091,7 @@ function ProductEditContent({ isNewProp }: { isNewProp?: boolean }) {
                 {/* Drag & Drop Hint */}
                 <div className="text-[10px] text-[#7d7064] flex items-center justify-between pt-1 border-t border-[#e8dfd3]">
                   <span>💡 Drag &amp; drop image here or click Upload</span>
-                  <span>Max file size: <strong className="text-[#261c16]">20 MB</strong></span>
+                  <span>Max file size: <strong className="text-[#261c16]">4 MB (Auto-optimized)</strong></span>
                 </div>
 
                 <input

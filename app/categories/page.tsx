@@ -142,6 +142,7 @@ function CategoriesContent() {
                       alt={product.packAlt || product.name}
                       width={240}
                       height={320}
+                      unoptimized={Boolean(product.packImg?.startsWith("data:"))}
                       className="max-h-[190px] sm:max-h-[220px] w-auto object-contain drop-shadow-md group-hover:drop-shadow-2xl transition-all duration-500 ease-out group-hover:scale-106"
                       sizes="(max-width: 768px) 180px, 240px"
                     />

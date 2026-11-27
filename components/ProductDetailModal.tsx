@@ -63,6 +63,7 @@ export default function ProductDetailModal({
                 alt={product.packAlt || product.name}
                 width={180}
                 height={230}
+                unoptimized={Boolean(product.packImg?.startsWith("data:"))}
                 className="max-h-40 sm:max-h-48 w-auto object-contain drop-shadow-md"
               />
             </div>

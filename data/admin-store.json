@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updatedAt": "2026-11-24T08:10:32.588901+00:00",
+  "updatedAt": "2026-11-27T06:52:35.719Z",
   "neon": {
     "status": "ready",
     "lastSyncedAt": null,
@@ -2085,7 +2085,7 @@
           "id": "var-premium-sona-masoori-rice-3",
           "weight": "2 kg",
           "unit": "kg",
-          "price": 8.0,
+          "price": 8,
           "currency": "USD",
           "sku": "MNG-RIC-PSONA-2KG",
           "packageType": "Premium Standup Zipper Pouch",
@@ -2109,7 +2109,7 @@
           "id": "var-premium-sona-masoori-rice-5",
           "weight": "10 kg",
           "unit": "kg",
-          "price": 32.0,
+          "price": 32,
           "currency": "USD",
           "sku": "MNG-RIC-PSONA-10KG",
           "packageType": "Heavy BOPP Moisture Bag",
@@ -2121,7 +2121,7 @@
           "id": "var-premium-sona-masoori-rice-6",
           "weight": "20 kg",
           "unit": "kg",
-          "price": 60.0,
+          "price": 60,
           "currency": "USD",
           "sku": "MNG-RIC-PSONA-20KG",
           "packageType": "Heavy-Duty Woven Sack",
@@ -2133,7 +2133,7 @@
           "id": "var-premium-sona-masoori-rice-7",
           "weight": "25 kg",
           "unit": "kg",
-          "price": 72.0,
+          "price": 72,
           "currency": "USD",
           "sku": "MNG-RIC-PSONA-25KG",
           "packageType": "Woven Polypropylene Sacks",
@@ -2145,7 +2145,7 @@
           "id": "var-premium-sona-masoori-rice-8",
           "weight": "50 kg",
           "unit": "kg",
-          "price": 138.0,
+          "price": 138,
           "currency": "USD",
           "sku": "MNG-RIC-PSONA-50KG",
           "packageType": "Lined Ocean Export Sacks",
@@ -2243,6 +2243,14 @@
       "path": "/assets/monagrow-sugar-bag-cutout.png",
       "category": "Product Packaging",
       "altText": "Monagrow Refined Sugar Pack"
+    },
+    {
+      "id": "media-1795762192135",
+      "fileName": "monagrow-brown-sugar-high-resolution-300dpi-1795762192095.webp",
+      "path": "/uploads/monagrow-brown-sugar-high-resolution-300dpi-1795762192095.webp",
+      "category": "Product Packaging",
+      "altText": "MONAGROW_Brown_Sugar_High_Resolution_300DPI",
+      "fileSize": 297534
     }
   ]
 }

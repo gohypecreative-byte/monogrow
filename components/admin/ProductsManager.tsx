@@ -23,7 +23,12 @@ interface ProductsManagerProps {
 function safeImgSrc(src?: string): string {
   if (!src || !src.trim()) return "/assets/monagrow-rice-bag-cutout.png";
   const clean = src.trim();
-  if (clean.startsWith("http://") || clean.startsWith("https://") || clean.startsWith("/")) {
+  if (
+    clean.startsWith("http://") ||
+    clean.startsWith("https://") ||
+    clean.startsWith("/") ||
+    clean.startsWith("data:")
+  ) {
     return clean;
   }
   return `/${clean}`;

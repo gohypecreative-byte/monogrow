@@ -180,6 +180,7 @@ export default function CommodityCategoryTemplate({
                             className="object-contain drop-shadow-xl"
                             sizes="(max-width: 768px) 200px, 260px"
                             priority={index === 0}
+                            unoptimized={Boolean(product.packImg?.startsWith("data:"))}
                           />
                         </div>
 
@@ -191,6 +192,7 @@ export default function CommodityCategoryTemplate({
                             fill
                             className="object-contain drop-shadow-2xl"
                             sizes="(max-width: 768px) 130px, 160px"
+                            unoptimized={Boolean(product.bowlImg?.startsWith("data:"))}
                           />
                         </div>
 
