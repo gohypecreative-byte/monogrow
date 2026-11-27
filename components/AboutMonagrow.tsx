@@ -18,9 +18,9 @@ export default function AboutMonagrow() {
             preload="metadata"
             aria-label="Monagrow product showcase"
           >
-            <source src="/Monagrow%201.mp4" type="video/mp4" />
-            <source src="/Monagrow 1.mp4" type="video/mp4" />
-            <source src="/monagrow-1.mp4" type="video/mp4" />
+            <source src="/Monagrow%20New.mp4" type="video/mp4" />
+            <source src="/Monagrow New.mp4" type="video/mp4" />
+            <source src="/monagrow-new.mp4" type="video/mp4" />
             Your browser does not support video playback.
           </video>
         </div>
