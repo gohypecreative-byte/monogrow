@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Lock, Mail, Eye, EyeOff, ShieldCheck, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
+import { Lock, Mail, Eye, EyeOff, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
 
 interface AdminLoginProps {
   onLoginSuccess: (user: { email: string; name: string; role: string }) => void;
@@ -11,8 +11,8 @@ interface AdminLoginProps {
 
 // Monagrow Admin Portal Login Component
 export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
-  const [email, setEmail] = useState("surishekhar17@gmail.com");
-  const [password, setPassword] = useState("Monagrow@123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -69,15 +69,9 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
 
         {/* Login Card */}
         <div className="bg-white/95 backdrop-blur-xl border border-[#e2d7c9] rounded-2xl p-7 shadow-xl">
-          <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#e8dfd3]">
-            <div>
-              <h2 className="text-base font-semibold text-[#261c16]">Administrator Sign In</h2>
-              <p className="text-xs text-[#7d7064]">Authorized personnel only</p>
-            </div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium">
-              <ShieldCheck size={13} />
-              <span>Neon DB Active</span>
-            </div>
+          <div className="mb-6 pb-4 border-b border-[#e8dfd3]">
+            <h2 className="text-base font-semibold text-[#261c16]">Administrator Sign In</h2>
+            <p className="text-xs text-[#7d7064]">Authorized personnel only</p>
           </div>
 
           {error && (
@@ -87,7 +81,7 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" autoComplete="off">
             <div>
               <label className="block text-xs font-semibold text-[#40332a] mb-1.5">
                 Admin Email
@@ -98,7 +92,8 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@monagrow.com"
+                  placeholder="monagrow@gmail.com"
+                  autoComplete="off"
                   required
                   className="w-full pl-10 pr-4 py-2.5 bg-[#faf6f0] border border-[#ded3c4] rounded-xl text-sm text-[#261c16] placeholder-[#9c8e82] focus:outline-none focus:border-[#740707] focus:ring-1 focus:ring-[#740707] transition-all"
                 />
@@ -116,6 +111,7 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter admin password"
+                  autoComplete="new-password"
                   required
                   className="w-full pl-10 pr-10 py-2.5 bg-[#faf6f0] border border-[#ded3c4] rounded-xl text-sm text-[#261c16] placeholder-[#9c8e82] focus:outline-none focus:border-[#740707] focus:ring-1 focus:ring-[#740707] transition-all"
                 />

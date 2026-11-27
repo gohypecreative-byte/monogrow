@@ -2,10 +2,10 @@ import { cookies } from "next/headers";
 import crypto from "crypto";
 
 export const ADMIN_CREDENTIALS = {
-  email: process.env.ADMIN_EMAIL || "surishekhar17@gmail.com",
+  email: process.env.ADMIN_EMAIL || "monagrow@gmail.com",
   password: process.env.ADMIN_PASSWORD || "Monagrow@123",
   role: "Super Admin",
-  name: "Suri Shekhar",
+  name: "Monagrow Admin",
 };
 
 const SESSION_COOKIE_NAME = "monagrow_admin_token";
