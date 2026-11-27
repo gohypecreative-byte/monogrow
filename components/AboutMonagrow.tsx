@@ -1,21 +1,44 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 import styles from "./AboutMonagrow.module.css";
 
 export default function AboutMonagrow() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultPlaybackRate = 1.7;
+      videoRef.current.playbackRate = 1.7;
+    }
+  }, []);
+
+  const handleApplySpeed = () => {
+    if (videoRef.current && videoRef.current.playbackRate !== 1.7) {
+      videoRef.current.playbackRate = 1.7;
+    }
+  };
+
   return (
     <section id="about-us" className={styles.section} aria-labelledby="about-heading">
       <div className={styles.container}>
         <div className={styles.visual}>
-          <video key="monagrow_showcase_video"
+          <video
+            ref={videoRef}
+            key="monagrow_showcase_video"
             className={styles.video}
             autoPlay
             muted
             loop
             playsInline
             preload="metadata"
+            onLoadedMetadata={(e) => {
+              e.currentTarget.defaultPlaybackRate = 1.7;
+              e.currentTarget.playbackRate = 1.7;
+            }}
+            onPlay={handleApplySpeed}
             aria-label="Monagrow product showcase"
           >
             <source src="/Monagrow%20New.mp4" type="video/mp4" />
